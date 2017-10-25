@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { ProfileService } from '../profiles/profile.service';
-import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
+import {ProfileService} from '../profiles/profile.service';
+import {JhiLanguageHelper, Principal, LoginModalService, LoginService} from '../../shared';
 
-import { VERSION, DEBUG_INFO_ENABLED } from '../../app.constants';
+import {VERSION, DEBUG_INFO_ENABLED} from '../../app.constants';
 
 @Component({
     selector: 'jhi-navbar',
@@ -23,16 +23,25 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    userName: string;
 
-    constructor(
-        private loginService: LoginService,
-        private languageService: JhiLanguageService,
-        private languageHelper: JhiLanguageHelper,
-        private principal: Principal,
-        private loginModalService: LoginModalService,
-        private profileService: ProfileService,
-        private router: Router
-    ) {
+    constructor(private loginService: LoginService,
+                private languageService: JhiLanguageService,
+                private languageHelper: JhiLanguageHelper,
+                private principal: Principal,
+                private loginModalService: LoginModalService,
+                private profileService: ProfileService,
+                private router: Router) {
+        // console.log(this.principal.isAuthenticated() ? 'y' : 'n');
+        // if (!this.principal.isAuthenticated()) {
+            this.userName = 'Account';
+        // } else {
+        //     this.principal.identity().then((account) => {
+        //         console.log(account.firstName);
+        //         this.userName = (account !== null && account.userName !== '') ? account.firstName : 'Account';
+        //     });
+        // }
+
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
     }
@@ -49,7 +58,7 @@ export class NavbarComponent implements OnInit {
     }
 
     changeLanguage(languageKey: string) {
-      this.languageService.changeLanguage(languageKey);
+        this.languageService.changeLanguage(languageKey);
     }
 
     collapseNavbar() {

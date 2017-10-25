@@ -49,8 +49,8 @@
         "messages": {
             "info": {
                 "authenticated": {
-                    "prefix": "Para ",
-                    "link": "entrar",
+                    "prefix": "Já é utilizador? ",
+                    "link": " <u>Faça login aqui!</u>",
                     "suffix": ", utilize as seguintes contas:<br/>- Administrador (utilizador=\"admin\" e palavra-passe=\"admin\") <br/>- Utilizador (utilizador=\"user\" e palavra-passe=\"user\")."
                 },
                 "register": {
