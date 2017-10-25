@@ -1,0 +1,23 @@
+{
+    "playerFinderApp": {
+        "gameType" : {
+            "home": {
+                "title": "Game Types",
+                "createLabel": "Criar um(a) novo(a) Game Type",
+                "createOrEditLabel": "Criar ou editar um(a) Game Type",
+                "search": "Search for Game Type"
+            },
+            "created": "A new Game Type is created with identifier {{ param }}",
+            "updated": "A Game Type is updated with identifier {{ param }}",
+            "deleted": "A Game Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Tem a certeza que pretende eliminar o(a) Game Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Game Type"
+            },
+            "title": "Title",
+            "type": "Type"
+        }
+    }
+}

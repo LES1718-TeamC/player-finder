@@ -1,0 +1,10 @@
+{
+    "playerFinderApp": {
+        "TypeOfGame" : {
+            "null": "",
+            "SPORT": "SPORT",
+            "ESPORT": "ESPORT",
+            "BOARD": "BOARD"
+        }
+    }
+}

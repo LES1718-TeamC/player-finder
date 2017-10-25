@@ -1,0 +1,12 @@
+{
+    "playerFinderApp": {
+        "GameStatus" : {
+            "null": "",
+            "PENDING": "PENDING",
+            "ACTIVE": "ACTIVE",
+            "CANCELED": "CANCELED",
+            "FINISHED": "FINISHED",
+            "ARCHIEVED": "ARCHIEVED"
+        }
+    }
+}

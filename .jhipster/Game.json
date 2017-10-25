@@ -1,0 +1,102 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "otherEntityField": "streetAddress",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "game"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "owner",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "game"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "typeOfGame",
+            "otherEntityName": "gameType",
+            "otherEntityField": "title",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "game"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "players",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 35
+        },
+        {
+            "fieldName": "beginTime",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numberOfPlayers",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 1
+        },
+        {
+            "fieldName": "requiredNumberOfPlayers",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 1
+        },
+        {
+            "fieldName": "gameStatus",
+            "fieldType": "GameStatus",
+            "fieldValues": "PENDING,ACTIVE,CANCELED,FINISHED,ARCHIEVED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        }
+    ],
+    "changelogDate": "20171025085250",
+    "javadoc": "The Game entity.",
+    "entityTableName": "game",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no"
+}

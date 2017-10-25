@@ -65,5 +65,3 @@ entity Location {
 }
 
 paginate all with pagination
-
-dto all with mapstruct
