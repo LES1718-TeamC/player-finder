@@ -7,7 +7,10 @@
         </a>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
             <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">PlayerFinder</span> <span class="navbar-version">{{version}}</span>
+
+            <!--<span jhiTranslate="global.title" class="navbar-title"></span> <span class="navbar-version">{{version}}</span>-->
+            <span class="navbar-version">{{version}}</span>
+
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed"
