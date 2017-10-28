@@ -1,0 +1,17 @@
+For now, it's impossible to receive activation email confirmation.
+
+To allow that, we need to add the email to verified hosts on mailgun.
+
+1) Go to mailgun
+email: player-finder-les1718@outlook.com
+pass: *******************
+
+2) Click on profile dropdown menu
+
+3) Account settings
+
+4) AUthorized Recipients
+
+5) Invite new recipient
+
+6) On that email account, click accept

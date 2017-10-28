@@ -59,10 +59,14 @@ spring:
                     logs: target/elasticsearch/log
                     data: target/elasticsearch/data
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.mailgun.org
+        port: 465
+        username: postmaster@sandbox79686db538f04545adb85bdb24eb76ba.mailgun.org
+        password: 3d874c525150eb350ac02df70c7e1464
+        protocol: smtps
+        tls: true
+        auth: true
+        from: no-reply@localhost
     messages:
         cache-seconds: 1
     thymeleaf:
