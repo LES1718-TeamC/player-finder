@@ -156,15 +156,16 @@
             <!-- jhipster-needle-add-social-button -->
         </div>
 
-        <!--LINK TO LOGIN-->
-        <div class="row justify-content-center">
-            <br/>
-            <span jhiTranslate="global.messages.info.authenticated.prefix">Already a user? </span>
 
-            <a style="color: rgb(56,62,73)" class="alert-link" (click)="openLogin()"
-               jhiTranslate="global.messages.info.authenticated.link">
-                Sign in here!
-            </a>
+        <!--LINK TO LOGIN-->
+        <div class="row justify-content-center" style="margin-top: 10px; padding-top: 15px; border-top: 1px solid rgb(56,62,73)">
+            <div class="col-md-12 row justify-content-center">
+                <span jhiTranslate="global.messages.info.authenticated.prefix">Already a user? </span>
+
+                <a class="alert-link" style="color: rgb(56,62,73)" (click)="openLogin()" jhiTranslate="global.messages.info.authenticated.link">
+                    Sign in here!
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@ import { RegisterComponent } from '../../../../../../main/webapp/app/account/reg
 
 describe('Component Tests', () => {
 
-    describe('RegisterComponent', () => {
+    describe('LoginComponent', () => {
         let fixture: ComponentFixture<RegisterComponent>;
         let comp: RegisterComponent;
 

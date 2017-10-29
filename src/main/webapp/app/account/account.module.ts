@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 import { PlayerFinderSharedModule } from '../shared';
 
 import {
+    LoginService,
     Register,
     ActivateService,
     PasswordService,
     PasswordResetInitService,
     PasswordResetFinishService,
     PasswordStrengthBarComponent,
+    LoginComponent,
     RegisterComponent,
     ActivateComponent,
     PasswordComponent,
@@ -30,6 +32,7 @@ import {
         SocialRegisterComponent,
         SocialAuthComponent,
         ActivateComponent,
+        LoginComponent,
         RegisterComponent,
         PasswordComponent,
         PasswordStrengthBarComponent,
@@ -38,6 +41,7 @@ import {
         SettingsComponent
     ],
     providers: [
+        LoginService,
         Register,
         ActivateService,
         PasswordService,
