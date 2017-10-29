@@ -162,9 +162,13 @@
             <div class="col-md-12 row justify-content-center">
                 <span jhiTranslate="global.messages.info.authenticated.prefix">Already a user? </span>
 
-                <a class="alert-link" style="color: rgb(56,62,73)" (click)="openLogin()" jhiTranslate="global.messages.info.authenticated.link">
+                <a class="alert-link" style="color: rgb(56,62,73); padding-left: 10px;" (click)="openLogin()"
+                   jhiTranslate="global.messages.info.authenticated.link">
                     Sign in here!
                 </a>
+
+                <i class="fa fa-arrow-right" style="color: rgb(56,62,73); padding-left: 5px;" (click)="openLogin()"aria-hidden="true"></i>
+
             </div>
         </div>
     </div>

@@ -66,10 +66,14 @@
         <div class="row justify-content-center" style="margin-top: 10px; padding-top: 15px; border-top: 1px solid rgb(56,62,73)">
             <div class="col-md-12 row justify-content-center">
                 <span jhiTranslate="global.messages.info.register.noaccount">New to PlayerFinder?</span>
-                <a class="alert-link" style="color: rgb(56,62,73)" (click)="register()" jhiTranslate="global.messages.info.register.link">
+
+                <a class="alert-link" style="color: rgb(56,62,73);padding-left: 10px;" (click)="register()"
+                   jhiTranslate="global.messages.info.register.link">
                     Join now!
                 </a>
-                <i style="padding-left: 10px" class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                <i class="fa fa-arrow-right" style="color: rgb(56,62,73); padding-left: 5px;" (click)="register()"aria-hidden="true"></i>
+
             </div>
         </div>
     </div>

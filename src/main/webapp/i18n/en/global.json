@@ -51,12 +51,12 @@
             "info": {
                 "authenticated": {
                     "prefix": "Already a user? ",
-                    "link": " <u>Sign in here!</u>",
+                    "link": "<u>Sign in here!</u>",
                     "suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
                 },
                 "register": {
                     "noaccount": "New to PlayerFinder?",
-                    "link": "Join now!"
+                    "link": "<u>Join now!</u>"
                 }
             },
             "error": {
