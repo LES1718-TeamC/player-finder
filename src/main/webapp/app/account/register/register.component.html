@@ -1,5 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-md-offset-4 col-md-4">
+        <!--ERRORS-->
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h1 jhiTranslate="register.title">Registration</h1>
@@ -27,6 +28,8 @@
                 </div>
             </div>
         </div>
+
+        <!--FORM-->
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!success">
@@ -141,6 +144,8 @@
                 <!--</div>-->
             </div>
         </div>
+
+        <!--SOCIAL ACCOUNTS-->
         <div class="row justify-content-center">
             <br/>
             <!--<div class="col-md-offset-3 row justify-content-center">-->
@@ -151,14 +156,20 @@
             <!-- jhipster-needle-add-social-button -->
         </div>
 
-        <div class="row justify-content-center">
-            <br/>
-            <span jhiTranslate="global.messages.info.authenticated.prefix">Already a user? </span>
 
-            <a style="color: rgb(56,62,73)" class="alert-link" (click)="openLogin()"
-               jhiTranslate="global.messages.info.authenticated.link">
-                Sign in here!
-            </a>
+        <!--LINK TO LOGIN-->
+        <div class="row justify-content-center" style="margin-top: 10px; padding-top: 15px; border-top: 1px solid rgb(56,62,73)">
+            <div class="col-md-12 row justify-content-center">
+                <span jhiTranslate="global.messages.info.authenticated.prefix">Already a user? </span>
+
+                <a class="alert-link" style="color: rgb(56,62,73); padding-left: 10px;" (click)="openLogin()"
+                   jhiTranslate="global.messages.info.authenticated.link">
+                    Sign in here!
+                </a>
+
+                <i class="fa fa-arrow-right" style="color: rgb(56,62,73); padding-left: 5px;" (click)="openLogin()"aria-hidden="true"></i>
+
+            </div>
         </div>
     </div>
 </div>
