@@ -2,12 +2,14 @@
 Main page styles
 ========================================================================== */
 
-.hipster {
+.hipster{
+    background: url("../../content/images/register.jpg") no-repeat center top;
+ background-size: 100% 100%;
+     background-repeat: no-repeat;
     display: inline-block;
-    width: 347px;
-    height: 497px;
-    background: url("../../content/images/hipster.png") no-repeat center top;
-    background-size: contain;
+     width: 100%;
+       height: 600px;
+        opacity: 0.4;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
@@ -19,8 +21,40 @@ only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
     .hipster {
-        background: url("../../content/images/hipster2x.png") no-repeat center top;
+        background: url("../../content/images/register.jpg") no-repeat center top;
         background-size: contain;
     }
 }
 
+.alert-warning{
+color:#856404;
+background-color: #e6faff;
+border-color: #e6faff
+}
+
+.alert-warning hr{
+border-top-color:#e6faff
+}
+
+.alert-warning .alert-link{
+color:#491217
+}
+
+.centered {
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #e6faff;
+    border-color: #e6faff;
+}
+
+
+.modal-body alert-warning{
+                    color:#856404;
+                    background-color: #e6faff;
+                    border-color: #e6faff
+                    }

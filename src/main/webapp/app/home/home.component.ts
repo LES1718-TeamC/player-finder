@@ -10,7 +10,6 @@ import { Account, LoginModalService, Principal } from '../shared';
     styleUrls: [
         'home.css'
     ]
-
 })
 export class HomeComponent implements OnInit {
     account: Account;
