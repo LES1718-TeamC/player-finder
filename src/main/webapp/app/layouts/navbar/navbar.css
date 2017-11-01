@@ -1,6 +1,10 @@
+.row{
+    margin-right: 0;
+}
 /* ==========================================================================
 Navbar
 ========================================================================== */
+
 .navbar-version {
     font-size: 10px;
     color: #ccc
@@ -8,7 +12,7 @@ Navbar
 
 .jh-navbar {
     background-color: #353d47;
-    padding: .2em 1em;
+    /*padding: .2em 1em;*/
 }
 
 .jh-navbar .profile-image {
@@ -48,17 +52,17 @@ Navbar
     color: #fff;
 }
 
+@media screen and (max-width: 992px) {
+    .jh-logo-container {
+        width: 60%;
+    }
+}
 @media screen and (min-width: 768px) {
     .jh-navbar-toggler {
         display: none;
     }
 }
 
-@media screen and (max-width: 992px) {
-    .jh-logo-container {
-        width: 100%;
-    }
-}
 
 .navbar-title {
     display: inline-block;
@@ -68,20 +72,42 @@ Navbar
 /* ==========================================================================
 Logo styles
 ========================================================================== */
+
+
+.jh-logo-container {
+    height: 80px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}
+
 .navbar-brand.logo {
     padding: 5px 15px;
 }
 
-.logo .logo-img {
-    height: 80px !important;
+.logo {
+    height: 80px;
     display: inline-block;
     vertical-align: middle;
-    width: 300px;
-}
-
-.logo-img {
-    height: 100%;
+    width: 100%;
+    max-width: 300px;
     background: url("../../../content/images/new_logo.png") no-repeat center center;
     background-size: contain;
-    width: 100%;
+    margin-left: 10%;
+}
+
+@media screen and (max-width: 700px) {
+    .navbar-brand.logo {
+        padding: 2px 5px;
+    }
+
+    .logo .logo-img {
+        height: 80px;
+        width: 250px;
+    }
+
+    .logo-img {
+        height: auto;
+        width: 60%;
+    }
 }
