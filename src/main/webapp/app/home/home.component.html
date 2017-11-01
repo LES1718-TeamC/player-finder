@@ -1,36 +1,542 @@
-<div class="row">
-    <div class="col-md-12">
-        <span class="hipster img-fluid rounded"></span>
-    </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
-        <h1 class="display-4" jhiTranslate="home.title" align="center">Welcome to PlayerFinder!</h1>
+<header class="masthead">
+    <div class="overlay">
+        <div class="container">
+            <h1 class="display-1 text-white">Player Finder</h1>
+            <h2 class="display-4 text-white">Will Not Let You Play Solo again!</h2>
 
-        <div [ngSwitch]="isAuthenticated()">
-            <div class="alert alert-success" *ngSwitchCase="true">
-                <span *ngIf="account" jhiTranslate="home.logged.message"
-                    translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
-            </div>
+            <a class="btn btn-cta btn-primary" href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm">Get in
+                Touch</a>
+            <!--<a class="btn btn-lg " routerLink="register" jhiTranslate="global.messages.info.register.link">Join now for free!</a>-->
 
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
-            </div>
-
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
-                <a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
-            </div>
-        </div>
-
-        <div class="centered">
-            <span class="lead" jhiTranslate="home.vision" align="center"> No more worries searching for players!</span>
-        </div>
-        <div class="col-md-2">
+            <!--<div class="alert alert-warning" *ngSwitchCase="false">-->
+            <!--<span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>-->
+            <!--<a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>-->
+            <!--</div>-->
         </div>
     </div>
-</div>
+    </div>
+</header>
+
+<div id="about" class="about-section">
+    <div class="container text-center">
+        <h2 class="section-title">Why Use PlayerFinder?</h2>
+        <p class="intro">PlayerFinder uses modern technology to allow you to find companions for your varied activities in a simple and effective
+            way. At this moment we already support varied team sports and also esports.
+        </p>
+
+        <div class="items-wrapper row">
+            <div class="item col-sm-4 col-xs-12">
+                <div class="item-inner">
+                    <div class="figure-holder">
+                        <img class="figure-image" src="../../content/images/landing-page-reason-1_min.png" alt="image">
+                    </div><!--//figure-holder-->
+                    <h3 class="item-title">Search for Players for your Game</h3>
+                    <div class="item-desc">
+                        Have you ever had 1 or 2 players missing for a football game? Or did you have 1 player to have a team for a competitive CS:
+                        GO? With PlayerFinder you can search for these missing players without having to create publications on all your social
+                        networks.
+
+                    </div><!--//item-desc-->
+                </div><!--//item-inner-->
+            </div><!--//item-->
+            <div class="item col-sm-4 col-xs-12">
+                <div class="item-inner">
+                    <div class="figure-holder">
+                        <img class="figure-image" src="../../content/images/landing-page-reason-2_min.png" alt="image">
+                    </div><!--//figure-holder-->
+                    <h3 class="item-title">Find Games</h3>
+                    <div class="item-desc">
+                        On the other hand, for sure you already wanted to play a game or practice some sport and you had no company. For this to
+                        happen, PlayerFinder has an interface that allows you to see games of various types that occur in your area that need players
+                        so that you can join..
+                    </div><!--//item-desc-->
+                </div><!--//item-inner-->
+            </div><!--//item-->
+            <div class="item col-sm-4 col-xs-12">
+                <div class="item-inner">
+                    <div class="figure-holder">
+                        <img class="figure-image" src="../../content/images/landing-page-reason-3_min.png" alt="image">
+                    </div><!--//figure-holder-->
+                    <h3 class="item-title">Enjoy your free time</h3>
+                    <div class="item-desc">
+                        With PlayerFinder, the focus is on you and make you get the most out of your free time, allowing you to make new friends and
+                        even try new activities. Do not be shy, move and sign up.
+                    </div><!--//item-desc-->
+                </div><!--//item-inner-->
+            </div><!--//item-->
+        </div><!--//items-wrapper-->
+    </div><!--//container-->
+</div><!--//about-section-->
+
+<!--<div id="testimonials" class="testimonials-section">-->
+<!--<div class="container">-->
+<!--<h2 class="section-title text-center">Many Happy Customers</h2>-->
+<!--<div class="item center-block">-->
+<!--<div class="profile-holder">-->
+<!--<img class="profile-image" src="../../content/assets/images/profile-1.png" alt="profile">-->
+<!--</div>-->
+<!--<div class="quote-holder">-->
+<!--<blockquote class="quote">-->
+<!--<p>Testimonial goes here Donec felis odio, sagittis eu cursus ac, porttitor eu purus. In a bibendum dui. Nullam id est sed felis-->
+<!--rutrum tincidunt eu nec nisi morbi euismod semper neque sed lobortis.</p>-->
+<!--<div class="quote-source">-->
+<!--<span class="name">@JohnK,</span>-->
+<!--<span class="meta">San Francisco</span>-->
+<!--</div>&lt;!&ndash;//quote-source&ndash;&gt;-->
+<!--</blockquote>-->
+<!--</div>&lt;!&ndash;//quote-holder&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//item&ndash;&gt;-->
+<!--<div class="item item-reversed center-block">-->
+<!--<div class="profile-holder">-->
+<!--<img class="profile-image" src="../../content/assets/images/profile-2.png" alt="profile">-->
+<!--</div>-->
+<!--<div class="quote-holder">-->
+<!--<blockquote class="quote">-->
+<!--<p>Testimonial goes here fermentum sed pharetra in, aliquet sodales quam. Ut sed turpis quis orci viverra aliquet interdum ut-->
+<!--ipsum. </p>-->
+<!--<div class="quote-source">-->
+<!--<span class="name">@LisaWhite,</span>-->
+<!--<span class="meta">London</span>-->
+<!--</div>&lt;!&ndash;//quote-source&ndash;&gt;-->
+<!--</blockquote>-->
+<!--</div>&lt;!&ndash;//quote-holder&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//item&ndash;&gt;-->
+<!--<div class="item center-block">-->
+<!--<div class="profile-holder">-->
+<!--<img class="profile-image" src="../../content/assets/images/profile-3.png" alt="profile">-->
+<!--</div>-->
+<!--<div class="quote-holder">-->
+<!--<blockquote class="quote">-->
+<!--<p>Testimonial goes here vestibulum non hendrerit lorem, luctus tincidunt erat. Sed pharetra aliquam posuere. Pellentesque-->
+<!--sollicitudin.</p>-->
+<!--<div class="quote-source">-->
+<!--<span class="name">@MattH,</span>-->
+<!--<span class="meta">Berlin</span>-->
+<!--</div>&lt;!&ndash;//quote-source&ndash;&gt;-->
+<!--</blockquote>-->
+<!--</div>&lt;!&ndash;//quote-holder&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//item&ndash;&gt;-->
+<!--<div class="item item-reversed center-block">-->
+<!--<div class="profile-holder">-->
+<!--<img class="profile-image" src="../../content/assets/images/profile-4.png" alt="profile">-->
+<!--</div>-->
+<!--<div class="quote-holder">-->
+<!--<blockquote class="quote">-->
+<!--<p>Testimonial goes here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.-->
+<!--Cum sociis natoque penatibus et magnis</p>-->
+<!--<div class="quote-source">-->
+<!--<span class="name">@RyanW,</span>-->
+<!--<span class="meta">Paris</span>-->
+<!--</div>&lt;!&ndash;//quote-source&ndash;&gt;-->
+<!--</blockquote>-->
+
+<!--</div>&lt;!&ndash;//quote-holder&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//item&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//container&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//testimonials&ndash;&gt;-->
+
+<!--<div id="features" class="features-section">-->
+<!--<div class="container text-center">-->
+<!--<h2 class="section-title">Discover Features</h2>-->
+<!--<p class="intro">AppKit comes with an AngularJS version, 4 colour schemes and 100+ components</p>-->
+
+<!--<div class="tabbed-area row">-->
+
+<!--&lt;!&ndash; Nav tabs &ndash;&gt;-->
+<!--<ul class="feature-nav nav nav-pill nav-stacked text-left col-md-4 col-sm-6 col-xs-12 col-md-push-8 col-sm-push-6 col-xs-push-0"-->
+<!--role="tablist">-->
+<!--<li role="presentation" class="active"><a href="#feature-1" aria-controls="feature-1" role="tab" data-toggle="tab"><i-->
+<!--class="fa fa-magic"></i>20+ Use Case-based App Pages</a></li>-->
+<!--<li role="presentation"><a href="#feature-2" aria-controls="feature-2" role="tab" data-toggle="tab"><i class="fa fa-cubes"></i>100+-->
+<!--Components and Widgets</a></li>-->
+<!--<li role="presentation"><a href="#feature-3" aria-controls="feature-3" role="tab" data-toggle="tab"><i class="fa fa-bar-chart"></i>Useful-->
+<!--Chart Libraries</a></li>-->
+
+<!--<li role="presentation"><a href="#feature-4" aria-controls="feature-4" role="tab" data-toggle="tab"><i class="fa fa-star"></i>AngularJS-->
+<!--Version Included</a></li>-->
+
+<!--<li role="presentation"><a href="#feature-5" aria-controls="feature-5" role="tab" data-toggle="tab"><i class="fa fa-rocket"></i>Built-->
+<!--on Bootstrap 3</a></li>-->
+
+<!--<li role="presentation"><a href="#feature-6" aria-controls="feature-6" role="tab" data-toggle="tab"><i class="fa fa-tablet"></i>Fully-->
+<!--Responsive</a></li>-->
+<!--<li role="presentation"><a href="#feature-7" aria-controls="feature-7" role="tab" data-toggle="tab"><i class="fa fa-file-code-o"></i>Valid-->
+<!--HTML5 + CSS3</a></li>-->
+<!--<li role="presentation"><a href="#feature-8" aria-controls="feature-8" role="tab" data-toggle="tab"><i class="fa fa-heart"></i>Free-->
+<!--Updates &amp; Support + Documentation</a></li>-->
+
+<!--</ul>-->
+
+<!--&lt;!&ndash; Tab panes &ndash;&gt;-->
+<!--<div class="feature-content tab-content col-md-8 col-sm-6 col-xs-12 col-md-pull-4 col-sm-pull-6 col-xs-pull-0">-->
+<!--<div role="tabpanel" class="tab-pane fade in active" id="feature-1">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-1.png" alt="screenshot"></a>-->
+<!--</div>-->
+<!--<div role="tabpanel" class="tab-pane fade" id="feature-2">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-2.png" alt="screenshot"></a>-->
+<!--</div>-->
+<!--<div role="tabpanel" class="tab-pane fade" id="feature-3">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-3.png" alt="screenshot"></a>-->
+<!--</div>-->
+<!--<div role="tabpanel" class="tab-pane fade" id="feature-4">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-4.png" alt="screenshot"></a>-->
+<!--</div>-->
+<!--<div role="tabpanel" class="tab-pane fade" id="feature-5">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-5.png" alt="screenshot"></a>-->
+<!--</div>-->
+<!--<div role="tabpanel" class="tab-pane fade" id="feature-6">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-6.png" alt="screenshot"></a>-->
+<!--</div>-->
+<!--<div role="tabpanel" class="tab-pane fade" id="feature-7">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-7.png" alt="screenshot"></a>-->
+<!--</div>-->
+<!--<div role="tabpanel" class="tab-pane fade" id="feature-8">-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img-->
+<!--class="img-responsive" src="../../content/assets/images/feature-8.png" alt="screenshot"></a>-->
+<!--</div>-->
+
+<!--</div>&lt;!&ndash;//feature-content&ndash;&gt;-->
+
+
+<!--</div>&lt;!&ndash;//tabbed-area&ndash;&gt;-->
+
+<!--</div>&lt;!&ndash;//container&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//features&ndash;&gt;-->
+
+
+<div class="team-section" id="team">
+    <div class="container text-center">
+        <h2 class="section-title">Our Team</h2>
+        <p class="intro">See who are behind PlayerFinder</p>
+        <div class="story">
+            <p>PlayerFinder was created by 4 students of the Master in Software Engineering at FEUP within the scope of the Laboratory course of
+                Software Engineering.
+
+                It arose with the goal of bridging a gap that we think is too great in our society that is to bring together the players needed for a
+                certain activity or group sport.
+
+                Before PlayerFinder existed, when we were missing a player for a football game, we would have to post to facebook, twitter, send
+                messages to the phone, use whatsup, etc. Many tools that could become complicated to manage. This way, we decided to centralize this
+                search here, in a web application optimized for mobile so you never miss a player!</p>
+        </div>
+        <div class="members-wrapper row">
+
+            <!--Luis Melo-->
+            <div class="item col-md-6 col-sm-6 col-xs-12">
+                <div class="item-inner">
+                    <div class="profile">
+                        <img class="profile-image" src="../../content/images/team-luis-melo.png" alt="Luís Melo"/>
+                    </div>
+
+                    <div class="member-content">
+                        <h3 class="member-name">Luís Melo</h3>
+                        <div class="member-title">Full-Stack Developer</div>
+                        <ul class="social list-inline">
+                            <li><a class="twitter" href="https://twitter.com/_luisfmelo" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a class="facebook" href="https://www.facebook.com/luisfmelo94/" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a class="github" href="https://github.com/luisfmelo" target="_blank"><i class="fa fa-github"></i></a></li>
+                            <li><a class="linkedin" href="https://pt.linkedin.com/in/luisfmelo" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="member-desc">
+                            <p>Luís Melo has an academic career in Robotics but his taste for software has made him gradually leave the hardware and
+                                focus on software development. It has a preference for the back-end being comfortable with several modern
+                                technologies.
+                                <!--Follow him if you like what he does!-->
+                            </p>
+                        </div><!--//member-desc-->
+                    </div><!--//member-content-->
+                </div><!--//item-inner-->
+            </div><!--//item-->
+
+
+            <!--Luis Melo-->
+            <div class="item col-md-6 col-sm-6 col-xs-12">
+                <div class="item-inner">
+                    <div class="profile">
+                        <img class="profile-image" src="../../content/images/team-luis-melo.png" alt="Luís Melo"/>
+                    </div>
+
+                    <div class="member-content">
+                        <h3 class="member-name">Luís Melo</h3>
+                        <div class="member-title">Full-Stack Developer</div>
+                        <ul class="social list-inline">
+                            <li><a class="twitter" href="https://twitter.com/_luisfmelo" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a class="facebook" href="https://www.facebook.com/luisfmelo94/" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a class="github" href="https://github.com/luisfmelo" target="_blank"><i class="fa fa-github"></i></a></li>
+                            <li><a class="linkedin" href="https://pt.linkedin.com/in/luisfmelo" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="member-desc">
+                            <p>Luís Melo has an academic career in Robotics but his taste for software has made him gradually leave the hardware and
+                                focus on software development. It has a preference for the back-end being comfortable with several modern
+                                technologies.
+                                <!--Follow him if you like what he does!-->
+                            </p>
+                        </div><!--//member-desc-->
+                    </div><!--//member-content-->
+                </div><!--//item-inner-->
+            </div><!--//item-->
+        </div>
+
+        <div class="members-wrapper row">
+
+            <!--Luis Melo-->
+            <div class="item col-md-6 col-sm-6 col-xs-12">
+                <div class="item-inner">
+                    <div class="profile">
+                        <img class="profile-image" src="../../content/images/team-luis-melo.png" alt="Luís Melo"/>
+                    </div>
+
+                    <div class="member-content">
+                        <h3 class="member-name">Luís Melo</h3>
+                        <div class="member-title">Full-Stack Developer</div>
+                        <ul class="social list-inline">
+                            <li><a class="twitter" href="https://twitter.com/_luisfmelo" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a class="facebook" href="https://www.facebook.com/luisfmelo94/" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a class="github" href="https://github.com/luisfmelo" target="_blank"><i class="fa fa-github"></i></a></li>
+                            <li><a class="linkedin" href="https://pt.linkedin.com/in/luisfmelo" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="member-desc">
+                            <p>Luís Melo has an academic career in Robotics but his taste for software has made him gradually leave the hardware and
+                                focus on software development. It has a preference for the back-end being comfortable with several modern
+                                technologies.
+                                <!--Follow him if you like what he does!-->
+                            </p>
+                        </div><!--//member-desc-->
+                    </div><!--//member-content-->
+                </div><!--//item-inner-->
+            </div><!--//item-->
+
+            <!--Luis Melo-->
+            <div class="item col-md-6 col-sm-6 col-xs-12">
+                <div class="item-inner">
+                    <div class="profile">
+                        <img class="profile-image" src="../../content/images/team-luis-melo.png" alt="Luís Melo"/>
+                    </div>
+
+                    <div class="member-content">
+                        <h3 class="member-name">Luís Melo</h3>
+                        <div class="member-title">Full-Stack Developer</div>
+                        <ul class="social list-inline">
+                            <li><a class="twitter" href="https://twitter.com/_luisfmelo" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a class="facebook" href="https://www.facebook.com/luisfmelo94/" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a class="github" href="https://github.com/luisfmelo" target="_blank"><i class="fa fa-github"></i></a></li>
+                            <li><a class="linkedin" href="https://pt.linkedin.com/in/luisfmelo" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="member-desc">
+                            <p>Luís Melo has an academic career in Robotics but his taste for software has made him gradually leave the hardware and
+                                focus on software development. It has a preference for the back-end being comfortable with several modern
+                                technologies.
+                                <!--Follow him if you like what he does!-->
+                            </p>
+                        </div><!--//member-desc-->
+                    </div><!--//member-content-->
+                </div><!--//item-inner-->
+            </div><!--//item-->
+
+        </div><!--//members-wrapper-->
+    </div>
+</div><!--//team-section-->
+
+
+<!--<div id="pricing" class="pricing-section">-->
+<!--<div class="container text-center">-->
+<!--<h2 class="section-title">Pricing</h2>-->
+<!--<div class="intro">AppKit's future updates are 100% FREE for existing customers</div>-->
+<!--<div class="pricing-wrapper">-->
+<!--<div class="item item-1 col-md-4 col-sm-4 col-xs-12">-->
+<!--<div class="item-inner">-->
+<!--<h3 class="item-heading">Single Application</h3>-->
+<!--<div class="price-figure">-->
+<!--<span class="currency">$</span><span class="number">20</span>-->
+<!--</div>&lt;!&ndash;//price-figure&ndash;&gt;-->
+<!--<div class="price-desc">-->
+<!--<p>Restricted to a single installation...</p>-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank">License-->
+<!--Details</a>-->
+
+
+<!--</div>&lt;!&ndash;//price-desc&ndash;&gt;-->
+<!--<a class="btn btn-cta" href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm">Buy Now</a>-->
+
+<!--</div>&lt;!&ndash;//item-inner&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//item&ndash;&gt;-->
+<!--<div class="item item-2 col-md-4 col-sm-4 col-xs-12">-->
+<!--<div class="item-inner">-->
+<!--<h3 class="item-heading">Multiple Applications</h3>-->
+<!--<div class="price-figure">-->
+<!--<span class="currency">$</span><span class="number">80</span>-->
+<!--</div>&lt;!&ndash;//price-figure&ndash;&gt;-->
+<!--<div class="price-desc">-->
+<!--<p>May extend to multiple installations...</p>-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank">License-->
+<!--Details</a>-->
+
+
+<!--</div>&lt;!&ndash;//price-desc&ndash;&gt;-->
+<!--<a class="btn btn-cta" href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm">Buy Now</a>-->
+
+<!--</div>&lt;!&ndash;//item-inner&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//item&ndash;&gt;-->
+
+<!--<div class="item item-3 col-md-4 col-sm-4 col-xs-12">-->
+<!--<div class="item-inner">-->
+<!--<h3 class="item-heading">Extended</h3>-->
+<!--<div class="price-figure">-->
+<!--<span class="currency">$</span><span class="number">1200</span>-->
+<!--</div>&lt;!&ndash;//price-figure&ndash;&gt;-->
+<!--<div class="price-desc">-->
+<!--<p>May license, sublicense, redistribute, or resell the item...</p>-->
+<!--<a href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank">License-->
+<!--Details</a>-->
+<!--</div>&lt;!&ndash;//price-desc&ndash;&gt;-->
+<!--<a class="btn btn-cta" href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm"-->
+<!--target="_blank">Buy Now</a>-->
+
+<!--</div>&lt;!&ndash;//item-inner&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//item&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//pricing-wrapper&ndash;&gt;-->
+
+<!--</div>&lt;!&ndash;//container&ndash;&gt;-->
+<!--</div>&lt;!&ndash;//pricing-section&ndash;&gt;-->
+
+
+<div id="contact" class="contact-section">
+    <div class="container text-center">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.</p>
+
+        </div>
+        <a class="btn btn-cta btn-primary" href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm">Get in
+            Touch</a>
+
+    </div><!--//container-->
+</div><!--//contact-section-->
+
+
+<!--<header class="masthead">-->
+<!--<div class="overlay">-->
+<!--<div class="container">-->
+<!--<h1 class="display-1 text-white">Player Finder</h1>-->
+<!--<h2 class="display-4 text-white">Will Not Let You Play Solo again!</h2>-->
+<!--</div>-->
+<!--</div>-->
+<!--</header>-->
+
+<!--<section>-->
+<!--<div class="container">-->
+<!--<div class="row align-items-center">-->
+<!--<div class="col-md-6 order-2">-->
+<!--<div class="p-5">-->
+<!--<img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=836" alt="">-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6 order-1">-->
+<!--<div class="p-1">-->
+<!--<h2 class="display-5">For those about to rock...</h2>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--<div class="container">-->
+<!--<div class="row align-items-center">-->
+<!--<div class="col-md-6">-->
+<!--<div class="p-5">-->
+<!--<img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=452" alt="">-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6">-->
+<!--<div class="p-5">-->
+<!--<h2 class="display-4">We salute you!</h2>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--<div class="container">-->
+<!--<div class="row align-items-center">-->
+<!--<div class="col-md-6 order-2">-->
+<!--<div class="p-5">-->
+<!--<img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=453" alt="">-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6 order-1">-->
+<!--<div class="p-5">-->
+<!--<h2 class="display-4">Let there be rock!</h2>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+
+
+<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-12">-->
+<!--<span class="hipster img-fluid rounded"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<br>-->
+<!--<div class="row">-->
+<!--<div class="col-md-2">-->
+<!--</div>-->
+<!--<div class="col-md-8">-->
+<!--<h1 class="display-4" jhiTranslate="home.title" align="center">Welcome to PlayerFinder!</h1>-->
+
+<!--<div [ngSwitch]="isAuthenticated()">-->
+<!--<div class="alert alert-success" *ngSwitchCase="true">-->
+<!--<span *ngIf="account" jhiTranslate="home.logged.message"-->
+<!--translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>-->
+<!--</div>-->
+
+<!--<div class="alert alert-warning" *ngSwitchCase="false">-->
+<!--<span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>-->
+<!--<a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>-->
+<!--</div>-->
+
+<!--<div class="alert alert-warning" *ngSwitchCase="false">-->
+<!--<span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>-->
+<!--<a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="centered">-->
+<!--<span class="lead" jhiTranslate="home.vision" align="center"> No more worries searching for players!</span>-->
+<!--</div>-->
+<!--<div class="col-md-2">-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
