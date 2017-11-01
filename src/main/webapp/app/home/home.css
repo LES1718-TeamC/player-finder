@@ -6,6 +6,8 @@
  * Twitter: @3rdwave_themes
 * License: Creative Commons Attribution 3.0 License
 */
+
+/*colors: #5CB3FF; #353d47*/
 /* Theme default */
 body {
     font-family: 'Open Sans', arial, sans-serif;
@@ -64,9 +66,19 @@ a.btn-cta {
     padding: 10px 30px;
 }
 
+.btn-big,
+a.btn-big {
+    font-weight: bold;
+    font-size: 28px;
+    padding: 15px 30px;
+    margin-top: 20px;
+}
+
+
+
 .btn-primary {
-    background: #383E49;
-    border: 1px solid #383E49;
+    background: #353d47;
+    border: 1px solid #353d47;
     color: #fff;
 }
 
@@ -75,59 +87,12 @@ a.btn-cta {
 .btn-primary:active,
 .btn-primary.active,
 .btn-primary.hover {
-    background: #3aa7aa;
+    /*background: #5cb3ff;*/
+    /*border: 1px solid #5cb3ff;*/
+    /*color: #fff;*/
+    background: #5cb3ff;
+    border: 1px solid #5cb3ff;
     color: #fff;
-    border: 1px solid #3aa7aa;
-}
-
-.carousel-fade .item {
-    transition-property: opacity;
-}
-
-.carousel-fade .item,
-.carousel-fade .active.left,
-.carousel-fade .active.right {
-    opacity: 0;
-}
-
-.carousel-fade .active,
-.carousel-fade .next.left,
-.carousel-fade .prev.right {
-    opacity: 1;
-}
-
-.carousel-fade .next,
-.carousel-fade .prev,
-.carousel-fade .active.left,
-.carousel-fade .active.right {
-    left: 0;
-    transform: translate3d(0, 0, 0);
-}
-
-.carousel-fade .carousel-control {
-    z-index: 2;
-}
-
-.carousel-indicators {
-    bottom: 30px;
-    margin-bottom: 0;
-}
-
-.carousel-indicators li {
-    background-color: rgba(255, 255, 255, 0.4);
-    border: none;
-    width: 11px;
-    height: 11px;
-    margin: 0;
-    margin-right: 5px;
-}
-
-.carousel-indicators li.active {
-    background-color: #383E49;
-    width: 11px;
-    height: 11px;
-    margin: 0;
-    margin-right: 5px;
 }
 
 /* ======= Header ======= */
@@ -154,12 +119,12 @@ a.btn-cta {
 }
 
 .header.header-scrolled .logo {
-    color: #383E49;
+    color: #353d47;
     padding-top: 12px;
 }
 
 .header.header-scrolled .logo .logo-icon-wrapper {
-    background: #383E49;
+    background: #353d47;
     width: 40px;
     height: 40px;
     -webkit-border-radius: 50%;
@@ -185,7 +150,7 @@ a.btn-cta {
 
 .header.header-scrolled .main-nav .nav .nav-item.active a {
     color: #494d55;
-    border-bottom: 4px solid #383E49;
+    border-bottom: 4px solid #353d47;
 }
 
 .header a {
@@ -303,7 +268,7 @@ a.btn-cta {
 }
 
 .footer a {
-    color: #383E49;
+    color: #353d47;
 }
 
 .footer .fa-heart {
@@ -345,7 +310,7 @@ a.btn-cta {
 }
 
 .about-section .items-wrapper .item-title {
-    color: #383E49;
+    color: #353d47;
     font-size: 18px;
     font-weight: bold;
     margin: 0;
@@ -369,7 +334,7 @@ a.btn-cta {
 }
 
 .testimonials {
-    background: #383E49;
+    background: #353d47;
 }
 
 .testimonials-inner {
@@ -424,7 +389,7 @@ a.btn-cta {
 
 /* ======= Testimonials Section ======= */
 .testimonials-section {
-    background: #383E49 url('../../content/assets/images/map.png') no-repeat center center;
+    background: #353d47 url('../../content/assets/images/map.png') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -556,7 +521,7 @@ a.btn-cta {
 }
 
 .feature-nav > li.active > a {
-    color: #383E49;
+    color: #353d47;
     background: none;
     padding: 8px 0;
 }
@@ -569,7 +534,7 @@ a.btn-cta {
 
 .feature-nav > li > a:hover {
     background: none;
-    color: #383E49;
+    color: #353d47;
 }
 
 /* ======= Team Section ======= */
@@ -629,7 +594,7 @@ a.btn-cta {
 .team-section .member-name {
     font-size: 18px;
     font-weight: 700;
-    color: #383E49;
+    color: #353d47;
     margin-top: 10px;
 }
 
@@ -657,7 +622,7 @@ a.btn-cta {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background: #383E49;
+    background: #353d47;
     padding-top: 4px;
     color: #fff;
 }
@@ -756,12 +721,12 @@ a.btn-cta {
     }
 
     .header .main-nav .navbar-collapse .nav-item.active a {
-        color: #383E49;
+        color: #353d47;
     }
 
     .header.header-scrolled .main-nav .navbar-collapse .nav-item.active a {
         border: none;
-        color: #383E49;
+        color: #353d47;
     }
 
     .main-nav .navbar-collapse .nav-item {
