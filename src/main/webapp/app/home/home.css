@@ -12,7 +12,7 @@
 body {
     font-family: 'Open Sans', arial, sans-serif;
     color: #494d55;
-    font-size: 14px;
+    font-size: 1.75vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -50,7 +50,7 @@ a.btn {
     -ms-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 1.75vh;
     line-height: 1.5;
 }
 
@@ -62,14 +62,14 @@ a.btn .fa {
 .btn-cta,
 a.btn-cta {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1.8vh;
     padding: 10px 30px;
 }
 
 .btn-big,
 a.btn-big {
     font-weight: bold;
-    font-size: 28px;
+    font-size: 2.4vh;
     padding: 15px 30px;
     margin-top: 20px;
 }
@@ -169,7 +169,7 @@ a.btn-big {
     margin: 0;
     display: inline-block;
     float: left;
-    font-size: 28px;
+    font-size: 2.4vh;
     padding-top: 15px;
 }
 
@@ -218,7 +218,7 @@ a.btn-big {
 
 .main-nav .nav .nav-item {
     font-weight: normal;
-    font-size: 14px;
+    font-size: 1.75vh;
     margin-right: 25px;
 }
 
@@ -283,13 +283,13 @@ a.btn-big {
 .about-section .section-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 36px;
+    font-size: 3vh;
     font-weight: 300;
 }
 
 .about-section .intro {
     color: #a2a6af;
-    font-size: 16px;
+    font-size: 1.8vh;
     max-width: 760px;
     margin: 0 auto;
     margin-bottom: 60px;
@@ -311,7 +311,7 @@ a.btn-big {
 
 .about-section .items-wrapper .item-title {
     color: #353d47;
-    font-size: 18px;
+    font-size: 1.85vh;
     font-weight: bold;
     margin: 0;
     margin-bottom: 15px;
@@ -361,7 +361,7 @@ a.btn-big {
     margin-left: 130px;
     border-left: none;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 1.75vh;
     min-height: 100px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -401,7 +401,7 @@ a.btn-big {
 .testimonials-section .section-title {
     margin: 0;
     margin-bottom: 30px;
-    font-size: 36px;
+    font-size: 3vh;
     font-weight: 300;
     color: #fff;
 }
@@ -456,7 +456,7 @@ a.btn-big {
     margin-left: 105px;
     border-left: none;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 1.75vh;
     min-height: 80px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -495,13 +495,13 @@ a.btn-big {
 .features-section .section-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 36px;
+    font-size: 3vh;
     font-weight: 300;
 }
 
 .features-section .intro {
     color: #a2a6af;
-    font-size: 16px;
+    font-size: 1.75vh;
     max-width: 760px;
     margin: 0 auto;
     margin-bottom: 60px;
@@ -547,13 +547,13 @@ a.btn-big {
 .team-section .section-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 36px;
+    font-size: 3vh;
     font-weight: 300;
 }
 
 .team-section .intro {
     color: #a2a6af;
-    font-size: 16px;
+    font-size: 1.8vh;
     max-width: 760px;
     margin: 0 auto;
     margin-bottom: 60px;
@@ -592,14 +592,14 @@ a.btn-big {
 }
 
 .team-section .member-name {
-    font-size: 18px;
+    font-size: 1.85vh;
     font-weight: 700;
     color: #353d47;
     margin-top: 10px;
 }
 
 .team-section .member-title {
-    font-size: 16px;
+    font-size: 1.8vh;
     margin-top: 0;
     margin-bottom: 15px;
     color: #616670;
@@ -613,7 +613,7 @@ a.btn-big {
     display: inline-block;
     width: 32px;
     height: 32px;
-    font-size: 18px;
+    font-size: 1.8vh;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -694,7 +694,7 @@ a.btn-big {
 .contact-section .section-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 36px;
+    font-size: 3vh;
     font-weight: 300;
     margin-bottom: 30px;
 }
@@ -750,7 +750,7 @@ a.btn-big {
     }
 
     .hero-carousel .heading {
-        font-size: 26px;
+        font-size: 2.4vh;
     }
 
     .hero-carousel .item-content-inner {
@@ -817,18 +817,7 @@ a.btn-big {
     }
 
     .feature-nav > li {
-        font-size: 15px;
-    }
-
-    .hero-section .figure-holder .figure-image {
-        width: 400px;
-        bottom: inherit;
-        top: 130px;
-    }
-
-    .hero-carousel .item-content-inner {
-        max-width: 300px;
-        padding-top: 120px;
+        font-size: 1.75vh;
     }
 
     .team-section .item-inner {
@@ -844,7 +833,7 @@ a.btn-big {
     }
 
     .feature-nav > li {
-        font-size: 16px;
+        font-size: 1.8vh;
     }
 
     .feature-nav > li > a {
@@ -910,62 +899,19 @@ header.masthead > .overlay {
     }
 }
 
-/* ==========================================================================
-Main page styles
-========================================================================== */
 
-/*.hipster{*/
-/*background: url("../../content/../../content/assets/images/register.jpg") no-repeat center top;*/
-/*background-size: 100% 100%;*/
-/*background-repeat: no-repeat;*/
-/*display: inline-block;*/
-/*width: 100%;*/
-/*height: 600px;*/
-/*opacity: 0.4;*/
-/*}*/
 
-/*!* wait autoprefixer update to allow simple generation of high pixel density media query *!*/
-/*@media*/
-/*only screen and (-webkit-min-device-pixel-ratio: 2),*/
-/*only screen and (   min--moz-device-pixel-ratio: 2),*/
-/*only screen and (     -o-min-device-pixel-ratio: 2/1),*/
-/*only screen and (        min-device-pixel-ratio: 2),*/
-/*only screen and (                min-resolution: 192dpi),*/
-/*only screen and (                min-resolution: 2dppx) {*/
-/*.hipster {*/
-/*background: url("../../content/../../content/assets/images/register.jpg") no-repeat center top;*/
-/*background-size: contain;*/
-/*}*/
-/*}*/
 
-/*.alert-warning{*/
-/*color:#856404;*/
-/*background-color: #e6faff;*/
-/*border-color: #e6faff*/
-/*}*/
 
-/*.alert-warning hr{*/
-/*border-top-color:#e6faff*/
-/*}*/
-
-/*.alert-warning .alert-link{*/
-/*color:#491217*/
-/*}*/
-
-/*.centered {*/
-/*margin: 0 auto;*/
-/*text-align: center;*/
-
-/*}*/
-
-/*.alert-success {*/
-/*color: #155724;*/
-/*background-color: #e6faff;*/
-/*border-color: #e6faff;*/
-/*}*/
-
-/*.modal-body alert-warning{*/
-/*color:#856404;*/
-/*background-color: #e6faff;*/
-/*border-color: #e6faff*/
-/*}*/
+h1 {
+    font-size: 5.9vw;
+}
+h2 {
+    font-size: 3.5vh;
+}
+h3 {
+    font-size: 2.4vh;
+}
+p {
+    font-size: 1.75vh;
+}

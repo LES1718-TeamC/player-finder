@@ -4,6 +4,37 @@
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },
-        "vision": "No more worries searching for players!"
+        "vision": "You Will Not Play Solo Again!",
+        "about": {
+            "title": "Why use PlayerFinder?",
+            "description": "PlayerFinder uses modern technology to allow you to find companions for your varied activities in a simple and effective way. At this moment we already support varied team sports and also esports.",
+            "items": {
+                "search": {
+                    "title": "Search for Players for your Game",
+                    "description": "Have you ever had 1 or 2 players missing for a football game? Or did you have 1 player to have a team for a competitive CS: GO? With PlayerFinder you can search for these missing players without having to create publications on all your social networks."
+                },
+                "join": {
+                    "title": "Find Games",
+                    "description": "On the other hand, for sure you already wanted to play a game or practice some sport and you had no company. For this to happen, PlayerFinder has an interface that allows you to see games of various types that occur in your area that need players so that you can join."
+                },
+                "enjoy": {
+                    "title": "Enjoy your free time",
+                    "description": "With PlayerFinder, the focus is on you and make you get the most out of your free time, allowing you to make new friends and even try new activities. Do not be shy, move and sign up."
+                }
+            }
+        },
+        "team": {
+            "title": "See who are behind PlayerFinder",
+            "description-1": "PlayerFinder was created by 4 students of the Master in Software Engineering at FEUP within the scope of the Laboratory course of Software Engineering.",
+            "description-2": "It arose with the goal of bridging a gap that we think is too great in our society that is to bring together the players needed for a certain activity or group sport.",
+            "description-3": "Before PlayerFinder existed, when we were missing a player for a football game, we would have to post to facebook, twitter, send messages to the phone, use whatsup, etc. Many tools that could become complicated to manage. This way, we decided to centralize this search here, in a web application optimized for mobile so you never miss a player!",
+            "elements": {
+
+                "luis": {
+                    "title": "Full-Stack Developer",
+                    "bio": "Luís Melo has an academic career in Robotics but his taste for software has made him gradually leave the hardware and focus on software development. It has a preference for the back-end being comfortable with several modern technologies."
+                }
+            }
+        }
     }
 }

@@ -4,6 +4,36 @@
         "logged": {
             "message": "Está autenticado como \"{{username}}\"."
         },
-        "vision": "Sem mais preocupações para encontrares um colega de equipa!"
+        "vision": "Nunca Mais Terá Que Jogar Sozinho!",
+        "about": {
+            "title": "Porque deve começar a usar o PlayerFinder?",
+            "description": "PlayerFinder utiliza tecnologia atual para te permitir encontrar companheiros para as tuas mais variadas atividades, de um modo simples e eficaz. Neste momento já temos suporte para diversos desportos e esports.",
+            "items": {
+                "search": {
+                    "title": "Procura jogadores para o teu Jogo",
+                    "description": "De certo que já te faltaram 2 ou 3 jogadores para um jogo de futebol. Ou se calharfaltava-te um elemento para teres equipa completa para um competitivo de CS:GO. Com o PlayerFinder podes procurar por esse elemento em falta sem que para isso tenhas de publicar em todas as tuas redes sociais."
+                },
+                "join": {
+                    "title": "Encontra outros jogos",
+                    "description": "Por outro lado, de certeza que já quiseste jogar um jogo ou praticar um desporto e não tinhas companhia. Para isto não acontecer, o PlayerFinder dispõe de uma interface que permite que possas ver jogos dos mais variados tipos que precisam de jogadores e que irão ocorrer na tua zona, para que tu também possas participar."
+                },
+                "enjoy": {
+                    "title": "Aproveita o teu tempo livre",
+                    "description": "Com o PlayerFinder, o foco está em ti e em fazer com que aproveites ao máximo o teu tempo livre, permitindo-te fazer novas amizades e experimentar novas atividades. Não tenhas medo, regista-te."
+                }
+            }
+        },
+        "team": {
+            "title": "Estas são as pessoas que estão por detrás do PlayerFinder",
+            "description-1": "O PlayerFinder foi criado por 4 alunos do Mestrado em Engenharia de Software na FEUP no âmbito do curso de Laboratório de Engenharia de software.",
+            "description-2": "It arose with the goal of bridging a gap that we think is too great in our society that is to bring together the players needed for a certain activity or group sport.",
+            "description-3": "Antes que o PlayerFinder existisse, quando faltava um jogador para um jogo de futebol, teríamos que postar no Facebook, no Twitter, enviar mensagens para o telefone, use whatsup, etc. Muitas ferramentas que podem ser complicadas de gerenciar. Desta forma, decidimos centralizar isso Pesquise aqui, em uma aplicação web otimizada para celular, para que nunca perca um jogador!",
+            "elements": {
+                "luis": {
+                    "title": "Full-Stack Developer",
+                    "bio": "Luís Melo tem um percurso acadêmica na área da Robótica, mas o seu gosto por software fez com que fosse, gradualmente, deixando o hardware e focou-se no desenvolvimento de software. Tem uma preferência por back-end, estando confortável com várias tecnologias modernas."
+                }
+            }
+        }
     }
 }
