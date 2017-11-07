@@ -8,10 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(principal, loginModalService, eventManager) {
+    function HomeComponent(principal, 
+        // private loginModalService: LoginModalService,
+        eventManager, router) {
         this.principal = principal;
-        this.loginModalService = loginModalService;
         this.eventManager = eventManager;
+        this.router = router;
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -32,7 +34,8 @@ var HomeComponent = /** @class */ (function () {
         return this.principal.isAuthenticated();
     };
     HomeComponent.prototype.login = function () {
-        this.modalRef = this.loginModalService.open();
+        // this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']).then();
     };
     HomeComponent = __decorate([
         core_1.Component({

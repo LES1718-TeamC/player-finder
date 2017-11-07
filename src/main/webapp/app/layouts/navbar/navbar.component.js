@@ -49,7 +49,8 @@ var NavbarComponent = /** @class */ (function () {
         return this.principal.isAuthenticated();
     };
     NavbarComponent.prototype.login = function () {
-        this.modalRef = this.loginModalService.open();
+        // this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']).then();
     };
     NavbarComponent.prototype.logout = function () {
         this.collapseNavbar();

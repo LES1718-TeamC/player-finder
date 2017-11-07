@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var LoginService = /** @class */ (function () {
-    function LoginService(languageService, principal, authServerProvider) {
+    function LoginService(languageService, principal, authServerProvider, router) {
         this.languageService = languageService;
         this.principal = principal;
         this.authServerProvider = authServerProvider;
+        this.router = router;
     }
     LoginService.prototype.login = function (credentials, callback) {
         var _this = this;
@@ -40,6 +41,7 @@ var LoginService = /** @class */ (function () {
     LoginService.prototype.logout = function () {
         if (this.principal.isAuthenticated()) {
             this.authServerProvider.logout().subscribe();
+            this.router.navigate(['/']).then();
         }
         this.principal.authenticate(null);
     };

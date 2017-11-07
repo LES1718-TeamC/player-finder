@@ -8,10 +8,13 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
-                "game": "Game",
-                "gameType": "Game Type",
-                "location": "Location",
+                "game": "Jogos",
+                "gameType": "Tipos de Jogos",
+                "location": "Localizações",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "navbar": {
+                "games": "Jogos"
             },
             "account": {
                 "main": "Conta",

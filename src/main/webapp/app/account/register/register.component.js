@@ -8,12 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent(languageService, loginModalService, registerService, elementRef, renderer) {
+    function RegisterComponent(languageService, loginModalService, registerService, elementRef, renderer, router) {
         this.languageService = languageService;
         this.loginModalService = loginModalService;
         this.registerService = registerService;
         this.elementRef = elementRef;
         this.renderer = renderer;
+        this.router = router;
     }
     RegisterComponent.prototype.ngOnInit = function () {
         this.success = false;
@@ -41,7 +42,8 @@ var RegisterComponent = /** @class */ (function () {
         }
     };
     RegisterComponent.prototype.openLogin = function () {
-        this.modalRef = this.loginModalService.open();
+        //     this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']).then();
     };
     RegisterComponent.prototype.processError = function (response) {
         this.success = null;

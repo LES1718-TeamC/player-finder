@@ -8,9 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var SocialRegisterComponent = /** @class */ (function () {
-    function SocialRegisterComponent(route, loginModalService) {
+    function SocialRegisterComponent(route, 
+        // private loginModalService: LoginModalService,
+        router) {
         this.route = route;
-        this.loginModalService = loginModalService;
+        this.router = router;
     }
     SocialRegisterComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -24,7 +26,8 @@ var SocialRegisterComponent = /** @class */ (function () {
         this.providerLabel = this.provider.charAt(0).toUpperCase() + this.provider.slice(1);
     };
     SocialRegisterComponent.prototype.login = function () {
-        this.modalRef = this.loginModalService.open();
+        // this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']).then();
     };
     SocialRegisterComponent = __decorate([
         core_1.Component({

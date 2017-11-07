@@ -8,9 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ActivateComponent = /** @class */ (function () {
-    function ActivateComponent(activateService, loginModalService, route) {
+    function ActivateComponent(activateService, 
+        // private loginModalService: LoginModalService,
+        router, route) {
         this.activateService = activateService;
-        this.loginModalService = loginModalService;
+        this.router = router;
         this.route = route;
     }
     ActivateComponent.prototype.ngOnInit = function () {
@@ -26,7 +28,8 @@ var ActivateComponent = /** @class */ (function () {
         });
     };
     ActivateComponent.prototype.login = function () {
-        this.modalRef = this.loginModalService.open();
+        // this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']).then();
     };
     ActivateComponent = __decorate([
         core_1.Component({

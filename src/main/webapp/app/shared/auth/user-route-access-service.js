@@ -40,7 +40,8 @@ var UserRouteAccessService = /** @class */ (function () {
             _this.router.navigate(['accessdenied']).then(function () {
                 // only show the login dialog, if the user hasn't logged in yet
                 if (!account) {
-                    _this.loginModalService.open();
+                    _this.router.navigate(['/login']).then();
+                    // this.loginModalService.open();
                 }
             });
             return false;

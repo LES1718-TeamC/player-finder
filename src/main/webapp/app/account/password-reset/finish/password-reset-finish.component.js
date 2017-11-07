@@ -8,12 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var PasswordResetFinishComponent = /** @class */ (function () {
-    function PasswordResetFinishComponent(passwordResetFinishService, loginModalService, route, elementRef, renderer) {
+    function PasswordResetFinishComponent(passwordResetFinishService, 
+        // private loginModalService: LoginModalService,
+        route, elementRef, renderer, router) {
         this.passwordResetFinishService = passwordResetFinishService;
-        this.loginModalService = loginModalService;
         this.route = route;
         this.elementRef = elementRef;
         this.renderer = renderer;
+        this.router = router;
     }
     PasswordResetFinishComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -45,7 +47,8 @@ var PasswordResetFinishComponent = /** @class */ (function () {
         }
     };
     PasswordResetFinishComponent.prototype.login = function () {
-        this.modalRef = this.loginModalService.open();
+        // this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']).then();
     };
     PasswordResetFinishComponent = __decorate([
         core_1.Component({

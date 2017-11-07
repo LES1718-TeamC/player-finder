@@ -44,30 +44,31 @@ var LoginComponent = /** @class */ (function () {
             // this.activeModal.dismiss('login success');
             if (_this.router.url === '/register' || (/^\/activate\//.test(_this.router.url)) ||
                 (/^\/reset\//.test(_this.router.url))) {
-                _this.router.navigate(['']);
+                _this.router.navigate(['']).then();
             }
             _this.eventManager.broadcast({
                 name: 'authenticationSuccess',
                 content: 'Sending Authentication Success'
             });
-            // // previousState was set in the authExpiredInterceptor before being redirected to login modal.
-            // // since login is succesful, go to stored previousState and clear previousState
+            // previousState was set in the authExpiredInterceptor before being redirected to login modal.
+            // since login is successful, go to stored previousState and clear previousState
             var redirect = _this.stateStorageService.getUrl();
             if (redirect) {
                 _this.stateStorageService.storeUrl(null);
-                _this.router.navigate([redirect]);
+                _this.router.navigate([redirect]).then();
             }
+            _this.router.navigate(['/']).then();
         }).catch(function () {
             _this.authenticationError = true;
         });
     };
     LoginComponent.prototype.register = function () {
         // this.activeModal.dismiss('to state register');
-        this.router.navigate(['/register']);
+        this.router.navigate(['/register']).then();
     };
     LoginComponent.prototype.requestResetPassword = function () {
         // this.activeModal.dismiss('to state requestReset');
-        this.router.navigate(['/reset', 'request']);
+        this.router.navigate(['/reset', 'request']).then();
     };
     LoginComponent = __decorate([
         core_1.Component({

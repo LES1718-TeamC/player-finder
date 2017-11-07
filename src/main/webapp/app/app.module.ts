@@ -40,6 +40,7 @@ import {
         PlayerFinderEntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         AngularFontAwesomeModule,
+        PlayerFinderCustomsModule,
     ],
     declarations: [
         JhiMainComponent,
