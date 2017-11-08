@@ -11,9 +11,6 @@
                 "game": "Jogos",
                 "gameType": "Tipos de Jogos",
                 "location": "Localizações",
-                "game": "Game",
-                "gameType": "Game Type",
-                "location": "Location",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "navbar": {

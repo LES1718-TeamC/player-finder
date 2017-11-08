@@ -12,10 +12,10 @@ var shared_1 = require("../../shared");
 var admin_module_1 = require("../../admin/admin.module");
 var _1 = require("./");
 var ENTITY_STATES = _1.gameRoute.concat(_1.gamePopupRoute);
-var PlayerFinderGameModule = /** @class */ (function () {
-    function PlayerFinderGameModule() {
+var PlayerFinderGamesModule = /** @class */ (function () {
+    function PlayerFinderGamesModule() {
     }
-    PlayerFinderGameModule = __decorate([
+    PlayerFinderGamesModule = __decorate([
         core_1.NgModule({
             imports: [
                 shared_1.PlayerFinderSharedModule,
@@ -23,7 +23,7 @@ var PlayerFinderGameModule = /** @class */ (function () {
                 router_1.RouterModule.forRoot(ENTITY_STATES, { useHash: true })
             ],
             declarations: [
-                _1.GameComponent,
+                _1.GamesComponent,
                 _1.GameDetailComponent,
                 _1.GameDialogComponent,
                 _1.GameDeleteDialogComponent,
@@ -31,7 +31,7 @@ var PlayerFinderGameModule = /** @class */ (function () {
                 _1.GameDeletePopupComponent,
             ],
             entryComponents: [
-                _1.GameComponent,
+                _1.GamesComponent,
                 _1.GameDialogComponent,
                 _1.GamePopupComponent,
                 _1.GameDeleteDialogComponent,
@@ -44,7 +44,7 @@ var PlayerFinderGameModule = /** @class */ (function () {
             ],
             schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA]
         })
-    ], PlayerFinderGameModule);
-    return PlayerFinderGameModule;
+    ], PlayerFinderGamesModule);
+    return PlayerFinderGamesModule;
 }());
-exports.PlayerFinderGameModule = PlayerFinderGameModule;
+exports.PlayerFinderGamesModule = PlayerFinderGamesModule;

@@ -37,6 +37,7 @@ var PlayerFinderAppModule = /** @class */ (function () {
                 entity_module_1.PlayerFinderEntityModule,
                 // jhipster-needle-angular-add-module JHipster will add new module here
                 angular_font_awesome_1.AngularFontAwesomeModule,
+                PlayerFinderCustomsModule,
             ],
             declarations: [
                 layouts_1.JhiMainComponent,

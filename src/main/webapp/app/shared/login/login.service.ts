@@ -44,7 +44,7 @@ export class LoginService {
     logout() {
         if (this.principal.isAuthenticated()) {
             this.authServerProvider.logout().subscribe();
-            this.router.navigate(['/']).then();
+            this.router.navigate(['/']);
         }
         this.principal.authenticate(null);
     }

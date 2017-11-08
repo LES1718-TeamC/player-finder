@@ -57,6 +57,6 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
 
     login() {
         // this.modalRef = this.loginModalService.open();
-        this.router.navigate(['/login']).then();
+        this.router.navigate(['/login']);
     }
 }

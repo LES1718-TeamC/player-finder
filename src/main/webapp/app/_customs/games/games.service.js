@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_constants_1 = require("../../app.constants");
-var game_model_1 = require("./games.model");
+var games_model_1 = require("./games.model");
 var shared_1 = require("../../shared");
 var GameService = /** @class */ (function () {
     function GameService(http, dateUtils) {
@@ -67,7 +67,7 @@ var GameService = /** @class */ (function () {
      * Convert a returned JSON object to Game.
      */
     GameService.prototype.convertItemFromServer = function (json) {
-        var entity = Object.assign(new game_model_1.Game(), json);
+        var entity = Object.assign(new games_model_1.Game(), json);
         entity.beginTime = this.dateUtils
             .convertDateTimeFromServer(json.beginTime);
         entity.endTime = this.dateUtils

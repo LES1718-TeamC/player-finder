@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var game_model_1 = require("./games.model");
+var games_model_1 = require("./games.model");
 var GamePopupService = /** @class */ (function () {
     function GamePopupService(datePipe, modalService, router, gameService) {
         this.datePipe = datePipe;
@@ -36,7 +36,7 @@ var GamePopupService = /** @class */ (function () {
             else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(function () {
-                    _this.ngbModalRef = _this.gameModalRef(component, new game_model_1.Game());
+                    _this.ngbModalRef = _this.gameModalRef(component, new games_model_1.Game());
                     resolve(_this.ngbModalRef);
                 }, 0);
             }

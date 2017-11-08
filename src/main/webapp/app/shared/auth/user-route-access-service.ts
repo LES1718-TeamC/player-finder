@@ -46,7 +46,7 @@ export class UserRouteAccessService implements CanActivate {
             this.router.navigate(['accessdenied']).then(() => {
                 // only show the login dialog, if the user hasn't logged in yet
                 if (!account) {
-                    this.router.navigate(['/login']).then();
+                    this.router.navigate(['/login']);
                     // this.loginModalService.open();
                 }
             });

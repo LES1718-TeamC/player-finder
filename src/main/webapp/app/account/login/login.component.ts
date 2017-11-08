@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             // this.activeModal.dismiss('login success');
             if (this.router.url === '/register' || (/^\/activate\//.test(this.router.url)) ||
                 (/^\/reset\//.test(this.router.url))) {
-                this.router.navigate(['']).then();
+                this.router.navigate(['']);
             }
 
             this.eventManager.broadcast({
@@ -69,9 +69,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
             const redirect = this.stateStorageService.getUrl();
             if (redirect) {
                 this.stateStorageService.storeUrl(null);
-                this.router.navigate([redirect]).then();
+                this.router.navigate([redirect]);
             }
-            this.router.navigate(['/']).then();
+            this.router.navigate(['/']);
         }).catch(() => {
             this.authenticationError = true;
         });
@@ -79,11 +79,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     register() {
         // this.activeModal.dismiss('to state register');
-        this.router.navigate(['/register']).then();
+        this.router.navigate(['/register']);
     }
 
     requestResetPassword() {
         // this.activeModal.dismiss('to state requestReset');
-        this.router.navigate(['/reset', 'request']).then();
+        this.router.navigate(['/reset', 'request']);
     }
 }

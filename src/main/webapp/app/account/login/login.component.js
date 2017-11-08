@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(eventManager, loginService, stateStorageService, elementRef, renderer, 
+    function LoginComponent(eventManager, loginService, stateStorageService, elementRef, renderer,
         // private socialService: SocialService,
         router) {
         this.eventManager = eventManager;
@@ -44,7 +44,7 @@ var LoginComponent = /** @class */ (function () {
             // this.activeModal.dismiss('login success');
             if (_this.router.url === '/register' || (/^\/activate\//.test(_this.router.url)) ||
                 (/^\/reset\//.test(_this.router.url))) {
-                _this.router.navigate(['']).then();
+                _this.router.navigate(['']);
             }
             _this.eventManager.broadcast({
                 name: 'authenticationSuccess',
@@ -55,20 +55,20 @@ var LoginComponent = /** @class */ (function () {
             var redirect = _this.stateStorageService.getUrl();
             if (redirect) {
                 _this.stateStorageService.storeUrl(null);
-                _this.router.navigate([redirect]).then();
+                _this.router.navigate([redirect]);
             }
-            _this.router.navigate(['/']).then();
+            _this.router.navigate(['/']);
         }).catch(function () {
             _this.authenticationError = true;
         });
     };
     LoginComponent.prototype.register = function () {
         // this.activeModal.dismiss('to state register');
-        this.router.navigate(['/register']).then();
+        this.router.navigate(['/register']);
     };
     LoginComponent.prototype.requestResetPassword = function () {
         // this.activeModal.dismiss('to state requestReset');
-        this.router.navigate(['/reset', 'request']).then();
+        this.router.navigate(['/reset', 'request']);
     };
     LoginComponent = __decorate([
         core_1.Component({

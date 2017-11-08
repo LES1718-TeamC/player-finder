@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var shared_1 = require("../../shared");
-var GameComponent = /** @class */ (function () {
-    function GameComponent(gameService, parseLinks, jhiAlertService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
+var GamesComponent = /** @class */ (function () {
+    function GamesComponent(gameService, parseLinks, jhiAlertService, principal, activatedRoute, router, eventManager, paginationUtil, paginationConfig) {
         var _this = this;
         this.gameService = gameService;
         this.parseLinks = parseLinks;
@@ -29,7 +29,7 @@ var GameComponent = /** @class */ (function () {
         });
         this.currentSearch = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
     }
-    GameComponent.prototype.loadAll = function () {
+    GamesComponent.prototype.loadAll = function () {
         var _this = this;
         if (this.currentSearch) {
             this.gameService.search({
@@ -46,13 +46,13 @@ var GameComponent = /** @class */ (function () {
             sort: this.sort()
         }).subscribe(function (res) { return _this.onSuccess(res.json, res.headers); }, function (res) { return _this.onError(res.json); });
     };
-    GameComponent.prototype.loadPage = function (page) {
+    GamesComponent.prototype.loadPage = function (page) {
         if (page !== this.previousPage) {
             this.previousPage = page;
             this.transition();
         }
     };
-    GameComponent.prototype.transition = function () {
+    GamesComponent.prototype.transition = function () {
         this.router.navigate(['/game'], { queryParams: {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -62,7 +62,7 @@ var GameComponent = /** @class */ (function () {
         });
         this.loadAll();
     };
-    GameComponent.prototype.clear = function () {
+    GamesComponent.prototype.clear = function () {
         this.page = 0;
         this.currentSearch = '';
         this.router.navigate(['/game', {
@@ -71,7 +71,7 @@ var GameComponent = /** @class */ (function () {
             }]);
         this.loadAll();
     };
-    GameComponent.prototype.search = function (query) {
+    GamesComponent.prototype.search = function (query) {
         if (!query) {
             return this.clear();
         }
@@ -84,7 +84,7 @@ var GameComponent = /** @class */ (function () {
             }]);
         this.loadAll();
     };
-    GameComponent.prototype.ngOnInit = function () {
+    GamesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadAll();
         this.principal.identity().then(function (account) {
@@ -92,39 +92,39 @@ var GameComponent = /** @class */ (function () {
         });
         this.registerChangeInGames();
     };
-    GameComponent.prototype.ngOnDestroy = function () {
+    GamesComponent.prototype.ngOnDestroy = function () {
         this.eventManager.destroy(this.eventSubscriber);
     };
-    GameComponent.prototype.trackId = function (index, item) {
+    GamesComponent.prototype.trackId = function (index, item) {
         return item.id;
     };
-    GameComponent.prototype.registerChangeInGames = function () {
+    GamesComponent.prototype.registerChangeInGames = function () {
         var _this = this;
         this.eventSubscriber = this.eventManager.subscribe('gameListModification', function (response) { return _this.loadAll(); });
     };
-    GameComponent.prototype.sort = function () {
+    GamesComponent.prototype.sort = function () {
         var result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
             result.push('id');
         }
         return result;
     };
-    GameComponent.prototype.onSuccess = function (data, headers) {
+    GamesComponent.prototype.onSuccess = function (data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.games = data;
     };
-    GameComponent.prototype.onError = function (error) {
+    GamesComponent.prototype.onError = function (error) {
         this.jhiAlertService.error(error.message, null, null);
     };
-    GameComponent = __decorate([
+    GamesComponent = __decorate([
         core_1.Component({
             selector: 'jhi-game',
             templateUrl: './games.component.html'
         })
-    ], GameComponent);
-    return GameComponent;
+    ], GamesComponent);
+    return GamesComponent;
 }());
-exports.GameComponent = GameComponent;
+exports.GamesComponent = GamesComponent;

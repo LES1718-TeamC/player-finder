@@ -27,8 +27,6 @@ var GamePopupService = /** @class */ (function () {
                 _this.gameService.find(id).subscribe(function (game) {
                     game.beginTime = _this.datePipe
                         .transform(game.beginTime, 'yyyy-MM-ddTHH:mm:ss');
-                    game.endTime = _this.datePipe
-                        .transform(game.endTime, 'yyyy-MM-ddTHH:mm:ss');
                     _this.ngbModalRef = _this.gameModalRef(component, game);
                     resolve(_this.ngbModalRef);
                 });

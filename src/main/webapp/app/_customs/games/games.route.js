@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var shared_1 = require("../../shared");
-var game_component_1 = require("./games.component");
-var game_detail_component_1 = require("./games-detail.component");
-var game_dialog_component_1 = require("./games-dialog.component");
-var game_delete_dialog_component_1 = require("./games-delete-dialog.component");
-var GameResolvePagingParams = /** @class */ (function () {
-    function GameResolvePagingParams(paginationUtil) {
+var games_component_1 = require("./games.component");
+var games_detail_component_1 = require("./games-detail.component");
+var games_dialog_component_1 = require("./games-dialog.component");
+var games_delete_dialog_component_1 = require("./games-delete-dialog.component");
+var GamesResolvePagingParams = /** @class */ (function () {
+    function GamesResolvePagingParams(paginationUtil) {
         this.paginationUtil = paginationUtil;
     }
-    GameResolvePagingParams.prototype.resolve = function (route, state) {
+    GamesResolvePagingParams.prototype.resolve = function (route, state) {
         var page = route.queryParams['page'] ? route.queryParams['page'] : '1';
         var sort = route.queryParams['sort'] ? route.queryParams['sort'] : 'id,asc';
         return {
@@ -25,18 +25,18 @@ var GameResolvePagingParams = /** @class */ (function () {
             ascending: this.paginationUtil.parseAscending(sort)
         };
     };
-    GameResolvePagingParams = __decorate([
+    GamesResolvePagingParams = __decorate([
         core_1.Injectable()
-    ], GameResolvePagingParams);
-    return GameResolvePagingParams;
+    ], GamesResolvePagingParams);
+    return GamesResolvePagingParams;
 }());
-exports.GameResolvePagingParams = GameResolvePagingParams;
+exports.GamesResolvePagingParams = GamesResolvePagingParams;
 exports.gameRoute = [
     {
-        path: 'game',
-        component: game_component_1.GamesComponent,
+        path: 'games',
+        component: games_component_1.GamesComponent,
         resolve: {
-            'pagingParams': GameResolvePagingParams
+            'pagingParams': GamesResolvePagingParams
         },
         data: {
             authorities: ['ROLE_USER'],
@@ -45,7 +45,7 @@ exports.gameRoute = [
         canActivate: [shared_1.UserRouteAccessService]
     }, {
         path: 'game/:id',
-        component: game_detail_component_1.GameDetailComponent,
+        component: games_detail_component_1.GameDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'playerFinderApp.game.home.title'
@@ -56,7 +56,7 @@ exports.gameRoute = [
 exports.gamePopupRoute = [
     {
         path: 'game-new',
-        component: game_dialog_component_1.GamePopupComponent,
+        component: games_dialog_component_1.GamePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'playerFinderApp.game.home.title'
@@ -66,7 +66,7 @@ exports.gamePopupRoute = [
     },
     {
         path: 'game/:id/edit',
-        component: game_dialog_component_1.GamePopupComponent,
+        component: games_dialog_component_1.GamePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'playerFinderApp.game.home.title'
@@ -76,7 +76,7 @@ exports.gamePopupRoute = [
     },
     {
         path: 'game/:id/delete',
-        component: game_delete_dialog_component_1.GameDeletePopupComponent,
+        component: games_delete_dialog_component_1.GameDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'playerFinderApp.game.home.title'
