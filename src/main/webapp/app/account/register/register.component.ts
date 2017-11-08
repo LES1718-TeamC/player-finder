@@ -4,7 +4,7 @@ import {JhiLanguageService} from 'ng-jhipster';
 
 import {Register} from './register.service';
 import {LoginModalService} from '../../shared';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'jhi-register',
