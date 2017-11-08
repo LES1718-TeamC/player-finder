@@ -1,18 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Response } from '@angular/http';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Response} from '@angular/http';
 
-import { Observable } from 'rxjs/Rx';
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Observable} from 'rxjs/Rx';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
-import { Game } from './games.model';
-import { GamePopupService } from './games-popup.service';
-import { GameService } from './games.service';
+import {Game} from './games.model';
+import {GamePopupService} from './games-popup.service';
+import {GameService} from './games.service';
 import { Location, LocationService } from '../location';
-import { User, UserService } from '../../shared';
 import { GameType, GameTypeService } from '../game-type';
-import { ResponseWrapper } from '../../shared';
+import {ResponseWrapper, User, UserService} from '../../shared';
 
 @Component({
     selector: 'jhi-game-dialog',
@@ -29,15 +28,13 @@ export class GameDialogComponent implements OnInit {
 
     typeofgames: GameType[];
 
-    constructor(
-        public activeModal: NgbActiveModal,
-        private jhiAlertService: JhiAlertService,
-        private gameService: GameService,
-        private locationService: LocationService,
-        private userService: UserService,
-        private gameTypeService: GameTypeService,
-        private eventManager: JhiEventManager
-    ) {
+    constructor(public activeModal: NgbActiveModal,
+                private jhiAlertService: JhiAlertService,
+                private gameService: GameService,
+                private locationService: LocationService,
+                private userService: UserService,
+                private gameTypeService: GameTypeService,
+                private eventManager: JhiEventManager) {
     }
 
     ngOnInit() {
@@ -56,7 +53,9 @@ export class GameDialogComponent implements OnInit {
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
         this.userService.query()
-            .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+            .subscribe((res: ResponseWrapper) => {
+                this.users = res.json;
+            }, (res: ResponseWrapper) => this.onError(res.json));
         this.gameTypeService
             .query({filter: 'game-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -93,7 +92,7 @@ export class GameDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Game) {
-        this.eventManager.broadcast({ name: 'gameListModification', content: 'OK'});
+        this.eventManager.broadcast({name: 'gameListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -138,14 +137,13 @@ export class GamePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
-    constructor(
-        private route: ActivatedRoute,
-        private gamePopupService: GamePopupService
-    ) {}
+    constructor(private route: ActivatedRoute,
+                private gamePopupService: GamePopupService) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.gamePopupService
                     .open(GameDialogComponent as Component, params['id']);
             } else {

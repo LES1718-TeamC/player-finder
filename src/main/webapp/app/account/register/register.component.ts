@@ -3,7 +3,7 @@ import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {JhiLanguageService} from 'ng-jhipster';
 
 import {Register} from './register.service';
-import {LoginModalService} from '../../shared';
+import {LoginModalService, Principal} from '../../shared';
 import {Router} from '@angular/router';
 
 @Component({
@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     success: boolean;
     modalRef: NgbModalRef;
 
-    constructor(private languageService: JhiLanguageService,
-                private loginModalService: LoginModalService,
+    constructor(private principal: Principal,
+                private languageService: JhiLanguageService,
                 private registerService: Register,
                 private elementRef: ElementRef,
                 private renderer: Renderer,
@@ -32,6 +32,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.success = false;
         this.registerAccount = {};
+
+        this.principal.identity().then((account) => {
+            this.router.navigate(['/games'])
+        });
     }
 
     ngAfterViewInit() {
