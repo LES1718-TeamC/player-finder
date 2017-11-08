@@ -41,18 +41,13 @@ public class Game implements Serializable {
     private ZonedDateTime beginTime;
 
     @NotNull
-    @Column(name = "end_time", nullable = false)
-    private ZonedDateTime endTime;
+    @Column(name = "duration", nullable = false)
+    private Float duration;
 
     @NotNull
     @Min(value = 1)
     @Column(name = "number_of_players", nullable = false)
     private Integer numberOfPlayers;
-
-    @NotNull
-    @Min(value = 1)
-    @Column(name = "required_number_of_players", nullable = false)
-    private Integer requiredNumberOfPlayers;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -117,17 +112,17 @@ public class Game implements Serializable {
         this.beginTime = beginTime;
     }
 
-    public ZonedDateTime getEndTime() {
-        return endTime;
+    public Float getDuration() {
+        return duration;
     }
 
-    public Game endTime(ZonedDateTime endTime) {
-        this.endTime = endTime;
+    public Game duration(Float duration) {
+        this.duration = duration;
         return this;
     }
 
-    public void setEndTime(ZonedDateTime endTime) {
-        this.endTime = endTime;
+    public void setDuration(Float duration) {
+        this.duration = duration;
     }
 
     public Integer getNumberOfPlayers() {
@@ -141,19 +136,6 @@ public class Game implements Serializable {
 
     public void setNumberOfPlayers(Integer numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
-    }
-
-    public Integer getRequiredNumberOfPlayers() {
-        return requiredNumberOfPlayers;
-    }
-
-    public Game requiredNumberOfPlayers(Integer requiredNumberOfPlayers) {
-        this.requiredNumberOfPlayers = requiredNumberOfPlayers;
-        return this;
-    }
-
-    public void setRequiredNumberOfPlayers(Integer requiredNumberOfPlayers) {
-        this.requiredNumberOfPlayers = requiredNumberOfPlayers;
     }
 
     public GameStatus getGameStatus() {
@@ -271,9 +253,8 @@ public class Game implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", beginTime='" + getBeginTime() + "'" +
-            ", endTime='" + getEndTime() + "'" +
+            ", duration='" + getDuration() + "'" +
             ", numberOfPlayers='" + getNumberOfPlayers() + "'" +
-            ", requiredNumberOfPlayers='" + getRequiredNumberOfPlayers() + "'" +
             ", gameStatus='" + getGameStatus() + "'" +
             ", description='" + getDescription() + "'" +
             "}";

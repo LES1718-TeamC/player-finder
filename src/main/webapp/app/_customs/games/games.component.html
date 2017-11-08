@@ -1,10 +1,11 @@
-<div>
+<div class="container">
     <h2>
         <span jhiTranslate="playerFinderApp.game.home.title">Games</span>
         <button class="btn btn-primary float-right jh-create-entity create-game" [routerLink]="['/', { outlets: { popup: ['game-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span class="hidden-sm-down"  jhiTranslate="playerFinderApp.game.home.createLabel">
-            Create new Game
+            <span class="hidden-sm-down">
+                <!--jhiTranslate="playerFinderApp.game.home.createLabel">-->
+
             </span>
         </button>
     </h2>
@@ -26,73 +27,73 @@
     </div>
     <br/>
     <div class="table-responsive" *ngIf="games">
-        <table class="table table-striped">
-            <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="title"><span jhiTranslate="playerFinderApp.game.title">Title</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="beginTime"><span jhiTranslate="playerFinderApp.game.beginTime">Begin Time</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="endTime"><span jhiTranslate="playerFinderApp.game.endTime">End Time</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numberOfPlayers"><span jhiTranslate="playerFinderApp.game.numberOfPlayers">Number Of Players</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="requiredNumberOfPlayers"><span jhiTranslate="playerFinderApp.game.requiredNumberOfPlayers">Required Number Of Players</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="gameStatus"><span jhiTranslate="playerFinderApp.game.gameStatus">Game Status</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="description"><span jhiTranslate="playerFinderApp.game.description">Description</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="location.streetAddress"><span jhiTranslate="playerFinderApp.game.location">Location</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="owner.login"><span jhiTranslate="playerFinderApp.game.owner">Owner</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="typeOfGame.title"><span jhiTranslate="playerFinderApp.game.typeOfGame">Type Of Game</span> <span class="fa fa-sort"></span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let game of games ;trackBy: trackId">
-                <td><a [routerLink]="['../game', game.id ]">{{game.id}}</a></td>
-                <td>{{game.title}}</td>
-                <td>{{game.beginTime | date:'medium'}}</td>
-                <td>{{game.endTime | date:'medium'}}</td>
-                <td>{{game.numberOfPlayers}}</td>
-                <td>{{game.requiredNumberOfPlayers}}</td>
-                <td jhiTranslate="{{'playerFinderApp.GameStatus.' + game.gameStatus}}">{{game.gameStatus}}</td>
-                <td>{{game.description}}</td>
-                <td>
-                    <div *ngIf="game.location">
-                        <a [routerLink]="['../location', game.location?.id ]" >{{game.location?.streetAddress}}</a>
-                    </div>
-                </td>
-                <td>
-                    {{game.owner?.login}}
-                </td>
-                <td>
-                    <div *ngIf="game.typeOfGame">
-                        <a [routerLink]="['../game-type', game.typeOfGame?.id ]" >{{game.typeOfGame?.title}}</a>
-                    </div>
-                </td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../game', game.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'game/'+ game.id + '/edit'} }]"
-                                replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'game/'+ game.id + '/delete'} }]"
-                                replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <!--<table class="table table-striped">-->
+            <!--<thead>-->
+            <!--<tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">-->
+            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="title"><span jhiTranslate="playerFinderApp.game.title">Title</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="beginTime"><span jhiTranslate="playerFinderApp.game.beginTime">Start</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="endTime"><span jhiTranslate="playerFinderApp.game.endTime">End</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="numberOfPlayers"><span jhiTranslate="playerFinderApp.game.numberOfPlayers"># Players</span> <span class="fa fa-sort"></span></th>-->
+            <!--&lt;!&ndash;<th jhiSortBy="requiredNumberOfPlayers"><span jhiTranslate="playerFinderApp.game.requiredNumberOfPlayers">Required Number Of Players</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th jhiSortBy="gameStatus"><span jhiTranslate="playerFinderApp.game.gameStatus">Game Status</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th jhiSortBy="description"><span jhiTranslate="playerFinderApp.game.description">Description</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
+            <!--<th jhiSortBy="location.streetAddress"><span jhiTranslate="playerFinderApp.game.location">Location</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="owner.login"><span jhiTranslate="playerFinderApp.game.owner">Owner</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="typeOfGame.title"><span jhiTranslate="playerFinderApp.game.typeOfGame">Type Of Game</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th></th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr *ngFor="let game of games ;trackBy: trackId">-->
+                <!--<td><a [routerLink]="['../game', game.id ]">{{game.id}}</a></td>-->
+                <!--<td>{{game.title}}</td>-->
+                <!--<td>{{game.beginTime | date:'medium'}}</td>-->
+                <!--<td>{{game.endTime | date:'medium'}}</td>-->
+                <!--<td>{{game.numberOfPlayers}}</td>-->
+                <!--<td>{{// game.requiredNumberOfPlayers}}</td>-->
+                <!--&lt;!&ndash;<td jhiTranslate="{{'playerFinderApp.GameStatus.' + game.gameStatus}}">{{game.gameStatus}}</td>&ndash;&gt;-->
+                <!--&lt;!&ndash;<td>{{game.description}}</td>&ndash;&gt;-->
+                <!--<td>-->
+                    <!--<div *ngIf="game.location">-->
+                        <!--<a [routerLink]="['../location', game.location?.id ]" >{{game.location?.streetAddress}}</a>-->
+                    <!--</div>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--{{game.owner?.login}}-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<div *ngIf="game.typeOfGame">-->
+                        <!--<a [routerLink]="['../game-type', game.typeOfGame?.id ]" >{{game.typeOfGame?.title}}</a>-->
+                    <!--</div>-->
+                <!--</td>-->
+                <!--<td class="text-right">-->
+                    <!--<div class="btn-group flex-btn-group-container">-->
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['../game', game.id ]"-->
+                                <!--class="btn btn-info btn-sm">-->
+                            <!--<span class="fa fa-eye"></span>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                        <!--</button>-->
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['/', { outlets: { popup: 'game/'+ game.id + '/edit'} }]"-->
+                                <!--replaceUrl="true"-->
+                                <!--class="btn btn-primary btn-sm">-->
+                            <!--<span class="fa fa-pencil"></span>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+                        <!--</button>-->
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['/', { outlets: { popup: 'game/'+ game.id + '/delete'} }]"-->
+                                <!--replaceUrl="true"-->
+                                <!--class="btn btn-danger btn-sm">-->
+                            <!--<span class="fa fa-remove"></span>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
     </div>
         <div *ngIf="games && games.length">
             <div class="row justify-content-center">

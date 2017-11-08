@@ -32,9 +32,8 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="title"><span jhiTranslate="playerFinderApp.game.title">Title</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="beginTime"><span jhiTranslate="playerFinderApp.game.beginTime">Begin Time</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="endTime"><span jhiTranslate="playerFinderApp.game.endTime">End Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="duration"><span jhiTranslate="playerFinderApp.game.duration">Duration</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="numberOfPlayers"><span jhiTranslate="playerFinderApp.game.numberOfPlayers">Number Of Players</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="requiredNumberOfPlayers"><span jhiTranslate="playerFinderApp.game.requiredNumberOfPlayers">Required Number Of Players</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="gameStatus"><span jhiTranslate="playerFinderApp.game.gameStatus">Game Status</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="playerFinderApp.game.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="location.streetAddress"><span jhiTranslate="playerFinderApp.game.location">Location</span> <span class="fa fa-sort"></span></th>
@@ -48,9 +47,8 @@
                 <td><a [routerLink]="['../game', game.id ]">{{game.id}}</a></td>
                 <td>{{game.title}}</td>
                 <td>{{game.beginTime | date:'medium'}}</td>
-                <td>{{game.endTime | date:'medium'}}</td>
+                <td>{{game.duration}}</td>
                 <td>{{game.numberOfPlayers}}</td>
-                <td>{{game.requiredNumberOfPlayers}}</td>
                 <td jhiTranslate="{{'playerFinderApp.GameStatus.' + game.gameStatus}}">{{game.gameStatus}}</td>
                 <td>{{game.description}}</td>
                 <td>

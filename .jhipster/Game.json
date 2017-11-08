@@ -52,23 +52,14 @@
             ]
         },
         {
-            "fieldName": "endTime",
-            "fieldType": "ZonedDateTime",
+            "fieldName": "duration",
+            "fieldType": "Float",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
             "fieldName": "numberOfPlayers",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required",
-                "min"
-            ],
-            "fieldValidateRulesMin": 1
-        },
-        {
-            "fieldName": "requiredNumberOfPlayers",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required",

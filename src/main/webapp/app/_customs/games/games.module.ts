@@ -14,7 +14,7 @@ import {
     GameDeleteDialogComponent,
     gameRoute,
     gamePopupRoute,
-    GameResolvePagingParams,
+    GamesResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -46,7 +46,7 @@ const ENTITY_STATES = [
     providers: [
         GameService,
         GamePopupService,
-        GameResolvePagingParams,
+        GamesResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

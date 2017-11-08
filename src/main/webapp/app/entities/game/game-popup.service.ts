@@ -30,8 +30,6 @@ export class GamePopupService {
                 this.gameService.find(id).subscribe((game) => {
                     game.beginTime = this.datePipe
                         .transform(game.beginTime, 'yyyy-MM-ddTHH:mm:ss');
-                    game.endTime = this.datePipe
-                        .transform(game.endTime, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.gameModalRef(component, game);
                     resolve(this.ngbModalRef);
                 });

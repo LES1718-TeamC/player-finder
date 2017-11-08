@@ -50,14 +50,11 @@ public class GameResourceIntTest {
     private static final ZonedDateTime DEFAULT_BEGIN_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_BEGIN_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_END_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_END_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final Float DEFAULT_DURATION = 1F;
+    private static final Float UPDATED_DURATION = 2F;
 
     private static final Integer DEFAULT_NUMBER_OF_PLAYERS = 1;
     private static final Integer UPDATED_NUMBER_OF_PLAYERS = 2;
-
-    private static final Integer DEFAULT_REQUIRED_NUMBER_OF_PLAYERS = 1;
-    private static final Integer UPDATED_REQUIRED_NUMBER_OF_PLAYERS = 2;
 
     private static final GameStatus DEFAULT_GAME_STATUS = GameStatus.PENDING;
     private static final GameStatus UPDATED_GAME_STATUS = GameStatus.ACTIVE;
@@ -107,9 +104,8 @@ public class GameResourceIntTest {
         Game game = new Game()
             .title(DEFAULT_TITLE)
             .beginTime(DEFAULT_BEGIN_TIME)
-            .endTime(DEFAULT_END_TIME)
+            .duration(DEFAULT_DURATION)
             .numberOfPlayers(DEFAULT_NUMBER_OF_PLAYERS)
-            .requiredNumberOfPlayers(DEFAULT_REQUIRED_NUMBER_OF_PLAYERS)
             .gameStatus(DEFAULT_GAME_STATUS)
             .description(DEFAULT_DESCRIPTION);
         return game;
@@ -138,9 +134,8 @@ public class GameResourceIntTest {
         Game testGame = gameList.get(gameList.size() - 1);
         assertThat(testGame.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testGame.getBeginTime()).isEqualTo(DEFAULT_BEGIN_TIME);
-        assertThat(testGame.getEndTime()).isEqualTo(DEFAULT_END_TIME);
+        assertThat(testGame.getDuration()).isEqualTo(DEFAULT_DURATION);
         assertThat(testGame.getNumberOfPlayers()).isEqualTo(DEFAULT_NUMBER_OF_PLAYERS);
-        assertThat(testGame.getRequiredNumberOfPlayers()).isEqualTo(DEFAULT_REQUIRED_NUMBER_OF_PLAYERS);
         assertThat(testGame.getGameStatus()).isEqualTo(DEFAULT_GAME_STATUS);
         assertThat(testGame.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
 
@@ -206,10 +201,10 @@ public class GameResourceIntTest {
 
     @Test
     @Transactional
-    public void checkEndTimeIsRequired() throws Exception {
+    public void checkDurationIsRequired() throws Exception {
         int databaseSizeBeforeTest = gameRepository.findAll().size();
         // set the field null
-        game.setEndTime(null);
+        game.setDuration(null);
 
         // Create the Game, which fails.
 
@@ -228,24 +223,6 @@ public class GameResourceIntTest {
         int databaseSizeBeforeTest = gameRepository.findAll().size();
         // set the field null
         game.setNumberOfPlayers(null);
-
-        // Create the Game, which fails.
-
-        restGameMockMvc.perform(post("/api/games")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(game)))
-            .andExpect(status().isBadRequest());
-
-        List<Game> gameList = gameRepository.findAll();
-        assertThat(gameList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkRequiredNumberOfPlayersIsRequired() throws Exception {
-        int databaseSizeBeforeTest = gameRepository.findAll().size();
-        // set the field null
-        game.setRequiredNumberOfPlayers(null);
 
         // Create the Game, which fails.
 
@@ -289,9 +266,8 @@ public class GameResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(game.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].beginTime").value(hasItem(sameInstant(DEFAULT_BEGIN_TIME))))
-            .andExpect(jsonPath("$.[*].endTime").value(hasItem(sameInstant(DEFAULT_END_TIME))))
+            .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION.doubleValue())))
             .andExpect(jsonPath("$.[*].numberOfPlayers").value(hasItem(DEFAULT_NUMBER_OF_PLAYERS)))
-            .andExpect(jsonPath("$.[*].requiredNumberOfPlayers").value(hasItem(DEFAULT_REQUIRED_NUMBER_OF_PLAYERS)))
             .andExpect(jsonPath("$.[*].gameStatus").value(hasItem(DEFAULT_GAME_STATUS.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
@@ -309,9 +285,8 @@ public class GameResourceIntTest {
             .andExpect(jsonPath("$.id").value(game.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.beginTime").value(sameInstant(DEFAULT_BEGIN_TIME)))
-            .andExpect(jsonPath("$.endTime").value(sameInstant(DEFAULT_END_TIME)))
+            .andExpect(jsonPath("$.duration").value(DEFAULT_DURATION.doubleValue()))
             .andExpect(jsonPath("$.numberOfPlayers").value(DEFAULT_NUMBER_OF_PLAYERS))
-            .andExpect(jsonPath("$.requiredNumberOfPlayers").value(DEFAULT_REQUIRED_NUMBER_OF_PLAYERS))
             .andExpect(jsonPath("$.gameStatus").value(DEFAULT_GAME_STATUS.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
@@ -337,9 +312,8 @@ public class GameResourceIntTest {
         updatedGame
             .title(UPDATED_TITLE)
             .beginTime(UPDATED_BEGIN_TIME)
-            .endTime(UPDATED_END_TIME)
+            .duration(UPDATED_DURATION)
             .numberOfPlayers(UPDATED_NUMBER_OF_PLAYERS)
-            .requiredNumberOfPlayers(UPDATED_REQUIRED_NUMBER_OF_PLAYERS)
             .gameStatus(UPDATED_GAME_STATUS)
             .description(UPDATED_DESCRIPTION);
 
@@ -354,9 +328,8 @@ public class GameResourceIntTest {
         Game testGame = gameList.get(gameList.size() - 1);
         assertThat(testGame.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testGame.getBeginTime()).isEqualTo(UPDATED_BEGIN_TIME);
-        assertThat(testGame.getEndTime()).isEqualTo(UPDATED_END_TIME);
+        assertThat(testGame.getDuration()).isEqualTo(UPDATED_DURATION);
         assertThat(testGame.getNumberOfPlayers()).isEqualTo(UPDATED_NUMBER_OF_PLAYERS);
-        assertThat(testGame.getRequiredNumberOfPlayers()).isEqualTo(UPDATED_REQUIRED_NUMBER_OF_PLAYERS);
         assertThat(testGame.getGameStatus()).isEqualTo(UPDATED_GAME_STATUS);
         assertThat(testGame.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
 
@@ -419,9 +392,8 @@ public class GameResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(game.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].beginTime").value(hasItem(sameInstant(DEFAULT_BEGIN_TIME))))
-            .andExpect(jsonPath("$.[*].endTime").value(hasItem(sameInstant(DEFAULT_END_TIME))))
+            .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION.doubleValue())))
             .andExpect(jsonPath("$.[*].numberOfPlayers").value(hasItem(DEFAULT_NUMBER_OF_PLAYERS)))
-            .andExpect(jsonPath("$.[*].requiredNumberOfPlayers").value(hasItem(DEFAULT_REQUIRED_NUMBER_OF_PLAYERS)))
             .andExpect(jsonPath("$.[*].gameStatus").value(hasItem(DEFAULT_GAME_STATUS.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }

@@ -1,0 +1,66 @@
+/**
+ * The Game entity.
+ */
+entity Game {
+	title String required maxlength(35),
+	beginTime ZonedDateTime required,
+    duration Float required,
+    numberOfPlayers Integer required min(1),
+    gameStatus GameStatus required,
+    description String maxlength(100)
+}
+
+relationship OneToOne {
+	// Each game has one Location
+	Game{location(streetAddress)} to Location,
+    // Each game has an owner which is a user
+    Game{owner(login)} to User,
+    // Each game has a game type
+    Game{typeOfGame(title)} to GameType
+}
+
+relationship ManyToMany {
+	// Each game can have multiple players (which are users)
+    // and each user can join multiple games
+	Game{players(login)} to User
+}
+
+/**
+ * The GameStatus enumeration.
+ */
+enum GameStatus {
+	PENDING,
+	ACTIVE,
+    CANCELED,
+    FINISHED,
+    ARCHIEVED
+}
+
+/**
+ * The GameType entity.
+ */
+entity GameType {
+	title String required maxlength (35)
+    type TypeOfGame required
+}
+
+/**
+ * The TypeOfGame enumeration.
+ */
+enum TypeOfGame {
+	SPORT,
+    ESPORT,
+    BOARD
+}
+
+/**
+ * The Location entity.
+ */
+entity Location {
+	name String required maxlength(35)
+	streetAddress String required maxlength(35),
+	postalCode String required maxlength(35),
+	city String required maxlength(35)
+}
+
+paginate all with pagination

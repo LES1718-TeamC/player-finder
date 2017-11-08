@@ -8,6 +8,7 @@ import { PlayerFinderHomeModule } from './home/home.module';
 import { PlayerFinderAdminModule } from './admin/admin.module';
 import { PlayerFinderAccountModule } from './account/account.module';
 import { PlayerFinderEntityModule } from './entities/entity.module';
+import { PlayerFinderCustomsModule } from './_customs/customs.module';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';

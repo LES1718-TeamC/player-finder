@@ -10,7 +10,7 @@ import { GamePopupComponent } from './games-dialog.component';
 import { GameDeletePopupComponent } from './games-delete-dialog.component';
 
 @Injectable()
-export class GameResolvePagingParams implements Resolve<any> {
+export class GamesResolvePagingParams implements Resolve<any> {
 
     constructor(private paginationUtil: JhiPaginationUtil) {}
 
@@ -27,10 +27,10 @@ export class GameResolvePagingParams implements Resolve<any> {
 
 export const gameRoute: Routes = [
     {
-        path: 'game',
+        path: 'games',
         component: GamesComponent,
         resolve: {
-            'pagingParams': GameResolvePagingParams
+            'pagingParams': GamesResolvePagingParams
         },
         data: {
             authorities: ['ROLE_USER'],
