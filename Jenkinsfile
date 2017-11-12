@@ -6,7 +6,7 @@ node {
         checkout scm
     }
 
-    docker.image('openjdk:8').inside('-u root -v ./ -e MAVEN_OPTS="-Duser.home=./" --privileged') {
+    docker.image('openjdk:8').inside('-u root -e MAVEN_OPTS="-Duser.home=./" --privileged') {
         stage('check java') {
             sh "java -version"
         }
