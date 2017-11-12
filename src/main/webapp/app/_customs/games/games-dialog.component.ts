@@ -9,8 +9,8 @@ import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 import {Game} from './games.model';
 import {GamePopupService} from './games-popup.service';
 import {GameService} from './games.service';
-import { Location, LocationService } from '../location';
-import { GameType, GameTypeService } from '../game-type';
+import { Location, LocationService } from '../../entities/location';
+import { GameType, GameTypeService } from '../../entities/game-type';
 import {ResponseWrapper, User, UserService} from '../../shared';
 
 @Component({
