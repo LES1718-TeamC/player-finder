@@ -2,6 +2,7 @@
 
 node {
     stage('checkout') {
+        sh "whoami"
         checkout scm
     }
 
