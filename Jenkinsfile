@@ -3,14 +3,14 @@
 node {
     stage('checkout') {
         sh "whoami"
-        sh "id -u $(whoami)"
+        sh "id -u ${whoami}"
         checkout scm
     }
 
     docker.image('openjdk:8').inside('-u root -e MAVEN_OPTS="-Duser.home=./" --privileged -e USER=jenkins') {
         stage('check java') {
             sh "whoami"
-            sh "id -u $(whoami)"
+            sh "id -u ${whoami}"
             sh "id -nu 118"
             sh "java -version"
         }
