@@ -13,6 +13,12 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+    client:
+        enabled: true
+    instance:
+        appname: PlayerFinder
+        instanceId: PlayerFinder:${spring.application.instance-id:${random.value}}
 
 spring:
     application:

@@ -18,7 +18,7 @@
     "prodDatabaseType": "mysql",
     "searchEngine": "elasticsearch",
     "messageBroker": false,
-    "serviceDiscoveryType": false,
+    "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
     "enableSocialSignIn": true,
     "enableSwaggerCodegen": false,
