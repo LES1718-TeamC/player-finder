@@ -8,6 +8,7 @@ node {
 
     docker.image('openjdk:8').inside('-u root -e MAVEN_OPTS="-Duser.home=./" --privileged -e USER=jenkins') {
         stage('check java') {
+            sh "id -u root"
             sh "java -version"
         }
 
