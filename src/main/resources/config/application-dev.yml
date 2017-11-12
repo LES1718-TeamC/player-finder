@@ -13,14 +13,6 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
-eureka:
-    instance:
-        prefer-ip-address: true
-    client:
-        enabled: false # By default, the JHipster Registry is not used in the "dev" profile
-        service-url:
-            defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
-
 spring:
     profiles:
         active: dev
@@ -59,24 +51,14 @@ spring:
                     logs: target/elasticsearch/log
                     data: target/elasticsearch/data
     mail:
-        host: smtp.mailgun.org
-        port: 465
-        username: postmaster@sandbox79686db538f04545adb85bdb24eb76ba.mailgun.org
-        password: 3d874c525150eb350ac02df70c7e1464
-        protocol: smtps
-        tls: true
-        auth: true
-        from: no-reply@localhost
+        host: localhost
+        port: 25
+        username:
+        password:
     messages:
         cache-seconds: 1
     thymeleaf:
         cache: false
-    zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
-        base-url: http://localhost:9411
-        enabled: false
-        locator:
-            discovery:
-                enabled: true
 
 liquibase:
     contexts: dev
