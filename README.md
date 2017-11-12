@@ -1,3 +1,4 @@
+Code style: [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a6e8000217bf4b0589ca6ccfee8c4e7a)](https://www.codacy.com/app/luisfmelo/player-finder?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LES1718-TeamC/player-finder&amp;utm_campaign=Badge_Grade)
 # PlayerFinder
 This application was generated using JHipster 4.9.0, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.9.0](http://www.jhipster.tech/documentation-archive/v4.9.0).
 
