@@ -34,7 +34,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.registerAccount = {};
 
         this.principal.identity().then((account) => {
-            this.router.navigate(['/games'])
+            if (account !== null ) {
+                this.router.navigate(['/games']);
+            }
         });
     }
 
