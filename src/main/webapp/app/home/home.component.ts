@@ -27,7 +27,9 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.account = account;
-            this.router.navigate(['/games'])
+            if (account !== null ) {
+                this.router.navigate(['/games']);
+            }
         });
         this.registerAuthenticationSuccess();
     }
