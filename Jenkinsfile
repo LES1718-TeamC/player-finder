@@ -30,14 +30,13 @@ node {
             sh "sudo ./mvnw com.github.eirslett:frontend-maven-plugin:npm"
         }
 
-       
-        stage('frontend tests') {
+       stage('backend tests') {
             try {
-                sh "sudo ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments=test"
+                sh "sudo ./mvnw test"
             } catch(err) {
                 throw err
             } finally {
-                junit '**/target/test-results/karma/TESTS-*.xml'
+                junit '**/target/surefire-reports/TEST-*.xml'
             }
         }
 
