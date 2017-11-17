@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 35
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "TypeOfGame",
+            "fieldValues": "SPORT,ESPORT,BOARD",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171117143109",
+    "javadoc": "The GameType entity.",
+    "entityTableName": "game_type",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no"
+}

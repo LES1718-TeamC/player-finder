@@ -1,0 +1,71 @@
+
+<div *ngIf="game">
+    <h2><span jhiTranslate="playerFinderApp.game.detail.title">Game</span> {{game.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="playerFinderApp.game.title">Title</span></dt>
+        <dd>
+            <span>{{game.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.beginTime">Begin Time</span></dt>
+        <dd>
+            <span>{{game.beginTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.duration">Duration</span></dt>
+        <dd>
+            <span>{{game.duration}}</span>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.numberOfPlayers">Number Of Players</span></dt>
+        <dd>
+            <span>{{game.numberOfPlayers}}</span>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.numberOfSlots">Number Of Slots</span></dt>
+        <dd>
+            <span>{{game.numberOfSlots}}</span>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.gameStatus">Game Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'playerFinderApp.GameStatus.' + game.gameStatus}}">{{game.gameStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.description">Description</span></dt>
+        <dd>
+            <span>{{game.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.location">Location</span></dt>
+        <dd>
+            <div *ngIf="game.location">
+                <a [routerLink]="['/location', game.location?.id]">{{game.location?.streetAddress}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.owner">Owner</span></dt>
+        <dd>
+            {{game.owner?.login}}
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.typeOfGame">Type Of Game</span></dt>
+        <dd>
+            <div *ngIf="game.typeOfGame">
+                <a [routerLink]="['/game-type', game.typeOfGame?.id]">{{game.typeOfGame?.title}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="playerFinderApp.game.players">Players</span></dt>
+        <dd>
+            <span *ngFor="let players of game.players; let last = last">
+                {{players.login}}{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'game/'+ game.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
