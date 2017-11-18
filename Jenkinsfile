@@ -5,11 +5,15 @@ node {
         checkout scm
     }
 
-    docker.image('openjdk:8').inside('-u root -e MAVEN_OPTS="-Duser.home=./"') {
+    docker.image('openjdk:8').inside('-u root -e MAVEN_OPTS="-Duser.home=./" --privileged -e USER=jenkins') {
         stage('check java') {
             sh "java -version"
         }
 
+        stage('install sudo') {
+            sh "apt-get update"
+            sh "apt-get install -y sudo"
+        }
         stage('clean') {
             sh "chmod +x mvnw"
             sh "./mvnw clean"
