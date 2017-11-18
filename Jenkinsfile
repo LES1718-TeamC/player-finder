@@ -41,15 +41,6 @@ node {
             }
         }
 
-        stage('frontend tests') {
-            try {
-                sh "./mvnw com.github.eirslett:frontend-maven-plugin:yarn -Dfrontend.yarn.arguments=test"
-            } catch(err) {
-                throw err
-            } finally {
-                junit '**/target/test-results/karma/TESTS-*.xml'
-            }
-        }
 
         stage('package and deploy') {
             sh "./mvnw com.heroku.sdk:heroku-maven-plugin:1.1.1:deploy -DskipTests -Pprod -Dheroku.appName=player-finder-prod"
