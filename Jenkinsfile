@@ -35,8 +35,12 @@ node {
 
 
     stage('package and deploy') {
-        sh "./mvnw com.heroku.sdk:heroku-maven-plugin:1.1.1:deploy -DskipTests -Pprod -Dheroku.appName=player-finder-prod"
-        archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+        
+        withCredentials([[$class: 'StringBinding', credentialsId: 'HEROKU_API_KEY', variable: 'HEROKU_API_KEY']]) {
+        
+            sh "./mvnw com.heroku.sdk:heroku-maven-plugin:1.1.1:deploy -DskipTests -Pprod -Dheroku.appName=player-finder-prod"
+            archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+        }
     }
 
 }
