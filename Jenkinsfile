@@ -54,6 +54,19 @@ node {
                 throw err
             } finally {
                 junit '**/target/surefire-reports/TEST-*.xml'
+                step([
+                    $class: 'CoberturaPublisher', 
+                    autoUpdateHealth: false, 
+                    autoUpdateStability: false, 
+                    coberturaReportFile: '**/coverage.xml', 
+                    failUnhealthy: false, 
+                    failUnstable: false, 
+                    maxNumberOfBuilds: 0, 
+                    onlyStable: false, 
+                    sourceEncoding: 'ASCII', 
+                    zoomCoverageChart: false
+                ])
+
             }
         }
 
@@ -81,7 +94,7 @@ node {
         throw e
 
     } finally {
-        
+
         notifySlack(currentBuild.result)
     }
 }
