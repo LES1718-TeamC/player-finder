@@ -245,3 +245,15 @@ Social Buttons
     color: #fff;
 }
 /* jhipster-needle-css-add-main JHipster will add new css style */
+
+/* ==========================================================================
+Cacetes
+========================================================================== */
+
+jhi-navbar + div {
+    min-height: calc(100% - 264px);
+}
+
+html, body {
+    height: 100%;
+}
