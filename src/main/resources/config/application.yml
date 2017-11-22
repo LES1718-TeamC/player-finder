@@ -58,7 +58,7 @@ spring:
 
         # see https://apps.twitter.com/app/
         twitter:
-            client-id: 1914071910
+            client-id: ELXkz2nS4rNk3nypvhzX7lyq6
             client-secret: TSwVQQ7YjxwNOVRVLPET1CPbnEJoeZ9n5deVjOawlmAKnVCX2j
 
         # jhipster-needle-add-social-configuration
