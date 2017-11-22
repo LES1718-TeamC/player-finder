@@ -1,5 +1,5 @@
 import { TestBed, async, tick, fakeAsync, inject } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { PlayerFinderTestModule } from '../../../test.module';
 import { MockActivatedRoute } from '../../../helpers/mock-route.service';
@@ -19,6 +19,10 @@ describe('Component Tests', () => {
                 declarations: [ActivateComponent],
                 providers: [
                     ActivateService,
+                    {
+                        provide: Router,
+                        useValue: RouterModule
+                    },
                     {
                         provide: ActivatedRoute,
                         useValue: new MockActivatedRoute({'key': 'ABC123'})

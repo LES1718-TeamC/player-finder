@@ -1,12 +1,15 @@
-import { ComponentFixture, TestBed, async, inject, tick, fakeAsync } from '@angular/core/testing';
-import { Renderer, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { JhiLanguageService } from 'ng-jhipster';
-import { MockLanguageService } from '../../../helpers/mock-language.service';
-import { PlayerFinderTestModule } from '../../../test.module';
-import { LoginModalService } from '../../../../../../main/webapp/app/shared';
-import { Register } from '../../../../../../main/webapp/app/account/register/register.service';
-import { RegisterComponent } from '../../../../../../main/webapp/app/account/register/register.component';
+import {ComponentFixture, TestBed, async, inject, tick, fakeAsync} from '@angular/core/testing';
+import {Renderer, ElementRef} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {JhiLanguageService} from 'ng-jhipster';
+import {MockLanguageService} from '../../../helpers/mock-language.service';
+import {PlayerFinderTestModule} from '../../../test.module';
+import {LoginModalService} from '../../../../../../main/webapp/app/shared';
+import {Register} from '../../../../../../main/webapp/app/account/register/register.service';
+import {RegisterComponent} from '../../../../../../main/webapp/app/account/register/register.component';
+import {Principal} from "../../../../../../main/webapp/app/shared/auth/principal.service";
+import {AccountService} from "../../../../../../main/webapp/app/shared/auth/account.service";
+import {Router, RouterModule} from "@angular/router";
 
 describe('Component Tests', () => {
 
@@ -20,6 +23,12 @@ describe('Component Tests', () => {
                 declarations: [RegisterComponent],
                 providers: [
                     Register,
+                    Principal,
+                    AccountService,
+                    {
+                        provide: Router,
+                        useValue: RouterModule
+                    },
                     {
                         provide: LoginModalService,
                         useValue: null
@@ -34,7 +43,7 @@ describe('Component Tests', () => {
                     }
                 ]
             }).overrideTemplate(RegisterComponent, '')
-            .compileComponents();
+                .compileComponents();
         }));
 
         beforeEach(() => {
