@@ -1,9 +1,10 @@
-import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer} from '@angular/core';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { Register } from './register.service';
-import { LoginModalService } from '../../shared';
+import {Register} from './register.service';
+import {Principal} from '../../shared';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'jhi-register',
@@ -20,18 +21,23 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     success: boolean;
     modalRef: NgbModalRef;
 
-    constructor(
-        private languageService: JhiLanguageService,
-        private loginModalService: LoginModalService,
-        private registerService: Register,
-        private elementRef: ElementRef,
-        private renderer: Renderer
-    ) {
+    constructor(private principal: Principal,
+                private languageService: JhiLanguageService,
+                private registerService: Register,
+                private elementRef: ElementRef,
+                private renderer: Renderer,
+                private router: Router) {
     }
 
     ngOnInit() {
         this.success = false;
         this.registerAccount = {};
+
+        this.principal.identity().then((account) => {
+            if (account !== null ) {
+                this.router.navigate(['/games']);
+            }
+        });
     }
 
     ngAfterViewInit() {
@@ -56,7 +62,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     }
 
     openLogin() {
-        this.modalRef = this.loginModalService.open();
+        //     this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']);
     }
 
     private processError(response) {

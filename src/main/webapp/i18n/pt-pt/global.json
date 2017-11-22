@@ -1,5 +1,6 @@
 {
     "global": {
+        "none": "",
         "title": "PlayerFinder",
         "browsehappy": "Está a usar um navegador <strong>desatualizado</strong>. Por favor <a href=\"http://browsehappy.com/?locale=pt_PT\">atualize o seu navegador</a> para ter uma experiência melhor.",
         "menu": {
@@ -7,10 +8,13 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
-                "game": "Game",
-                "gameType": "Game Type",
-                "location": "Location",
+                "game": "Jogos",
+                "gameType": "Tipos de Jogos",
+                "location": "Localizações",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "navbar": {
+                "games": "Jogos"
             },
             "account": {
                 "main": "Conta",

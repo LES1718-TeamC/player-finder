@@ -4,7 +4,8 @@
             "home": {
                 "title": "Games",
                 "createLabel": "Criar um(a) novo(a) Game",
-                "createOrEditLabel": "Criar ou editar um(a) Game"
+                "createOrEditLabel": "Criar ou editar um(a) Game",
+                "search": "Search for Game"
             },
             "created": "A new Game is created with identifier {{ param }}",
             "updated": "A Game is updated with identifier {{ param }}",

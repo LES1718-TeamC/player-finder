@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-md-offset-4 col-md-4">
+        <!--ERRORS-->
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="alert alert-danger" *ngIf="authenticationError"
+                     jhiTranslate="login.messages.error.authentication">
+                    <strong>Failed to sign in!</strong> Please check your credentials and try again.
+                </div>
+            </div>
+        </div>
+
+        <!--FORM-->
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <form class="form" role="form" (ngSubmit)="login()">
+                    <div class="form-group">
+                        <label for="username" jhiTranslate="global.form.username">Login</label>
+                        <input type="text" class="form-control" name="username" id="username"
+                               placeholder="{{'global.form.username.placeholder' | translate}}" [(ngModel)]="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" jhiTranslate="login.form.password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password"
+                               placeholder="{{'login.form.password.placeholder' | translate}}" [(ngModel)]="password">
+                    </div>
+                    <div class="row">
+                        <div class="form-check col-md-5">
+                            <label class="form-check-label" for="rememberMe">
+                                <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
+                                <small>
+                                    <span jhiTranslate="login.form.rememberme">
+                                        Remember me
+                                    </span>
+                                </small>
+
+                            </label>
+                        </div>
+                        <div class="form-check col-md-7" style="text-align: right;">
+                            <small>
+                                <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">
+                                    Forgot your password?
+                                </a>
+                            </small>
+                        </div>
+                    </div>
+
+                    <button style="width: 100%;" type="submit" class="btn btn-primary" jhiTranslate="login.form.button">Sign in</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!--SOCIAL ACCOUNTS-->
+        <div class="row justify-content-center" style="padding-top: 20px;">
+            <div class="col-md-12 row justify-content-center">
+                <br/>
+                <jhi-social style="left: -15px" class="col-md-4" provider="google"></jhi-social>
+                <jhi-social class="col-md-4" provider="facebook"></jhi-social>
+                <jhi-social style="right: -15px" class="col-md-4" provider="twitter"></jhi-social>
+                <!-- jhipster-needle-add-social-button -->
+            </div>
+        </div>
+
+        <!--REGISTER LINK-->
+        <div class="row justify-content-center" style="margin-top: 10px; padding-top: 15px; border-top: 1px solid rgb(56,62,73)">
+            <div class="col-md-12 row justify-content-center">
+                <span jhiTranslate="global.messages.info.register.noaccount">New to PlayerFinder?</span>
+
+                <a class="alert-link" style="color: rgb(56,62,73);padding-left: 10px;" (click)="register()"
+                   jhiTranslate="global.messages.info.register.link">
+                    Join now!
+                </a>
+
+                <i class="fa fa-arrow-right" style="color: rgb(56,62,73); padding-left: 5px;" (click)="register()"aria-hidden="true"></i>
+
+            </div>
+        </div>
+    </div>
+</div>

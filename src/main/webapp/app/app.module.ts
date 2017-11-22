@@ -8,9 +8,13 @@ import { PlayerFinderHomeModule } from './home/home.module';
 import { PlayerFinderAdminModule } from './admin/admin.module';
 import { PlayerFinderAccountModule } from './account/account.module';
 import { PlayerFinderEntityModule } from './entities/entity.module';
+import { PlayerFinderCustomsModule } from './_customs/customs.module';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
+
+// Mine
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
@@ -36,6 +40,8 @@ import {
         PlayerFinderAccountModule,
         PlayerFinderEntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
+        AngularFontAwesomeModule,
+        PlayerFinderCustomsModule,
     ],
     declarations: [
         JhiMainComponent,

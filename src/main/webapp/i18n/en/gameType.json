@@ -4,7 +4,8 @@
             "home": {
                 "title": "Game Types",
                 "createLabel": "Create a new Game Type",
-                "createOrEditLabel": "Create or edit a Game Type"
+                "createOrEditLabel": "Create or edit a Game Type",
+                "search": "Search for Game Type"
             },
             "created": "A new Game Type is created with identifier {{ param }}",
             "updated": "A Game Type is updated with identifier {{ param }}",

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Account, LoginModalService, Principal } from '../shared';
+import { Account, Principal } from '../shared';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'jhi-home',
@@ -10,7 +11,6 @@ import { Account, LoginModalService, Principal } from '../shared';
     styleUrls: [
         'home.css'
     ]
-
 })
 export class HomeComponent implements OnInit {
     account: Account;
@@ -18,14 +18,17 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private principal: Principal,
-        private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private router: Router
     ) {
     }
 
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.account = account;
+            if (account !== null ) {
+                this.router.navigate(['/games']);
+            }
         });
         this.registerAuthenticationSuccess();
     }
@@ -43,6 +46,6 @@ export class HomeComponent implements OnInit {
     }
 
     login() {
-        this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']);
     }
 }

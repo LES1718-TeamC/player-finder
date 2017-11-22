@@ -1,0 +1,66 @@
+.footer-distributed {
+    background-color: #383E49;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    font: normal 16px sans-serif;
+
+    padding: 45px 50px;
+    /*margin-top: 80px;*/
+}
+
+.footer-row {
+    margin: 10px auto;
+}
+
+.footer-distributed .footer-row  p {
+    color: #CCCCCC;
+    font-size: 14px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-distributed .footer-row  p:hover {
+    color: #FFFFFF;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-row {
+    margin-top: 6px;
+    max-width: 180px;
+}
+
+.footer-distributed .footer-row  a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #33383b;
+    border-radius: 2px;
+
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 35px;
+
+    margin: 0 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+    .footer-distributed .footer-row ,
+    .footer-distributed {
+        text-align: center;
+    }
+
+    .footer-distributed .footer-row  {
+        float: none;
+        margin: 0 auto 20px;
+    }
+
+    .footer-distributed .footer-row  p.footer-links {
+        line-height: 1.8;
+    }
+}

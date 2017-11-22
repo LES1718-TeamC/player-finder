@@ -1,24 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-
-import { LoginModalService } from '../../shared';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'jhi-register',
     templateUrl: './social-register.component.html'
 })
-export class SocialRegisterComponent implements OnInit  {
+export class SocialRegisterComponent implements OnInit {
     success: boolean;
     error: boolean;
     provider: string;
     providerLabel: string;
     modalRef: NgbModalRef;
 
-    constructor(
-        private route: ActivatedRoute,
-        private loginModalService: LoginModalService
-    ) {
+    constructor(private route: ActivatedRoute,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -33,6 +29,7 @@ export class SocialRegisterComponent implements OnInit  {
     }
 
     login() {
-        this.modalRef = this.loginModalService.open();
+        // this.modalRef = this.loginModalService.open();
+        this.router.navigate(['/login']);
     }
 }

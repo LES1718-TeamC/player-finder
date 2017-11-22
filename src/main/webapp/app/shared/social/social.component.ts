@@ -9,6 +9,7 @@ import { CSRFService } from '../auth/csrf.service';
 export class JhiSocialComponent implements OnInit {
     @Input() provider: string;
     label: string;
+    icon: string;
     providerSetting: string;
     providerURL: string;
     csrf: string;
@@ -19,8 +20,9 @@ export class JhiSocialComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.icon = `<i class="fa fa-${this.provider}" aria-hidden="true"></i>`;
         this.label = this.provider.charAt(0).toUpperCase() + this.provider.slice(1);
-        this.providerSetting = this.socialService.getProviderSetting(this.provider);
+        // this.providerSetting = this.socialService.getProviderSetting(this.provider);
         this.providerURL = this.socialService.getProviderURL(this.provider);
         this.csrf = this.csrfService.getCSRF();
     }
