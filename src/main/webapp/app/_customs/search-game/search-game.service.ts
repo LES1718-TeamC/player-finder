@@ -5,7 +5,7 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Game } from './games.model';
+import { Game } from './search-game.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()

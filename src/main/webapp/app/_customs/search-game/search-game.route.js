@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var shared_1 = require("../../shared");
-var games_component_1 = require("./games.component");
+var games_component_1 = require("./search-game.component");
 var games_detail_component_1 = require("./games-detail.component");
 var games_dialog_component_1 = require("./games-dialog.component");
 var games_delete_dialog_component_1 = require("./games-delete-dialog.component");
@@ -34,7 +34,7 @@ exports.GamesResolvePagingParams = GamesResolvePagingParams;
 exports.gameRoute = [
     {
         path: 'games',
-        component: games_component_1.GamesComponent,
+        component: games_component_1.SearchGameComponent,
         resolve: {
             'pagingParams': GamesResolvePagingParams
         },

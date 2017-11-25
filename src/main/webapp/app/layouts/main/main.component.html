@@ -1,13 +1,28 @@
 <jhi-page-ribbon></jhi-page-ribbon>
 <!--<div>-->
-    <router-outlet name="navbar"></router-outlet>
-<div style="background-color: #FFFFFF; padding: 30px 10px;">
-<!--<div class="container-fluid">-->
+<router-outlet name="navbar"></router-outlet>
+
+<!--<div style="{{ (this.router.url !== '/') ? 'padding: 1000px 10px;' : 'padding: 100px;'}}">-->
+<div *ngIf="this.router.url === '/'">
+    <!--<div class="container-fluid">-->
     <!--<div class="card jh-card">-->
-        <router-outlet></router-outlet>
-        <router-outlet name="popup"></router-outlet>
-    <!--</div>-->
+    <router-outlet></router-outlet>
+    <router-outlet name="popup"></router-outlet>
 </div>
+
+
+
+
+<div *ngIf="this.router.url !== '/'" style="padding: 30px 10px;">
+    <!--<div class="container-fluid">-->
+    <!--<div class="card jh-card">-->
+    <router-outlet></router-outlet>
+    <router-outlet name="popup"></router-outlet>
+</div>
+
+
+
+
 <div>
     <jhi-footer></jhi-footer>
 </div>

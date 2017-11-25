@@ -4,9 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Game } from './games.model';
+import { Game } from './search-game.model';
 import { GamePopupService } from './games-popup.service';
-import { GameService } from './games.service';
+import { GameService } from './search-game.service';
 
 @Component({
     selector: 'jhi-game-delete-dialog',

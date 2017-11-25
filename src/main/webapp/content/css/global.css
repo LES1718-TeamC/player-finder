@@ -1,13 +1,17 @@
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
+/*html{*/
+    /*background-color: #FFFFFF;*/
+/*}*/
 
 body, h1, h2, h3, h4 {
     font-weight: 300;
 }
 
 body {
-    background: #e4e5e6;
+    /*background: #e4e5e6;*/
+    background-color: #FFFFFF;
 }
 
 a {

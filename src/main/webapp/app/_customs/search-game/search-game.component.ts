@@ -3,16 +3,16 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 import {JhiAlertService, JhiEventManager, JhiPaginationUtil, JhiParseLinks} from 'ng-jhipster';
 
-import {Game} from './games.model';
-import {GameService} from './games.service';
+import {Game} from './search-game.model';
+import {GameService} from './search-game.service';
 import {ITEMS_PER_PAGE, Principal, ResponseWrapper} from '../../shared';
 import {PaginationConfig} from '../../blocks/config/uib-pagination.config';
 
 @Component({
     selector: 'jhi-game',
-    templateUrl: './games.component.html'
+    templateUrl: './search-game.component.html'
 })
-export class GamesComponent implements OnInit, OnDestroy {
+export class SearchGameComponent implements OnInit, OnDestroy {
 
     currentAccount: any;
     games: Game[];

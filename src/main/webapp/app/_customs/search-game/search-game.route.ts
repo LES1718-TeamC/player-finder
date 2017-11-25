@@ -4,7 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActiva
 import { UserRouteAccessService } from '../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
-import { GamesComponent } from './games.component';
+import { SearchGameComponent } from './search-game.component';
 import { GameDetailComponent } from './games-detail.component';
 import { GamePopupComponent } from './games-dialog.component';
 import { GameDeletePopupComponent } from './games-delete-dialog.component';
@@ -27,8 +27,8 @@ export class GamesResolvePagingParams implements Resolve<any> {
 
 export const gameRoute: Routes = [
     {
-        path: 'games',
-        component: GamesComponent,
+        path: 'games/search',
+        component: SearchGameComponent,
         resolve: {
             'pagingParams': GamesResolvePagingParams
         },
@@ -37,46 +37,47 @@ export const gameRoute: Routes = [
             pageTitle: 'playerFinderApp.game.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
-        path: 'game/:id',
-        component: GameDetailComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'playerFinderApp.game.home.title'
-        },
-        canActivate: [UserRouteAccessService]
-    }
+    },
+    // {
+    //     path: 'game/:id',
+    //     component: GameDetailComponent,
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'playerFinderApp.game.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService]
+    // }
 ];
 
 export const gamePopupRoute: Routes = [
-    {
-        path: 'game-new',
-        component: GamePopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'playerFinderApp.game.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
-    {
-        path: 'game/:id/edit',
-        component: GamePopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'playerFinderApp.game.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
-    {
-        path: 'game/:id/delete',
-        component: GameDeletePopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'playerFinderApp.game.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    }
+    // {
+    //     path: 'game-new',
+    //     component: GamePopupComponent,
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'playerFinderApp.game.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // },
+    // {
+    //     path: 'game/:id/edit',
+    //     component: GamePopupComponent,
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'playerFinderApp.game.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // },
+    // {
+    //     path: 'game/:id/delete',
+    //     component: GameDeletePopupComponent,
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'playerFinderApp.game.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // }
 ];

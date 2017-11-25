@@ -6,7 +6,7 @@ import { PlayerFinderAdminModule } from '../../admin/admin.module';
 import {
     GameService,
     GamePopupService,
-    GamesComponent,
+    SearchGameComponent,
     GameDetailComponent,
     GameDialogComponent,
     GamePopupComponent,
@@ -29,7 +29,7 @@ const ENTITY_STATES = [
         RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [
-        GamesComponent,
+        SearchGameComponent,
         GameDetailComponent,
         GameDialogComponent,
         GameDeleteDialogComponent,
@@ -37,7 +37,7 @@ const ENTITY_STATES = [
         GameDeletePopupComponent,
     ],
     entryComponents: [
-        GamesComponent,
+        SearchGameComponent,
         GameDialogComponent,
         GamePopupComponent,
         GameDeleteDialogComponent,
@@ -50,4 +50,4 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PlayerFinderGamesModule {}
+export class PlayerFinderSearchGameModule {}

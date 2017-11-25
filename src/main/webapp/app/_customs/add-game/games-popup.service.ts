@@ -2,8 +2,8 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
-import { Game } from './games.model';
-import { GameService } from './games.service';
+import { Game } from './add-game.model';
+import { GameService } from './add-game.service';
 
 @Injectable()
 export class GamePopupService {

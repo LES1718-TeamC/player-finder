@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Game } from './games.model';
-import { GameService } from './games.service';
+import { Game } from './search-game.model';
+import { GameService } from './search-game.service';
 
 @Component({
     selector: 'jhi-game-detail',
