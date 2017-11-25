@@ -67,6 +67,11 @@ export class AddGameComponent implements OnInit {
             }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
+
+    clear() {
+        return null;
+    }
+
     save() {
         this.isSaving = true;
         if (this.game.id !== undefined) {

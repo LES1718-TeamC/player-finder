@@ -25,6 +25,7 @@ exclude_paths:
   - spec/**/*
   - benchmarks/**/*
   - target/**/*
-  - '*.min.js'
+  - '*.js'
   - '**/tests/**'
-  - '**.js'
+  - '**.min.js'
+
