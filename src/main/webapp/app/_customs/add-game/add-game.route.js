@@ -34,7 +34,7 @@ exports.GamesResolvePagingParams = GamesResolvePagingParams;
 exports.gameRoute = [
     {
         path: 'games',
-        component: games_component_1.AddGameComponent,
+        component: games_component_1.SearchGameComponent,
         resolve: {
             'pagingParams': GamesResolvePagingParams
         },

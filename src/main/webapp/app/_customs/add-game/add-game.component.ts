@@ -1,18 +1,17 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Response} from '@angular/http';
 
 import {Observable} from 'rxjs/Rx';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
 import {Game} from './add-game.model';
 import {GameService} from './add-game.service';
-import { Location, LocationService } from '../../entities/location';
-import { GameType, GameTypeService } from '../../entities/game-type';
+import {Location, LocationService} from '../../entities/location';
+import {GameType, GameTypeService} from '../../entities/game-type';
 import {ResponseWrapper, User, UserService} from '../../shared';
 
 @Component({
-    selector: 'jhi-game',
+    selector: 'jhi-add-game',
     templateUrl: './add-game.component.html'
 })
 export class AddGameComponent implements OnInit {
@@ -24,10 +23,9 @@ export class AddGameComponent implements OnInit {
 
     users: User[];
 
-    typeofgames: GameType[];
+    typeOfGames: GameType[];
 
-    constructor(public activeModal: NgbActiveModal,
-                private jhiAlertService: JhiAlertService,
+    constructor(private jhiAlertService: JhiAlertService,
                 private gameService: GameService,
                 private locationService: LocationService,
                 private userService: UserService,
@@ -58,19 +56,15 @@ export class AddGameComponent implements OnInit {
             .query({filter: 'game-is-null'})
             .subscribe((res: ResponseWrapper) => {
                 if (!this.game.typeOfGame || !this.game.typeOfGame.id) {
-                    this.typeofgames = res.json;
+                    this.typeOfGames = res.json;
                 } else {
                     this.gameTypeService
                         .find(this.game.typeOfGame.id)
                         .subscribe((subRes: GameType) => {
-                            this.typeofgames = [subRes].concat(res.json);
+                            this.typeOfGames = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-    }
-
-    clear() {
-        this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -92,7 +86,6 @@ export class AddGameComponent implements OnInit {
     private onSaveSuccess(result: Game) {
         this.eventManager.broadcast({name: 'gameListModification', content: 'OK'});
         this.isSaving = false;
-        this.activeModal.dismiss(result);
     }
 
     private onSaveError() {

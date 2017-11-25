@@ -9,7 +9,7 @@ import {ITEMS_PER_PAGE, Principal, ResponseWrapper} from '../../shared';
 import {PaginationConfig} from '../../blocks/config/uib-pagination.config';
 
 @Component({
-    selector: 'jhi-game',
+    selector: 'jhi-search-game',
     templateUrl: './search-game.component.html'
 })
 export class SearchGameComponent implements OnInit, OnDestroy {

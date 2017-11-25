@@ -8,6 +8,10 @@ import {
     GamePopupService,
     AddGameComponent,
     GameDetailComponent,
+    GameDialogComponent,
+    GamePopupComponent,
+    GameDeletePopupComponent,
+    GameDeleteDialogComponent,
     gameRoute,
     gamePopupRoute,
     GamesResolvePagingParams,
@@ -27,9 +31,17 @@ const ENTITY_STATES = [
     declarations: [
         AddGameComponent,
         GameDetailComponent,
+        GameDialogComponent,
+        GameDeleteDialogComponent,
+        GamePopupComponent,
+        GameDeletePopupComponent,
     ],
     entryComponents: [
         AddGameComponent,
+        GameDialogComponent,
+        GamePopupComponent,
+        GameDeleteDialogComponent,
+        GameDeletePopupComponent,
     ],
     providers: [
         GameService,
