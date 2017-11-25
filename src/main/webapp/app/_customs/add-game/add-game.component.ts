@@ -9,6 +9,8 @@ import {GameService} from './add-game.service';
 import {Location, LocationService} from '../../entities/location';
 import {GameType, GameTypeService} from '../../entities/game-type';
 import {ResponseWrapper, User, UserService} from '../../shared';
+import {ActivatedRoute} from '@angular/router';
+import {Principal} from "../../shared/auth/principal.service";
 
 @Component({
     selector: 'jhi-add-game',
@@ -23,14 +25,22 @@ export class AddGameComponent implements OnInit {
 
     users: User[];
 
-    typeOfGames: GameType[];
+    gameTypes: GameType[];
 
-    constructor(private jhiAlertService: JhiAlertService,
+    constructor(private principal: Principal,
+                private jhiAlertService: JhiAlertService,
                 private gameService: GameService,
                 private locationService: LocationService,
                 private userService: UserService,
                 private gameTypeService: GameTypeService,
-                private eventManager: JhiEventManager) {
+                private eventManager: JhiEventManager,
+                private route: ActivatedRoute) {
+        // this.route.params.subscribe(params => {
+        //     if (params['id'] === null) {
+                this.game = new Game();
+            // }
+            // In a real app: dispatch action to load the details here.
+        // });
     }
 
     ngOnInit() {
@@ -48,39 +58,45 @@ export class AddGameComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.userService.query()
-            .subscribe((res: ResponseWrapper) => {
-                this.users = res.json;
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        // this.userService.query()
+        //     .subscribe((res: ResponseWrapper) => {
+        //         this.users = res.json;
+        //     }, (res: ResponseWrapper) => this.onError(res.json));
         this.gameTypeService
             .query({filter: 'game-is-null'})
             .subscribe((res: ResponseWrapper) => {
                 if (!this.game.typeOfGame || !this.game.typeOfGame.id) {
-                    this.typeOfGames = res.json;
+                    this.gameTypes = res.json;
                 } else {
                     this.gameTypeService
                         .find(this.game.typeOfGame.id)
                         .subscribe((subRes: GameType) => {
-                            this.typeOfGames = [subRes].concat(res.json);
+                            this.gameTypes = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
     }
-
 
     clear() {
         return null;
     }
 
     save() {
-        this.isSaving = true;
-        if (this.game.id !== undefined) {
-            this.subscribeToSaveResponse(
-                this.gameService.update(this.game));
-        } else {
-            this.subscribeToSaveResponse(
-                this.gameService.create(this.game));
-        }
+        this.principal.identity().then((account) => {
+            this.game.players = [];
+            this.game.owner = account;
+            // this.game.status = "ACTIVE";
+            console.log(this.game);
+            this.isSaving = true;
+        });
+
+    //     if (this.game.id !== undefined) {
+    //         this.subscribeToSaveResponse(
+    //             this.gameService.update(this.game));
+    //     } else {
+    //         this.subscribeToSaveResponse(
+    //             this.gameService.create(this.game));
+    //     }
     }
 
     private subscribeToSaveResponse(result: Observable<Game>) {
