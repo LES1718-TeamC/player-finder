@@ -36,6 +36,18 @@ export const gameRoute: Routes = [
         },
         canActivate: [UserRouteAccessService]
     },
+    {
+        path: 'games/edit/:id',
+        component: NewGameComponent,
+        resolve: {
+            'pagingParams': GamesResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'playerFinderApp.game.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
     // {
     //     path: 'game/:id',
     //     component: GameDetailComponent,

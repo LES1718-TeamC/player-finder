@@ -4,12 +4,12 @@ import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
-import {Game} from './new-game.model';
+import {Game, GameStatus} from './new-game.model';
 import {GameService} from './new-game.service';
 import {Location, LocationService} from '../../entities/location';
 import {GameType, GameTypeService} from '../../entities/game-type';
 import {ResponseWrapper, User} from '../../shared';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Principal} from '../../shared/auth/principal.service';
 
 @Component({
@@ -17,6 +17,7 @@ import {Principal} from '../../shared/auth/principal.service';
     templateUrl: './new-game.component.html'
 })
 export class NewGameComponent implements OnInit {
+    routeSub: any;
     game: Game;
     isSaving: boolean;
 
@@ -32,13 +33,26 @@ export class NewGameComponent implements OnInit {
                 private locationService: LocationService,
                 private gameTypeService: GameTypeService,
                 private eventManager: JhiEventManager,
-                private route: ActivatedRoute) {
-        // this.route.params.subscribe(params => {
-        //     if (params['id'] === null) {
-        this.game = new Game();
-        // }
-        // In a real app: dispatch action to load the details here.
-        // });
+                private route: ActivatedRoute,
+                private router: Router) {
+        this.routeSub = this.route.params.subscribe((params) => {
+            if (params['id']) {
+                this.load(params['id']);
+            } else {
+                this.game = new Game();
+            }
+        });
+    }
+
+    load(id) {
+        this.gameService.find(id).subscribe((game) => {
+            this.principal.identity().then((account) => {
+                if (account.id !== game.owner.id) {
+                    this.router.navigate(['/']).then();
+                }
+                this.game = game;
+            });
+        });
     }
 
     ngOnInit() {
@@ -77,20 +91,17 @@ export class NewGameComponent implements OnInit {
 
     save() {
         this.principal.identity().then((account) => {
-            this.game.players = [];
+            this.game.players = this.game.players === undefined ? [] : this.game.players;
             this.game.owner = account;
-            // this.game.status = "ACTIVE";
-            console.log(this.game);
+            this.game.gameStatus = GameStatus.ACTIVE;
             this.isSaving = true;
-        });
 
-        //     if (this.game.id !== undefined) {
-        //         this.subscribeToSaveResponse(
-        //             this.gameService.update(this.game));
-        //     } else {
-        //         this.subscribeToSaveResponse(
-        //             this.gameService.create(this.game));
-        //     }
+            if (this.game.id !== undefined) {
+                this.subscribeToSaveResponse(this.gameService.update(this.game));
+            } else {
+                this.subscribeToSaveResponse(this.gameService.create(this.game));
+            }
+        });
     }
 
     trackLocationById(index: number, item: Location) {
@@ -105,16 +116,16 @@ export class NewGameComponent implements OnInit {
         return item.id;
     }
 
-    getSelected(selectedVals: Array<any>, option: any) {
-        if (selectedVals) {
-            for (let i = 0; i < selectedVals.length; i++) {
-                if (option.id === selectedVals[i].id) {
-                    return selectedVals[i];
-                }
-            }
-        }
-        return option;
-    }
+    // getSelected(selectedVals: Array<any>, option: any) {
+    //     if (selectedVals) {
+    //         for (let i = 0; i < selectedVals.length; i++) {
+    //             if (option.id === selectedVals[i].id) {
+    //                 return selectedVals[i];
+    //             }
+    //         }
+    //     }
+    //     return option;
+    // }
 
     private subscribeToSaveResponse(result: Observable<Game>) {
         result.subscribe((res: Game) =>
@@ -124,6 +135,7 @@ export class NewGameComponent implements OnInit {
     private onSaveSuccess(result: Game) {
         this.eventManager.broadcast({name: 'gameListModification', content: 'OK'});
         this.isSaving = false;
+        this.router.navigate(['/games']).then();
     }
 
     private onSaveError() {

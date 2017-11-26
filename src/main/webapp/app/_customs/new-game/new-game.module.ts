@@ -5,7 +5,6 @@ import {PlayerFinderAdminModule} from '../../admin/admin.module';
 import {CustomFormsModule} from 'ng2-validation';
 
 import {
-    NewGameComponent,
     GameDeleteDialogComponent,
     GameDeletePopupComponent,
     GameDetailComponent,
@@ -16,6 +15,7 @@ import {
     gameRoute,
     GameService,
     GamesResolvePagingParams,
+    NewGameComponent,
 } from './';
 
 const ENTITY_STATES = [

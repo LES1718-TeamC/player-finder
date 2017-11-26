@@ -127,7 +127,9 @@ var GamePopupComponent = /** @class */ (function () {
         });
     };
     GamePopupComponent.prototype.ngOnDestroy = function () {
-        this.routeSub.unsubscribe();
+        if ( this.routeSub !== undefined) {
+            this.routeSub.unsubscribe();
+        }
     };
     GamePopupComponent = __decorate([
         core_1.Component({
