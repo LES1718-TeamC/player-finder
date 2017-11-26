@@ -5,12 +5,8 @@ import { PlayerFinderSharedModule } from '../../shared';
 import {
     GameTypeService,
     GameTypePopupService,
-    GameTypeComponent,
-    GameTypeDetailComponent,
     GameTypeDialogComponent,
     GameTypePopupComponent,
-    GameTypeDeletePopupComponent,
-    GameTypeDeleteDialogComponent,
     gameTypeRoute,
     gameTypePopupRoute,
     GameTypeResolvePagingParams,
@@ -27,19 +23,12 @@ const ENTITY_STATES = [
         RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [
-        GameTypeComponent,
-        GameTypeDetailComponent,
         GameTypeDialogComponent,
-        GameTypeDeleteDialogComponent,
         GameTypePopupComponent,
-        GameTypeDeletePopupComponent,
     ],
     entryComponents: [
-        GameTypeComponent,
         GameTypeDialogComponent,
         GameTypePopupComponent,
-        GameTypeDeleteDialogComponent,
-        GameTypeDeletePopupComponent,
     ],
     providers: [
         GameTypeService,

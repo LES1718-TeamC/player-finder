@@ -5,7 +5,6 @@ import { PlayerFinderSharedModule } from '../../shared';
 import {
     LocationService,
     LocationPopupService,
-    LocationComponent,
     LocationDialogComponent,
     LocationPopupComponent,
     locationRoute,
@@ -24,12 +23,10 @@ const ENTITY_STATES = [
         RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [
-        LocationComponent,
         LocationDialogComponent,
         LocationPopupComponent,
     ],
     entryComponents: [
-        LocationComponent,
         LocationDialogComponent,
         LocationPopupComponent,
     ],
