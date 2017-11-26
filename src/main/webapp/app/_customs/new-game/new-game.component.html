@@ -23,7 +23,7 @@
                            for="field_title">Title</label>
                     <input type="text" class="form-control" name="title" id="field_title"
                            [(ngModel)]="game.title" required maxlength="35"/>
-                    <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                    <div [hidden]="editForm.controls.title?.errors !== null && !isSaving">
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.title?.errors?.required"
                                jhiTranslate="entity.validation.required">
@@ -88,7 +88,7 @@
                                [(ngModel)]="game.beginTime"
                                required/>
                     </div>
-                    <div [hidden]="!(editForm.controls.beginTime?.dirty && editForm.controls.beginTime?.invalid)">
+                    <div [hidden]="editForm.controls.beginTime?.errors !== null && !isSaving">
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.beginTime?.errors?.required"
                                jhiTranslate="entity.validation.required">
@@ -108,8 +108,8 @@
                         Duration (h)
                     </label>
                     <input type="number" class="form-control" name="duration" id="field_duration"
-                           [(ngModel)]="game.duration" required/>
-                    <div [hidden]="!(editForm.controls.duration?.dirty && editForm.controls.duration?.invalid)">
+                           [(ngModel)]="game.duration" [gt]="0" required/>
+                    <div [hidden]="editForm.controls.duration?.errors !== null && !isSaving">
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.duration?.errors?.required"
                                jhiTranslate="entity.validation.required">
@@ -121,9 +121,9 @@
                             This field should be a number.
                         </small>
                         <small class="form-text text-danger"
-                               [hidden]="!editForm.controls.duration?.errors?."
+                               [hidden]="!editForm.controls.duration?.errors?.gt"
                                jhiTranslate="entity.validation.number">
-                            This field should be a number.
+                            This field should be greater then 0.
                         </small>
                     </div>
                 </div>
@@ -134,8 +134,8 @@
                            for="field_numberOfPlayers">Number Of Players</label>
                     <input type="number" class="form-control" name="numberOfPlayers" id="field_numberOfPlayers"
                            [(ngModel)]="game.numberOfPlayers" required min="1"/>
-                    <div
-                        [hidden]="!(editForm.controls.numberOfPlayers?.dirty && editForm.controls.numberOfPlayers?.invalid)">
+                    <div [hidden]="editForm.controls.numberOfPlayers?.errors !== null && !isSaving">
+
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.numberOfPlayers?.errors?.required"
                                jhiTranslate="entity.validation.required">
@@ -159,9 +159,9 @@
                     <label class="form-control-label" jhiTranslate="playerFinderApp.game.numberOfSlots"
                            for="field_numberOfSlots">Number Of Slots</label>
                     <input type="number" class="form-control" name="numberOfSlots" id="field_numberOfSlots"
-                           [(ngModel)]="game.numberOfSlots" required min="1"/>
-                    <div
-                        [hidden]="!(editForm.controls.numberOfSlots?.dirty && editForm.controls.numberOfSlots?.invalid)">
+                           [(ngModel)]="game.numberOfSlots" required min="1" max="{{game.numberOfPlayers}}"/>
+                    <div [hidden]="editForm.controls.numberOfSlots?.errors !== null && !isSaving">
+
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.numberOfSlots?.errors?.required"
                                jhiTranslate="entity.validation.required">
@@ -186,7 +186,7 @@
                            for="field_description">Description</label>
                     <input type="text" class="form-control" name="description" id="field_description"
                            [(ngModel)]="game.description" maxlength="100"/>
-                    <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                    <div [hidden]="editForm.controls.description?.errors !== null && !isSaving">
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.description?.errors?.maxlength"
                                jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
@@ -194,23 +194,6 @@
                         </small>
                     </div>
                 </div>
-
-                <!--<div class="form-group">-->
-                <!--<label jhiTranslate="playerFinderApp.game.players" for="field_players">Players</label>-->
-                <!--<select class="form-control" id="field_players" multiple name="players" [(ngModel)]="game.players">-->
-                <!--<option [ngValue]="getSelected(game.players, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>-->
-                <!--</select>-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                <!--<label jhiTranslate="playerFinderApp.game.players" for="field_players">Players</label>-->
-                <!--<select class="form-control" id="field_players" multiple name="players"-->
-                <!--[(ngModel)]="game.players">-->
-                <!--<option [ngValue]="getSelected(game.players, userOption)"-->
-                <!--*ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}-->
-                <!--</option>-->
-                <!--</select>-->
-                <!--</div>-->
 
                 <div class="footer">
                     <button type="button" class="btn btn-secondary" (click)="clear()">

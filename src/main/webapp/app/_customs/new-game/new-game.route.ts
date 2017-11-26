@@ -4,7 +4,7 @@ import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Routes} from '@ang
 import {UserRouteAccessService} from '../../shared';
 import {JhiPaginationUtil} from 'ng-jhipster';
 
-import {AddGameComponent} from './new-game.component';
+import {NewGameComponent} from './new-game.component';
 
 @Injectable()
 export class GamesResolvePagingParams implements Resolve<any> {
@@ -26,7 +26,7 @@ export class GamesResolvePagingParams implements Resolve<any> {
 export const gameRoute: Routes = [
     {
         path: 'games/new',
-        component: AddGameComponent,
+        component: NewGameComponent,
         resolve: {
             'pagingParams': GamesResolvePagingParams
         },

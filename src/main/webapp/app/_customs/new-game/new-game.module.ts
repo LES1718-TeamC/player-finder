@@ -1,19 +1,20 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {PlayerFinderSharedModule} from '../../shared';
+import {PlayerFinderAdminModule} from '../../admin/admin.module';
+import {CustomFormsModule} from 'ng2-validation';
 
-import { PlayerFinderSharedModule } from '../../shared';
-import { PlayerFinderAdminModule } from '../../admin/admin.module';
 import {
-    GameService,
-    GamePopupService,
-    AddGameComponent,
+    NewGameComponent,
+    GameDeleteDialogComponent,
+    GameDeletePopupComponent,
     GameDetailComponent,
     GameDialogComponent,
     GamePopupComponent,
-    GameDeletePopupComponent,
-    GameDeleteDialogComponent,
-    gameRoute,
     gamePopupRoute,
+    GamePopupService,
+    gameRoute,
+    GameService,
     GamesResolvePagingParams,
 } from './';
 
@@ -26,10 +27,11 @@ const ENTITY_STATES = [
     imports: [
         PlayerFinderSharedModule,
         PlayerFinderAdminModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        RouterModule.forRoot(ENTITY_STATES, {useHash: true}),
+        CustomFormsModule
     ],
     declarations: [
-        AddGameComponent,
+        NewGameComponent,
         GameDetailComponent,
         GameDialogComponent,
         GameDeleteDialogComponent,
@@ -37,7 +39,7 @@ const ENTITY_STATES = [
         GameDeletePopupComponent,
     ],
     entryComponents: [
-        AddGameComponent,
+        NewGameComponent,
         GameDialogComponent,
         GamePopupComponent,
         GameDeleteDialogComponent,
@@ -50,4 +52,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PlayerFinderAddGameModule {}
+export class PlayerFinderAddGameModule {
+}
