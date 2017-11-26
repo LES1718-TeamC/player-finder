@@ -70,8 +70,8 @@ var GameService = /** @class */ (function () {
         var entity = Object.assign(new games_model_1.Game(), json);
         entity.beginTime = this.dateUtils
             .convertDateTimeFromServer(json.beginTime);
-        entity.endTime = this.dateUtils
-            .convertDateTimeFromServer(json.endTime);
+        entity.duration = this.dateUtils
+            .convertDateTimeFromServer(json.duration);
         return entity;
     };
     /**
@@ -80,7 +80,7 @@ var GameService = /** @class */ (function () {
     GameService.prototype.convert = function (game) {
         var copy = Object.assign({}, game);
         copy.beginTime = this.dateUtils.toDate(game.beginTime);
-        copy.endTime = this.dateUtils.toDate(game.endTime);
+        copy.duration = this.dateUtils.toDate(game.duration);
         return copy;
     };
     GameService = __decorate([

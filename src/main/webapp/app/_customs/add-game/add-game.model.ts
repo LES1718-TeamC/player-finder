@@ -1,7 +1,6 @@
 import { BaseEntity, User } from './../../shared';
 
 export const enum GameStatus {
-    'PENDING',
     'ACTIVE',
     'CANCELED',
     'FINISHED',
@@ -13,9 +12,9 @@ export class Game implements BaseEntity {
         public id?: number,
         public title?: string,
         public beginTime?: any,
-        public endTime?: any,
+        public duration?: any,
         public numberOfPlayers?: number,
-        public requiredNumberOfPlayers?: number,
+        public numberOfSlots?: number,
         public gameStatus?: GameStatus,
         public description?: string,
         public location?: BaseEntity,

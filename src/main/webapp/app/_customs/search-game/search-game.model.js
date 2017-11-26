@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Game = /** @class */ (function () {
-    function Game(id, title, beginTime, endTime, numberOfPlayers, requiredNumberOfPlayers, gameStatus, description, location, owner, typeOfGame, players) {
+    function Game(id, title, beginTime, duration, numberOfPlayers, numberOfSlots, gameStatus, description, location, owner, typeOfGame, players) {
         this.id = id;
         this.title = title;
         this.beginTime = beginTime;
-        this.endTime = endTime;
+        this.duration = duration;
         this.numberOfPlayers = numberOfPlayers;
-        this.requiredNumberOfPlayers = requiredNumberOfPlayers;
+        this.numberOfSlots = numberOfSlots;
         this.gameStatus = gameStatus;
         this.description = description;
         this.location = location;

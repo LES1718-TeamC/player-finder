@@ -71,8 +71,8 @@ export class GameService {
         const entity: Game = Object.assign(new Game(), json);
         entity.beginTime = this.dateUtils
             .convertDateTimeFromServer(json.beginTime);
-        entity.endTime = this.dateUtils
-            .convertDateTimeFromServer(json.endTime);
+        entity.duration = this.dateUtils
+            .convertDateTimeFromServer(json.duration);
         return entity;
     }
 
@@ -84,7 +84,7 @@ export class GameService {
 
         copy.beginTime = this.dateUtils.toDate(game.beginTime);
 
-        copy.endTime = this.dateUtils.toDate(game.endTime);
+        copy.duration = this.dateUtils.toDate(game.duration);
         return copy;
     }
 }
