@@ -4,20 +4,20 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Game } from './add-game.model';
-import { GamePopupService } from './games-popup.service';
-import { GameService } from './add-game.service';
+import { GameType } from './game-type.model';
+import { GameTypePopupService } from './game-type-popup.service';
+import { GameTypeService } from './game-type.service';
 
 @Component({
-    selector: 'jhi-game-delete-dialog',
-    templateUrl: './games-delete-dialog.component.html'
+    selector: 'jhi-game-type-delete-dialog',
+    templateUrl: './game-type-delete-dialog.component.html'
 })
-export class GameDeleteDialogComponent {
+export class GameTypeDeleteDialogComponent {
 
-    game: Game;
+    gameType: GameType;
 
     constructor(
-        private gameService: GameService,
+        private gameTypeService: GameTypeService,
         public activeModal: NgbActiveModal,
         private eventManager: JhiEventManager
     ) {
@@ -28,10 +28,10 @@ export class GameDeleteDialogComponent {
     }
 
     confirmDelete(id: number) {
-        this.gameService.delete(id).subscribe((response) => {
+        this.gameTypeService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
-                name: 'gameListModification',
-                content: 'Deleted an game'
+                name: 'gameTypeListModification',
+                content: 'Deleted an gameType'
             });
             this.activeModal.dismiss(true);
         });
@@ -39,22 +39,22 @@ export class GameDeleteDialogComponent {
 }
 
 @Component({
-    selector: 'jhi-game-delete-popup',
+    selector: 'jhi-game-type-delete-popup',
     template: ''
 })
-export class GameDeletePopupComponent implements OnInit, OnDestroy {
+export class GameTypeDeletePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private gamePopupService: GamePopupService
+        private gameTypePopupService: GameTypePopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            this.gamePopupService
-                .open(GameDeleteDialogComponent as Component, params['id']);
+            this.gameTypePopupService
+                .open(GameTypeDeleteDialogComponent as Component, params['id']);
         });
     }
 

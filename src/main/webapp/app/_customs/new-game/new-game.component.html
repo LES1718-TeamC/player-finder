@@ -39,27 +39,44 @@
 
                 <!--Location-->
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="playerFinderApp.game.location" for="field_location">Location</label>
-                    <select class="form-control" id="field_location" name="location" [(ngModel)]="game.location">
-                        <!--<option [ngValue]="null"></option>-->
+                    <label class="form-control-label" jhiTranslate="playerFinderApp.game.location"
+                           for="field_location">Location</label>
+
+                    <select class="form-control" id="field_location" name="location" [(ngModel)]="game.location"
+                            disabled="{{locations !== undefined && locations.length === 0}}">
                         <option [ngValue]="locationOption.id === game.location?.id ? game.location : locationOption"
                                 *ngFor="let locationOption of locations; trackBy: trackLocationById">
                             {{locationOption.streetAddress}}
                         </option>
                     </select>
+
+                    <button type="submit"
+                            [routerLink]="['/', { outlets: { popup: 'location-new'} }]"
+                            replaceUrl="true"
+                            class="btn btn-primary btn-sm col-xs-2">
+                        <span class="fa fa-plus"></span>
+                    </button>
                 </div>
 
                 <!--Type of Game-->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="playerFinderApp.game.typeOfGame"
                            for="field_typeOfGame">Type Of Game</label>
-                    <select class="form-control" id="field_typeOfGame" name="typeOfGame" [(ngModel)]="game.typeOfGame">
+                    <select class="form-control" id="field_typeOfGame" name="typeOfGame" [(ngModel)]="game.typeOfGame"
+                            disabled="{{gameTypes !== undefined && gameTypes.length === 0}}">
                         <!--<option [ngValue]="null"></option>-->
                         <option [ngValue]="gameTypeOption.id === game.typeOfGame?.id ? game.typeOfGame : gameTypeOption"
                                 *ngFor="let gameTypeOption of gameTypes; trackBy: trackGameTypeById">
                             {{gameTypeOption.title}}
                         </option>
                     </select>
+
+                    <button type="submit"
+                            [routerLink]="['/', { outlets: { popup: 'game-type-new'} }]"
+                            replaceUrl="true"
+                            class="btn btn-primary btn-sm col-xs-2">
+                        <span class="fa fa-plus"></span>
+                    </button>
                 </div>
 
                 <!--Begin Time-->
@@ -87,7 +104,9 @@
 
                 <!--Duration-->
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="playerFinderApp.game.duration" for="field_duration">Duration</label>
+                    <label class="form-control-label" jhiTranslate="playerFinderApp.game.duration" for="field_duration">
+                        Duration (h)
+                    </label>
                     <input type="number" class="form-control" name="duration" id="field_duration"
                            [(ngModel)]="game.duration" required/>
                     <div [hidden]="!(editForm.controls.duration?.dirty && editForm.controls.duration?.invalid)">
@@ -98,6 +117,11 @@
                         </small>
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.duration?.errors?.number"
+                               jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.duration?.errors?."
                                jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>

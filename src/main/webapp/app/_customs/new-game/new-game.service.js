@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_constants_1 = require("../../app.constants");
-var games_model_1 = require("./add-game.model");
+var games_model_1 = require("./new-game.model");
 var shared_1 = require("../../shared");
 var GameService = /** @class */ (function () {
     function GameService(http, dateUtils) {

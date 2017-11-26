@@ -2,10 +2,10 @@
     "playerFinderApp": {
         "GameStatus" : {
             "null": "",
-            "ACTIVE": "ACTIVE",
-            "CANCELED": "CANCELED",
-            "FINISHED": "FINISHED",
-            "ARCHIEVED": "ARCHIEVED"
+            "ACTIVE": "ATIVO",
+            "CANCELED": "CANCELADO",
+            "FINISHED": "TERMINADO",
+            "ARCHIEVED": "ARQUIVADO"
         }
     }
 }

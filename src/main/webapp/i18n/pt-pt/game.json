@@ -2,31 +2,31 @@
     "playerFinderApp": {
         "game" : {
             "home": {
-                "title": "Games",
-                "createLabel": "Criar um(a) novo(a) Game",
-                "createOrEditLabel": "Criar ou editar um(a) Game",
-                "search": "Search for Game"
+                "title": "Jogos",
+                "createLabel": "Criar um novo jogo",
+                "createOrEditLabel": "Criar ou editar um Jogo",
+                "search": "Procurar por um jogo"
             },
-            "created": "A new Game is created with identifier {{ param }}",
-            "updated": "A Game is updated with identifier {{ param }}",
-            "deleted": "A Game is deleted with identifier {{ param }}",
+            "created": "Um novo jogo foi criado com o identificador {{ param }}",
+            "updated": "Um novo jogo foi atualizado com o identificador {{ param }}",
+            "deleted": "Um novo jogo foi eliminado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem a certeza que pretende eliminar o(a) Game {{ id }}?"
+                "question": "Tem a certeza que pretende eliminar o jogo {{ id }}?"
             },
             "detail": {
-                "title": "Game"
+                "title": "Jogo"
             },
-            "title": "Title",
-            "beginTime": "Begin Time",
-            "duration": "Duration",
-            "numberOfPlayers": "Number Of Players",
-            "numberOfSlots": "Number Of Slots",
-            "gameStatus": "Game Status",
-            "description": "Description",
-            "location": "Location",
-            "owner": "Owner",
-            "typeOfGame": "Type Of Game",
-            "players": "Players"
+            "title": "Título",
+            "beginTime": "Data de início",
+            "duration": "Duração (em horas)",
+            "numberOfPlayers": "Número de Jogadores",
+            "numberOfSlots": "Número de vagas",
+            "gameStatus": "Estado do Jogo",
+            "description": "Descrição",
+            "location": "Localização",
+            "owner": "Criadpr",
+            "typeOfGame": "Tipo de Jogo",
+            "players": "Jogadores"
         }
     }
 }

@@ -1,6 +1,6 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
-import {PlayerFinderAddGameModule} from './add-game/add-game.module';
+import {PlayerFinderAddGameModule} from './new-game/new-game.module';
 import {PlayerFinderSearchGameModule} from './search-game/search-game.module';
 // import { PlayerFinderGameTypeModule } from './game-type/game-type.module';
 // import { PlayerFinderLocationModule } from './location/location.module';

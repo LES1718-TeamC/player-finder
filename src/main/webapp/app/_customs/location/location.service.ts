@@ -3,36 +3,33 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { SERVER_API_URL } from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
-import { Game } from './add-game.model';
+import { Location } from './location.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class GameService {
+export class LocationService {
 
-    private resourceUrl = SERVER_API_URL + 'api/games';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/games';
+    private resourceUrl = SERVER_API_URL + 'api/locations';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
-    create(game: Game): Observable<Game> {
-        const copy = this.convert(game);
+    create(location: Location): Observable<Location> {
+        const copy = this.convert(location);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(game: Game): Observable<Game> {
-        const copy = this.convert(game);
+    update(location: Location): Observable<Location> {
+        const copy = this.convert(location);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    find(id: number): Observable<Game> {
+    find(id: number): Observable<Location> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -49,12 +46,6 @@ export class GameService {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }
 
-    search(req?: any): Observable<ResponseWrapper> {
-        const options = createRequestOption(req);
-        return this.http.get(this.resourceSearchUrl, options)
-            .map((res: any) => this.convertResponse(res));
-    }
-
     private convertResponse(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
         const result = [];
@@ -65,26 +56,18 @@ export class GameService {
     }
 
     /**
-     * Convert a returned JSON object to Game.
+     * Convert a returned JSON object to Location.
      */
-    private convertItemFromServer(json: any): Game {
-        const entity: Game = Object.assign(new Game(), json);
-        entity.beginTime = this.dateUtils
-            .convertDateTimeFromServer(json.beginTime);
-        entity.duration = this.dateUtils
-            .convertDateTimeFromServer(json.duration);
+    private convertItemFromServer(json: any): Location {
+        const entity: Location = Object.assign(new Location(), json);
         return entity;
     }
 
     /**
-     * Convert a Game to a JSON which can be sent to the server.
+     * Convert a Location to a JSON which can be sent to the server.
      */
-    private convert(game: Game): Game {
-        const copy: Game = Object.assign({}, game);
-
-        copy.beginTime = this.dateUtils.toDate(game.beginTime);
-
-        copy.duration = this.dateUtils.toDate(game.duration);
+    private convert(location: Location): Location {
+        const copy: Location = Object.assign({}, location);
         return copy;
     }
 }

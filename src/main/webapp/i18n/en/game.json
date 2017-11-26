@@ -18,7 +18,7 @@
             },
             "title": "Title",
             "beginTime": "Begin Time",
-            "duration": "Duration",
+            "duration": "Duration (in hours)",
             "numberOfPlayers": "Number Of Players",
             "numberOfSlots": "Number Of Slots",
             "gameStatus": "Game Status",

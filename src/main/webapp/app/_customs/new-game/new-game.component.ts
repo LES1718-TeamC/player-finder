@@ -4,17 +4,17 @@ import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
-import {Game} from './add-game.model';
-import {GameService} from './add-game.service';
+import {Game} from './new-game.model';
+import {GameService} from './new-game.service';
 import {Location, LocationService} from '../../entities/location';
 import {GameType, GameTypeService} from '../../entities/game-type';
 import {ResponseWrapper, User, UserService} from '../../shared';
 import {ActivatedRoute} from '@angular/router';
-import {Principal} from "../../shared/auth/principal.service";
+import {Principal} from '../../shared/auth/principal.service';
 
 @Component({
     selector: 'jhi-add-game',
-    templateUrl: './add-game.component.html'
+    templateUrl: './new-game.component.html'
 })
 export class AddGameComponent implements OnInit {
 

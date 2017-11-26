@@ -122,7 +122,7 @@ var GamesComponent = /** @class */ (function () {
     GamesComponent = __decorate([
         core_1.Component({
             selector: 'jhi-game',
-            templateUrl: './add-game.component.html'
+            templateUrl: './new-game.component.html'
         })
     ], GamesComponent);
     return GamesComponent;

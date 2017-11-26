@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var games_model_1 = require("./add-game.model");
+var games_model_1 = require("./new-game.model");
 var GamePopupService = /** @class */ (function () {
     function GamePopupService(datePipe, modalService, router, gameService) {
         this.datePipe = datePipe;

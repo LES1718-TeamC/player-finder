@@ -1,19 +1,17 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
-import { Game } from './add-game.model';
-import { GameService } from './add-game.service';
+import { Location } from './location.model';
+import { LocationService } from './location.service';
 
 @Injectable()
-export class GamePopupService {
+export class LocationPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
-        private gameService: GameService
+        private locationService: LocationService
 
     ) {
         this.ngbModalRef = null;
@@ -27,27 +25,23 @@ export class GamePopupService {
             }
 
             if (id) {
-                this.gameService.find(id).subscribe((game) => {
-                    game.beginTime = this.datePipe
-                        .transform(game.beginTime, 'yyyy-MM-ddTHH:mm:ss');
-                    game.duration = this.datePipe
-                        .transform(game.duration, 'yyyy-MM-ddTHH:mm:ss');
-                    this.ngbModalRef = this.gameModalRef(component, game);
+                this.locationService.find(id).subscribe((location) => {
+                    this.ngbModalRef = this.locationModalRef(component, location);
                     resolve(this.ngbModalRef);
                 });
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.gameModalRef(component, new Game());
+                    this.ngbModalRef = this.locationModalRef(component, new Location());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    gameModalRef(component: Component, game: Game): NgbModalRef {
+    locationModalRef(component: Component, location: Location): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.game = game;
+        modalRef.componentInstance.location = location;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.ngbModalRef = null;
