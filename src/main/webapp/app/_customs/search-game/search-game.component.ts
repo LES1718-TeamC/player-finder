@@ -3,16 +3,20 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 import {JhiAlertService, JhiEventManager, JhiPaginationUtil, JhiParseLinks} from 'ng-jhipster';
 
-import {Game} from './search-game.model';
-import {GameService} from './search-game.service';
+import {Game} from '../game/game.model';
+import {GameService} from '../game/game.service';
 import {ITEMS_PER_PAGE, Principal, ResponseWrapper} from '../../shared';
 import {PaginationConfig} from '../../blocks/config/uib-pagination.config';
+import {User} from '../../shared/user/user.model';
+import {Observable} from 'rxjs/Observable';
+import {DatePipe} from '@angular/common';
 
 @Component({
     selector: 'jhi-search-game',
     templateUrl: './search-game.component.html'
 })
 export class SearchGameComponent implements OnInit, OnDestroy {
+    loggedUser: User;
 
     currentAccount: any;
     games: Game[];
@@ -38,7 +42,8 @@ export class SearchGameComponent implements OnInit, OnDestroy {
                 private router: Router,
                 private eventManager: JhiEventManager,
                 private paginationUtil: JhiPaginationUtil,
-                private paginationConfig: PaginationConfig) {
+                private paginationConfig: PaginationConfig,
+                private datePipe: DatePipe) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data['pagingParams'].page;
@@ -47,24 +52,27 @@ export class SearchGameComponent implements OnInit, OnDestroy {
             this.predicate = data['pagingParams'].predicate;
         });
         this.currentSearch = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
+        this.principal.identity().then((account) => {
+            this.loggedUser = (account !== null && account.userName !== '') ? account : null;
+        });
     }
 
     loadAll() {
-        if (this.currentSearch) {
-            this.gameService.search({
-                page: this.page - 1,
-                query: this.currentSearch,
-                size: this.itemsPerPage,
-                sort: this.sort()
-            }).subscribe(
-                (res: ResponseWrapper) => {
-                    this.onSuccess(res.json, res.headers);
-                    console.log(res);
-                },
-                (res: ResponseWrapper) => this.onError(res.json)
-            );
-            return;
-        }
+        // if (this.currentSearch) {
+        //     this.gameService.search({
+        //         page: this.page - 1,
+        //         query: this.currentSearch,
+        //         size: this.itemsPerPage,
+        //         sort: this.sort()
+        //     }).subscribe(
+        //         (res: ResponseWrapper) => {
+        //             this.onSuccess(res.json, res.headers);
+        //             console.log(res);
+        //         },
+        //         (res: ResponseWrapper) => this.onError(res.json)
+        //     );
+        //     return;
+        // }
         this.gameService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
@@ -158,4 +166,55 @@ export class SearchGameComponent implements OnInit, OnDestroy {
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }
+
+
+    loggedUserIsOwner(owner) {
+        if (owner === null || this.loggedUser === null) {
+            return false;
+        }
+        return owner.id === this.loggedUser.id;
+    }
+
+    loggedUserIsParticipant(game) {
+        if (game.players == null) {
+            return false;
+        }
+        game.players.forEach(player => {
+            if (player.id === this.loggedUser.id) {
+                return true;
+            }
+        });
+        return false;
+    }
+
+    joinGame(game) {
+        if (game.players === null) {
+            game.players = [];
+        }
+        console.log(game)
+        // if (!this.loggedUserIsParticipant(game)) {
+        //     game.players.push(this.loggedUser);
+        //     game.beginTime = game.beginTime.toString();
+        //     console.log(game.players);
+        //     // this.subscribeToSaveResponse(this.gameService.update(game));
+        // }
+    }
+
+    // cancelSpot(game) {
+    //     if (game.players !== null) {
+    //         game.players = game.players.map(player => {
+    //             return player.id === this.loggedUser.id
+    //         });
+    //         this.subscribeToSaveResponse(this.gameService.update(game));
+    //     }
+    // }
+
+    private subscribeToSaveResponse(result: Observable<Game>) {
+        result.subscribe((res: Game) => this.onSaveSuccess(res));
+    }
+
+    private onSaveSuccess(result: Game) {
+        this.eventManager.broadcast({name: 'gameListModification', content: 'OK'});
+    }
+
 }

@@ -13,7 +13,6 @@ import {
     gamePopupRoute,
     GamePopupService,
     gameRoute,
-    GameService,
     GamesResolvePagingParams,
     NewGameComponent,
 } from './';
@@ -46,7 +45,6 @@ const ENTITY_STATES = [
         GameDeletePopupComponent,
     ],
     providers: [
-        GameService,
         GamePopupService,
         GamesResolvePagingParams,
     ],

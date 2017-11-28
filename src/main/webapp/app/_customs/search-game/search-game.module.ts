@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { PlayerFinderSharedModule } from '../../shared';
 import { PlayerFinderAdminModule } from '../../admin/admin.module';
 import {
-    GameService,
     GamePopupService,
     SearchGameComponent,
     GameDetailComponent,
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
         GameDeletePopupComponent,
     ],
     providers: [
-        GameService,
         GamePopupService,
         GamesResolvePagingParams,
     ],

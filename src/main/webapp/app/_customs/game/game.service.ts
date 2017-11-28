@@ -5,14 +5,13 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Game } from './new-game.model';
+import { Game } from './game.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
 export class GameService {
 
     private resourceUrl = SERVER_API_URL + 'api/games';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/games';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -49,12 +48,6 @@ export class GameService {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }
 
-    search(req?: any): Observable<ResponseWrapper> {
-        const options = createRequestOption(req);
-        return this.http.get(this.resourceSearchUrl, options)
-            .map((res: any) => this.convertResponse(res));
-    }
-
     private convertResponse(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
         const result = [];
@@ -81,7 +74,6 @@ export class GameService {
         const copy: Game = Object.assign({}, game);
 
         copy.beginTime = this.dateUtils.toDate(game.beginTime);
-
         return copy;
     }
 }

@@ -4,8 +4,8 @@ import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
-import {Game, GameStatus} from './new-game.model';
-import {GameService} from './new-game.service';
+import {Game, GameStatus} from '../game/game.model';
+import {GameService} from '../game/game.service';
 import {Location, LocationService} from '../../entities/location';
 import {GameType, GameTypeService} from '../../entities/game-type';
 import {ResponseWrapper, User} from '../../shared';
