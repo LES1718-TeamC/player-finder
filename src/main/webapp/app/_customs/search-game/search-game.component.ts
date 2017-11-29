@@ -168,7 +168,6 @@ export class SearchGameComponent implements OnInit, OnDestroy {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-
     loggedUserIsOwner(owner) {
         if (owner === null || this.loggedUser === null) {
             return false;
@@ -182,7 +181,7 @@ export class SearchGameComponent implements OnInit, OnDestroy {
             return found;
         }
 
-        game.players.forEach(player => {
+        game.players.forEach((player) => {
             if (player.id === this.loggedUser.id) {
                 found = true;
             }
@@ -204,12 +203,23 @@ export class SearchGameComponent implements OnInit, OnDestroy {
 
     cancelSpot(game) {
         if (game.players !== null) {
-            game.players = game.players.filter(player => {
+            game.players = game.players.filter((player) => {
                 return !(player.id === this.loggedUser.id);
             });
             game.beginTime = game.beginTime.toString();
             this.subscribeToSaveResponse(this.gameService.update(game));
         }
+    }
+
+    getAvailableSlots(game: Game) {
+        if (game === null || game === undefined) {
+            return 0;
+        }
+        return game.numberOfSlots - game.players.length;
+    }
+
+    hasSlotsLeft(game) {
+        return this.getAvailableSlots(game) > 0
     }
 
     private subscribeToSaveResponse(result: Observable<Game>) {

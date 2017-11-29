@@ -22,6 +22,7 @@
             "numberOfPlayers": "Number Of Players",
             "numberOfSlots": "Number Of Slots",
             "gameStatus": "Game Status",
+            "slotsAvailable": "Slots available",
             "description": "Description",
             "location": "Location",
             "owner": "Owner",

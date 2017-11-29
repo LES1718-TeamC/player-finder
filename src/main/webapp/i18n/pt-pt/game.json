@@ -21,6 +21,7 @@
             "duration": "Duração (em horas)",
             "numberOfPlayers": "Número de Jogadores",
             "numberOfSlots": "Número de vagas",
+            "slotsAvailable": "Vagas disponíveis",
             "gameStatus": "Estado do Jogo",
             "description": "Descrição",
             "location": "Localização",

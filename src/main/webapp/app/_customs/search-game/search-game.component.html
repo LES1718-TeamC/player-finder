@@ -41,6 +41,9 @@
                 <th jhiSortBy="numberOfPlayers"><span
                     jhiTranslate="playerFinderApp.game.numberOfPlayers"># Players</span> <span
                     class="fa fa-sort"></span></th>
+                <th jhiSortBy="getAvailableSlots(game)"><span
+                    jhiTranslate="playerFinderApp.game.slotsAvailable">Slots Available</span> <span
+                    class="fa fa-sort"></span></th>
                 <!--<th jhiSortBy="numberOfSlots"><span jhiTranslate="playerFinderApp.game.numberOfSlots">Required Number Of Players</span> <span class="fa fa-sort"></span></th>-->
                 <!--<th jhiSortBy="gameStatus"><span jhiTranslate="playerFinderApp.game.gameStatus">Game Status</span> <span class="fa fa-sort"></span></th>-->
                 <!--<th jhiSortBy="description"><span jhiTranslate="playerFinderApp.game.description">Description</span> <span class="fa fa-sort"></span></th>-->
@@ -61,6 +64,7 @@
                 <td>{{game.beginTime | date:'medium'}}</td>
                 <td>{{game.duration | date:'medium'}}</td>
                 <td>{{game.numberOfPlayers}}</td>
+                <td>{{getAvailableSlots(game)}}</td>
                 <!--<td>{{ game.numberOfSlots}}</td>-->
                 <!--<td jhiTranslate="{{'playerFinderApp.GameStatus.' + game.gameStatus}}">{{game.gameStatus}}</td>-->
                 <!--<td>{{game.description}}</td>-->
@@ -114,13 +118,14 @@
                                 <!--Delete-->
                             </span>
                         </button>
-
                         <!--join: for not owner and not participant-->
-                        <button *ngIf="!loggedUserIsOwner(game.owner) && !loggedUserIsParticipant(game)"
-                                type="submit"
-                                (click)="joinGame(game)"
-                                replaceUrl="true"
-                                class="btn btn-success btn-sm">
+                        <button
+                            *ngIf="!loggedUserIsOwner(game.owner) && !loggedUserIsParticipant(game)"
+                            type="submit"
+                            (click)="joinGame(game)"
+                            replaceUrl="true"
+                            [disabled]="!hasSlotsLeft(game)"
+                            class="btn btn-success btn-sm">
                             <span class="fa fa-plus"></span>
                             <span class="d-none d-md-inline">
                                   <!--jhiTranslate="entity.action.delete">-->
