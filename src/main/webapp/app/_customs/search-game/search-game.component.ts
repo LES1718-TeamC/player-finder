@@ -52,6 +52,7 @@ export class SearchGameComponent implements OnInit, OnDestroy {
             this.predicate = data['pagingParams'].predicate;
         });
         this.currentSearch = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
+        this.loggedUser = null;
         this.principal.identity().then((account) => {
             this.loggedUser = (account !== null && account.userName !== '') ? account : null;
         });
@@ -176,35 +177,37 @@ export class SearchGameComponent implements OnInit, OnDestroy {
     }
 
     loggedUserIsParticipant(game) {
-        if (game.players == null) {
-            return false;
+        let found = false;
+        if (game.players == null || this.loggedUser === null ) {
+            return found;
         }
+
         game.players.forEach(player => {
             if (player.id === this.loggedUser.id) {
-                return true;
+                found = true;
             }
         });
-        return false;
+        return found;
     }
 
     joinGame(game) {
         if (game.players === null) {
             game.players = [];
         }
-        console.log(game)
+
         if (!this.loggedUserIsParticipant(game)) {
             game.players.push(this.loggedUser);
             game.beginTime = game.beginTime.toString();
-            console.log(game.players);
             this.subscribeToSaveResponse(this.gameService.update(game));
         }
     }
 
     cancelSpot(game) {
         if (game.players !== null) {
-            game.players = game.players.map(player => {
-                return player.id === this.loggedUser.id
+            game.players = game.players.filter(player => {
+                return !(player.id === this.loggedUser.id);
             });
+            game.beginTime = game.beginTime.toString();
             this.subscribeToSaveResponse(this.gameService.update(game));
         }
     }
