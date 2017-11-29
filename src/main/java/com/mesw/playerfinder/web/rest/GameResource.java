@@ -2,13 +2,11 @@ package com.mesw.playerfinder.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mesw.playerfinder.domain.Game;
-
-import com.mesw.playerfinder.domain.User;
 import com.mesw.playerfinder.repository.GameRepository;
 import com.mesw.playerfinder.web.rest.util.HeaderUtil;
 import com.mesw.playerfinder.web.rest.util.PaginationUtil;
-import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -94,7 +91,7 @@ public class GameResource {
      */
     @GetMapping("/games")
     @Timed
-    public ResponseEntity<List<Game>> getAllGames(@ApiParam Pageable pageable, @RequestParam(value="query", required = false) String query) {
+    public ResponseEntity<List<Game>> getAllGames(@ApiParam Pageable pageable, @RequestParam(value = "query", required = false) String query) {
         log.debug("REST request to get a page of Games");
 
         Page<Game> page;

@@ -192,22 +192,22 @@ export class SearchGameComponent implements OnInit, OnDestroy {
             game.players = [];
         }
         console.log(game)
-        // if (!this.loggedUserIsParticipant(game)) {
-        //     game.players.push(this.loggedUser);
-        //     game.beginTime = game.beginTime.toString();
-        //     console.log(game.players);
-        //     // this.subscribeToSaveResponse(this.gameService.update(game));
-        // }
+        if (!this.loggedUserIsParticipant(game)) {
+            game.players.push(this.loggedUser);
+            game.beginTime = game.beginTime.toString();
+            console.log(game.players);
+            this.subscribeToSaveResponse(this.gameService.update(game));
+        }
     }
 
-    // cancelSpot(game) {
-    //     if (game.players !== null) {
-    //         game.players = game.players.map(player => {
-    //             return player.id === this.loggedUser.id
-    //         });
-    //         this.subscribeToSaveResponse(this.gameService.update(game));
-    //     }
-    // }
+    cancelSpot(game) {
+        if (game.players !== null) {
+            game.players = game.players.map(player => {
+                return player.id === this.loggedUser.id
+            });
+            this.subscribeToSaveResponse(this.gameService.update(game));
+        }
+    }
 
     private subscribeToSaveResponse(result: Observable<Game>) {
         result.subscribe((res: Game) => this.onSaveSuccess(res));
