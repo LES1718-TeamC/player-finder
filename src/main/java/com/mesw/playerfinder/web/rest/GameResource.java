@@ -3,6 +3,7 @@ package com.mesw.playerfinder.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mesw.playerfinder.domain.Game;
 
+import com.mesw.playerfinder.domain.User;
 import com.mesw.playerfinder.repository.GameRepository;
 import com.mesw.playerfinder.web.rest.util.HeaderUtil;
 import com.mesw.playerfinder.web.rest.util.PaginationUtil;
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -91,11 +93,28 @@ public class GameResource {
      */
     @GetMapping("/games")
     @Timed
-    public ResponseEntity<List<Game>> getAllGames(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<Game>> getAllGames(@ApiParam Pageable pageable, @RequestParam(value="query", required = false) String query) {
         log.debug("REST request to get a page of Games");
-        Page<Game> page = gameRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/games");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
+        Page<Game> page;
+
+        String baseUrl = "/api/games";
+
+        if (query == null) {
+            page = gameRepository.findAll(pageable);
+        } else {
+            page = gameRepository.findByTitle(pageable, query);
+            baseUrl += "/search";
+        }
+
+        List<Game> responseGames = new ArrayList<>();
+
+        for (Game game : page.getContent()) {
+            responseGames.add(gameRepository.findOneWithEagerRelationships(game.getId()));
+        }
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, baseUrl);
+        return new ResponseEntity<>(responseGames, headers, HttpStatus.OK);
     }
 
     /**
