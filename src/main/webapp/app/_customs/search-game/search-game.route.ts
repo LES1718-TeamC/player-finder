@@ -5,9 +5,6 @@ import { UserRouteAccessService } from '../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { SearchGameComponent } from './search-game.component';
-import { GameDetailComponent } from './games-detail.component';
-import { GamePopupComponent } from './games-dialog.component';
-import { GameDeletePopupComponent } from './games-delete-dialog.component';
 
 @Injectable()
 export class GamesResolvePagingParams implements Resolve<any> {

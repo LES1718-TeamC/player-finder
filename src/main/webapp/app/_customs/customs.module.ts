@@ -2,6 +2,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {PlayerFinderAddGameModule} from './new-game/new-game.module';
 import {PlayerFinderSearchGameModule} from './search-game/search-game.module';
+import {PlayerFinderGameModule} from './game/game.module';
 // import { PlayerFinderGameTypeModule } from './game-type/game-type.module';
 // import { PlayerFinderLocationModule } from './location/location.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
@@ -10,6 +11,7 @@ import {PlayerFinderSearchGameModule} from './search-game/search-game.module';
     imports: [
         PlayerFinderAddGameModule,
         PlayerFinderSearchGameModule,
+        PlayerFinderGameModule,
         // PlayerFinderGameTypeModule,
         // PlayerFinderLocationModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */

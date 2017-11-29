@@ -2,8 +2,8 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
-import { Game } from './search-game.model';
-import { GameService } from './search-game.service';
+import { Game } from '../game/game.model';
+import { GameService } from '../game/game.service';
 
 @Injectable()
 export class GamePopupService {
@@ -30,8 +30,6 @@ export class GamePopupService {
                 this.gameService.find(id).subscribe((game) => {
                     game.beginTime = this.datePipe
                         .transform(game.beginTime, 'yyyy-MM-ddTHH:mm:ss');
-                    game.duration = this.datePipe
-                        .transform(game.duration, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.gameModalRef(component, game);
                     resolve(this.ngbModalRef);
                 });

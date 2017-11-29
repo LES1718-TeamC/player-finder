@@ -12,7 +12,7 @@ export class Game implements BaseEntity {
         public id?: number,
         public title?: string,
         public beginTime?: any,
-        public duration?: any,
+        public duration?: number,
         public numberOfPlayers?: number,
         public numberOfSlots?: number,
         public gameStatus?: GameStatus,
