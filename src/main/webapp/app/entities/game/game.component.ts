@@ -65,13 +65,14 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/game'], {queryParams:
+        this.router.navigate(['/games/search'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
                 sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
             }
         });
+
         this.loadAll();
     }
 
