@@ -3,7 +3,8 @@ import {RouterModule} from '@angular/router';
 
 import {PlayerFinderSharedModule} from '../../shared';
 import {PlayerFinderAdminModule} from '../../admin/admin.module';
-import {gamePopupRoute, gameRoute, GamesResolvePagingParams,} from './';
+import {gamePopupRoute, gameRoute, GamesResolvePagingParams} from './';
+import {SearchGameComponent} from './search-game.component';
 
 const ENTITY_STATES = [
     ...gameRoute,
@@ -16,8 +17,11 @@ const ENTITY_STATES = [
         PlayerFinderAdminModule,
         RouterModule.forRoot(ENTITY_STATES, {useHash: true})
     ],
-    declarations: [],
-    entryComponents: [],
+    declarations: [
+        SearchGameComponent],
+    entryComponents: [
+        SearchGameComponent
+    ],
     providers: [
         GamesResolvePagingParams,
     ],

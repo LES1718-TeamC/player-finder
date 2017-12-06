@@ -137,7 +137,9 @@ export class SearchGameComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
+        if (this.eventManager !== undefined && this.eventSubscriber !== undefined) {
+            this.eventManager.destroy(this.eventSubscriber);
+        }
     }
 
     trackId(index: number, item: Game) {
@@ -156,18 +158,6 @@ export class SearchGameComponent implements OnInit, OnDestroy {
         return result;
     }
 
-    private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
-        this.queryCount = this.totalItems;
-        // this.page = pagingParams.page;
-        this.games = data;
-    }
-
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
-    }
-
     loggedUserIsOwner(owner) {
         if (owner === null || this.loggedUser === null) {
             return false;
@@ -177,7 +167,7 @@ export class SearchGameComponent implements OnInit, OnDestroy {
 
     loggedUserIsParticipant(game) {
         let found = false;
-        if (game.players == null || this.loggedUser === null ) {
+        if (game.players == null || this.loggedUser === null) {
             return found;
         }
 
@@ -220,6 +210,18 @@ export class SearchGameComponent implements OnInit, OnDestroy {
 
     hasSlotsLeft(game) {
         return this.getAvailableSlots(game) > 0
+    }
+
+    private onSuccess(data, headers) {
+        this.links = this.parseLinks.parse(headers.get('link'));
+        this.totalItems = headers.get('X-Total-Count');
+        this.queryCount = this.totalItems;
+        // this.page = pagingParams.page;
+        this.games = data;
+    }
+
+    private onError(error) {
+        this.jhiAlertService.error(error.message, null, null);
     }
 
     private subscribeToSaveResponse(result: Observable<Game>) {

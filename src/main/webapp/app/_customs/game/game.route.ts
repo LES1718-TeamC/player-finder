@@ -26,16 +26,16 @@ export class GamesResolvePagingParams implements Resolve<any> {
 export const gameRoute: Routes = [];
 
 export const gamePopupRoute: Routes = [
-    {
-        path: 'game-new',
-        component: GamePopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'playerFinderApp.game.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
+    // {
+    //     path: 'game-new',
+    //     component: GamePopupComponent,
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'playerFinderApp.game.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // },
     {
         path: 'game/:id/edit',
         component: GamePopupComponent,
