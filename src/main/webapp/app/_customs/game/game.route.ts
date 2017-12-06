@@ -4,7 +4,8 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActiva
 import { UserRouteAccessService } from '../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
-import { SearchGameComponent } from './search-game.component';
+import {GamePopupComponent} from './games-dialog.component';
+import {GameDeletePopupComponent} from './games-delete-dialog.component';
 
 @Injectable()
 export class GamesResolvePagingParams implements Resolve<any> {
@@ -22,19 +23,37 @@ export class GamesResolvePagingParams implements Resolve<any> {
     }
 }
 
-export const gameRoute: Routes = [
+export const gameRoute: Routes = [];
+
+export const gamePopupRoute: Routes = [
     {
-        path: 'games/search',
-        component: SearchGameComponent,
-        resolve: {
-            'pagingParams': GamesResolvePagingParams
-        },
+        path: 'game-new',
+        component: GamePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'playerFinderApp.game.home.title'
         },
-        canActivate: [UserRouteAccessService]
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'game/:id/edit',
+        component: GamePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'playerFinderApp.game.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'game/:id/delete',
+        component: GameDeletePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'playerFinderApp.game.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
     }
 ];
-
-export const gamePopupRoute: Routes = [];

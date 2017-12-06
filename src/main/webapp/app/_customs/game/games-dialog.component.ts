@@ -6,9 +6,9 @@ import {Observable} from 'rxjs/Rx';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
-import {Game} from '../game/game.model';
+import {Game} from './game.model';
 import {GamePopupService} from './games-popup.service';
-import {GameService} from '../game/game.service';
+import {GameService} from './game.service';
 import { Location, LocationService } from '../../entities/location';
 import { GameType, GameTypeService } from '../../entities/game-type';
 import {ResponseWrapper, User, UserService} from '../../shared';

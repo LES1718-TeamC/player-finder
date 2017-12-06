@@ -86,7 +86,7 @@
                     <div class="btn-group flex-btn-group-container">
                         <!--view: for all users-->
                         <button type="submit"
-                                [routerLink]="['../game', game.id ]"
+                                [routerLink]="['/', { outlets: { popup: 'games/'+ game.id } }]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">
@@ -97,7 +97,7 @@
                         <!--edit: for owner-->
                         <button *ngIf="loggedUserIsOwner(game.owner)"
                                 type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'games/edit/'+ game.id} }]"
+                                [routerLink]="['/', { outlets: { popup: 'games/'+ game.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
@@ -109,7 +109,7 @@
                         <!--remove: for owner-->
                         <button *ngIf="loggedUserIsOwner(game.owner)"
                                 type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'game/'+ game.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'games/'+ game.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-trash"></span>
