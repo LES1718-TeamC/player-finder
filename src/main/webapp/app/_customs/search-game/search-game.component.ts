@@ -59,25 +59,25 @@ export class SearchGameComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-        // if (this.currentSearch) {
-        //     this.gameService.search({
-        //         page: this.page - 1,
-        //         query: this.currentSearch,
-        //         size: this.itemsPerPage,
-        //         sort: this.sort()
-        //     }).subscribe(
-        //         (res: ResponseWrapper) => {
-        //             this.onSuccess(res.json, res.headers);
-        //             console.log(res);
-        //         },
-        //         (res: ResponseWrapper) => this.onError(res.json)
-        //     );
-        //     return;
-        // }
+        if (this.currentSearch) {
+            this.gameService.query({
+                page: this.page - 1,
+                query: this.currentSearch,
+                size: this.itemsPerPage,
+                sort: this.sort()
+            }).subscribe(
+                (res: ResponseWrapper) => {
+                    this.onSuccess(res.json, res.headers);
+                    console.log(res);
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+            return;
+        }
         this.gameService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
-            sort: this.sort()
+            sort: this.sort(),
         }).subscribe(
             (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
             (res: ResponseWrapper) => this.onError(res.json)
@@ -107,10 +107,10 @@ export class SearchGameComponent implements OnInit, OnDestroy {
     clear() {
         this.page = 0;
         this.currentSearch = '';
-        this.router.navigate(['/game', {
+        this.router.navigate(['/games/search', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-        }]);
+        }]).then();
         this.loadAll();
     }
 
@@ -124,7 +124,7 @@ export class SearchGameComponent implements OnInit, OnDestroy {
             search: this.currentSearch,
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-        }]);
+        }]).then();
         this.loadAll();
     }
 
