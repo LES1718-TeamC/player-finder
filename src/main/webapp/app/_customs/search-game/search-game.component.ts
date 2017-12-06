@@ -92,7 +92,7 @@ export class SearchGameComponent implements OnInit, OnDestroy {
     }
 
     transition() {
-        this.router.navigate(['/game'], {
+        this.router.navigate(['/games/search'], {
             queryParams:
                 {
                     page: this.page,
@@ -100,7 +100,7 @@ export class SearchGameComponent implements OnInit, OnDestroy {
                     search: this.currentSearch,
                     sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
                 }
-        });
+        }).then();
         this.loadAll();
     }
 

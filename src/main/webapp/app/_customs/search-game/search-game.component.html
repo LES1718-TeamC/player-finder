@@ -62,7 +62,7 @@
                 <td><a [routerLink]="['../game', game.id ]">{{game.id}}</a></td>
                 <td>{{game.title}}</td>
                 <td>{{game.beginTime | date:'medium'}}</td>
-                <td>{{game.duration | date:'medium'}}</td>
+                <td>{{game.duration}}</td>
                 <td>{{game.numberOfPlayers}}</td>
                 <td>{{getAvailableSlots(game)}}</td>
                 <!--<td>{{ game.numberOfSlots}}</td>-->
