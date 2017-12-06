@@ -5,13 +5,7 @@ import {PlayerFinderAdminModule} from '../../admin/admin.module';
 import {CustomFormsModule} from 'ng2-validation';
 
 import {
-    GameDeleteDialogComponent,
-    GameDeletePopupComponent,
-    GameDetailComponent,
-    GameDialogComponent,
-    GamePopupComponent,
     gamePopupRoute,
-    GamePopupService,
     gameRoute,
     GamesResolvePagingParams,
     NewGameComponent,
@@ -31,21 +25,11 @@ const ENTITY_STATES = [
     ],
     declarations: [
         NewGameComponent,
-        GameDetailComponent,
-        GameDialogComponent,
-        GameDeleteDialogComponent,
-        GamePopupComponent,
-        GameDeletePopupComponent,
     ],
     entryComponents: [
         NewGameComponent,
-        GameDialogComponent,
-        GamePopupComponent,
-        GameDeleteDialogComponent,
-        GameDeletePopupComponent,
     ],
     providers: [
-        GamePopupService,
         GamesResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

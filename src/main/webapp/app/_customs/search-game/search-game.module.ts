@@ -5,6 +5,10 @@ import {PlayerFinderSharedModule} from '../../shared';
 import {PlayerFinderAdminModule} from '../../admin/admin.module';
 import {gamePopupRoute, gameRoute, GamesResolvePagingParams} from './';
 import {SearchGameComponent} from './search-game.component';
+import {GameDeleteDialogComponent, GameDeletePopupComponent} from '../game/games-delete-dialog.component';
+import {GameDialogComponent, GamePopupComponent} from '../game/games-dialog.component';
+import {GamePopupService} from '../game/games-popup.service';
+import {GameDetailComponent} from '../game/games-detail.component';
 
 const ENTITY_STATES = [
     ...gameRoute,
@@ -18,12 +22,23 @@ const ENTITY_STATES = [
         RouterModule.forRoot(ENTITY_STATES, {useHash: true})
     ],
     declarations: [
-        SearchGameComponent],
+        SearchGameComponent,
+        GameDetailComponent,
+        GameDialogComponent,
+        GameDeleteDialogComponent,
+        GamePopupComponent,
+        GameDeletePopupComponent,
+    ],
     entryComponents: [
-        SearchGameComponent
+        SearchGameComponent,
+        GameDialogComponent,
+        GamePopupComponent,
+        GameDeleteDialogComponent,
+        GameDeletePopupComponent,
     ],
     providers: [
         GamesResolvePagingParams,
+        GamePopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
