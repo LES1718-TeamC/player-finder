@@ -5,12 +5,12 @@ import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { Game } from './game.model';
-import { GamePopupService } from './games-popup.service';
+import { GamePopupService } from './game-popup.service';
 import { GameService } from './game.service';
 
 @Component({
     selector: 'jhi-game-delete-dialog',
-    templateUrl: './games-delete-dialog.component.html'
+    templateUrl: './game-delete-dialog.component.html'
 })
 export class GameDeleteDialogComponent {
 

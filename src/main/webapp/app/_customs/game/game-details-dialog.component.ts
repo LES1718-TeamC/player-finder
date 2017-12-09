@@ -7,17 +7,17 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
 import {Game} from './game.model';
-import {GamePopupService} from './games-popup.service';
+import {GamePopupService} from './game-popup.service';
 import {GameService} from './game.service';
 import { Location, LocationService } from '../../entities/location';
 import { GameType, GameTypeService } from '../../entities/game-type';
 import {ResponseWrapper, User, UserService} from '../../shared';
 
 @Component({
-    selector: 'jhi-game-dialog',
-    templateUrl: './games-dialog.component.html'
+    selector: 'jhi-game-details',
+    templateUrl: './game-details-dialog.component.html'
 })
-export class GameDialogComponent implements OnInit {
+export class GameDetailsDialogComponent implements OnInit {
 
     game: Game;
     isSaving: boolean;
@@ -38,7 +38,6 @@ export class GameDialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.isSaving = false;
         this.locationService
             .query({filter: 'game-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -69,36 +68,6 @@ export class GameDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-    }
-
-    clear() {
-        this.activeModal.dismiss('cancel');
-    }
-
-    save() {
-        this.isSaving = true;
-        if (this.game.id !== undefined) {
-            this.subscribeToSaveResponse(
-                this.gameService.update(this.game));
-        } else {
-            this.subscribeToSaveResponse(
-                this.gameService.create(this.game));
-        }
-    }
-
-    private subscribeToSaveResponse(result: Observable<Game>) {
-        result.subscribe((res: Game) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError());
-    }
-
-    private onSaveSuccess(result: Game) {
-        this.eventManager.broadcast({name: 'gameListModification', content: 'OK'});
-        this.isSaving = false;
-        this.activeModal.dismiss(result);
-    }
-
-    private onSaveError() {
-        this.isSaving = false;
     }
 
     private onError(error: any) {
@@ -133,7 +102,7 @@ export class GameDialogComponent implements OnInit {
     selector: 'jhi-game-popup',
     template: ''
 })
-export class GamePopupComponent implements OnInit, OnDestroy {
+export class GameDetailsPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
@@ -145,10 +114,10 @@ export class GamePopupComponent implements OnInit, OnDestroy {
         this.routeSub = this.route.params.subscribe((params) => {
             if (params['id']) {
                 this.gamePopupService
-                    .open(GameDialogComponent as Component, params['id']);
+                    .open(GameDetailsDialogComponent as Component, params['id']);
             } else {
                 this.gamePopupService
-                    .open(GameDialogComponent as Component);
+                    .open(GameDetailsDialogComponent as Component);
             }
         });
     }

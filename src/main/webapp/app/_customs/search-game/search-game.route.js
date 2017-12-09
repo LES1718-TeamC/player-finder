@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var shared_1 = require("../../shared");
 var games_component_1 = require("./search-game.component");
-var games_detail_component_1 = require("../game/games-detail.component");
-var games_dialog_component_1 = require("../game/games-dialog.component");
-var games_delete_dialog_component_1 = require("../game/games-delete-dialog.component");
+var games_detail_component_1 = require("../game/game-detail.component");
+var games_dialog_component_1 = require("../game/game-edit-dialog.component");
+var games_delete_dialog_component_1 = require("../game/game-delete-dialog.component");
 var GamesResolvePagingParams = /** @class */ (function () {
     function GamesResolvePagingParams(paginationUtil) {
         this.paginationUtil = paginationUtil;

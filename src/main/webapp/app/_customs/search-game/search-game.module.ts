@@ -5,10 +5,11 @@ import {PlayerFinderSharedModule} from '../../shared';
 import {PlayerFinderAdminModule} from '../../admin/admin.module';
 import {gamePopupRoute, gameRoute, GamesResolvePagingParams} from './';
 import {SearchGameComponent} from './search-game.component';
-import {GameDeleteDialogComponent, GameDeletePopupComponent} from '../game/games-delete-dialog.component';
-import {GameDialogComponent, GamePopupComponent} from '../game/games-dialog.component';
-import {GamePopupService} from '../game/games-popup.service';
-import {GameDetailComponent} from '../game/games-detail.component';
+import {GameDeleteDialogComponent, GameDeletePopupComponent} from '../game/game-delete-dialog.component';
+import {GameEditDialogComponent, GameEditPopupComponent} from '../game/game-edit-dialog.component';
+import {GameDetailsDialogComponent, GameDetailsPopupComponent} from '../game/game-details-dialog.component';
+import {GamePopupService} from '../game/game-popup.service';
+import {GameDetailComponent} from '../game/game-detail.component';
 
 const ENTITY_STATES = [
     ...gameRoute,
@@ -24,15 +25,19 @@ const ENTITY_STATES = [
     declarations: [
         SearchGameComponent,
         GameDetailComponent,
-        GameDialogComponent,
+        GameEditDialogComponent,
+        GameDetailsDialogComponent,
         GameDeleteDialogComponent,
-        GamePopupComponent,
+        GameEditPopupComponent,
+        GameDetailsPopupComponent,
         GameDeletePopupComponent,
     ],
     entryComponents: [
         SearchGameComponent,
-        GameDialogComponent,
-        GamePopupComponent,
+        GameEditPopupComponent,
+        GameDetailsPopupComponent,
+        GameEditDialogComponent,
+        GameDetailsDialogComponent,
         GameDeleteDialogComponent,
         GameDeletePopupComponent,
     ],

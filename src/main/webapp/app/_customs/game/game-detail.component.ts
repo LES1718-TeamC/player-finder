@@ -8,7 +8,7 @@ import { GameService } from './game.service';
 
 @Component({
     selector: 'jhi-game-detail',
-    templateUrl: './games-detail.component.html'
+    templateUrl: './game-detail.component.html'
 })
 export class GameDetailComponent implements OnInit, OnDestroy {
 
