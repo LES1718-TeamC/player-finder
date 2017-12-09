@@ -5,8 +5,9 @@ import {UserRouteAccessService} from '../../shared';
 import {JhiPaginationUtil} from 'ng-jhipster';
 
 import {SearchGameComponent} from './search-game.component';
-import {GamePopupComponent} from '../game/games-dialog.component';
-import {GameDeletePopupComponent} from '../game/games-delete-dialog.component';
+import {GameEditPopupComponent} from '../game/game-edit-dialog.component';
+import {GameDetailsPopupComponent} from '../game/game-details-dialog.component';
+import {GameDeletePopupComponent} from '../game/game-delete-dialog.component';
 
 @Injectable()
 export class GamesResolvePagingParams implements Resolve<any> {
@@ -44,7 +45,7 @@ export const gamePopupRoute: Routes = [
 
     {
         path: 'games/:id',
-        component: GamePopupComponent,
+        component: GameDetailsPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'playerFinderApp.game.home.title'
@@ -54,7 +55,7 @@ export const gamePopupRoute: Routes = [
     },
     {
         path: 'games/:id/edit',
-        component: GamePopupComponent,
+        component: GameEditPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'playerFinderApp.game.home.title'

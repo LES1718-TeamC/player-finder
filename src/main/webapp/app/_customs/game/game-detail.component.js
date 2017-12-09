@@ -40,7 +40,7 @@ var GameDetailComponent = /** @class */ (function () {
     GameDetailComponent = __decorate([
         core_1.Component({
             selector: 'jhi-game-detail',
-            templateUrl: './games-detail.component.html'
+            templateUrl: './game-detail.component.html'
         })
     ], GameDetailComponent);
     return GameDetailComponent;

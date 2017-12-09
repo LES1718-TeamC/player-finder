@@ -29,7 +29,7 @@ var GameDeleteDialogComponent = /** @class */ (function () {
     GameDeleteDialogComponent = __decorate([
         core_1.Component({
             selector: 'jhi-game-delete-dialog',
-            templateUrl: './games-delete-dialog.component.html'
+            templateUrl: './game-delete-dialog.component.html'
         })
     ], GameDeleteDialogComponent);
     return GameDeleteDialogComponent;
