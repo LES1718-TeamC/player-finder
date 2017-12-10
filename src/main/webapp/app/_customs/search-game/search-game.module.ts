@@ -9,7 +9,6 @@ import {GameDeleteDialogComponent, GameDeletePopupComponent} from '../game/game-
 import {GameEditDialogComponent, GameEditPopupComponent} from '../game/game-edit-dialog.component';
 import {GameDetailsDialogComponent, GameDetailsPopupComponent} from '../game/game-details-dialog.component';
 import {GamePopupService} from '../game/game-popup.service';
-import {GameDetailComponent} from '../game/game-detail.component';
 
 const ENTITY_STATES = [
     ...gameRoute,
@@ -24,7 +23,6 @@ const ENTITY_STATES = [
     ],
     declarations: [
         SearchGameComponent,
-        GameDetailComponent,
         GameEditDialogComponent,
         GameDetailsDialogComponent,
         GameDeleteDialogComponent,
