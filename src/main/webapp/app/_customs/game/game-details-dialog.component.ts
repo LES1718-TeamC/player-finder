@@ -1,100 +1,72 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Response} from '@angular/http';
 
-import {Observable} from 'rxjs/Rx';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
+import {Subscription} from 'rxjs/Rx';
+import {JhiEventManager} from 'ng-jhipster';
 
 import {Game} from './game.model';
 import {GamePopupService} from './game-popup.service';
 import {GameService} from './game.service';
-import { Location, LocationService } from '../../entities/location';
-import { GameType, GameTypeService } from '../../entities/game-type';
-import {ResponseWrapper, User, UserService} from '../../shared';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {User} from '../../shared/user/user.model';
+import {Principal} from '../../shared/auth/principal.service';
 
 @Component({
     selector: 'jhi-game-details',
     templateUrl: './game-details-dialog.component.html'
 })
 export class GameDetailsDialogComponent implements OnInit {
+    loggedUser: User;
 
     game: Game;
-    isSaving: boolean;
+    private subscription: Subscription;
+    private eventSubscriber: Subscription;
 
-    locations: Location[];
-
-    users: User[];
-
-    typeofgames: GameType[];
-
-    constructor(public activeModal: NgbActiveModal,
-                private jhiAlertService: JhiAlertService,
+    constructor(private principal: Principal,
+                public activeModal: NgbActiveModal,
+                private eventManager: JhiEventManager,
                 private gameService: GameService,
-                private locationService: LocationService,
-                private userService: UserService,
-                private gameTypeService: GameTypeService,
-                private eventManager: JhiEventManager) {
+                private route: ActivatedRoute) {
+        this.loggedUser = null;
+        this.principal.identity().then((account) => {
+            this.loggedUser = (account !== null && account.userName !== '') ? account : null;
+        });
     }
 
     ngOnInit() {
-        this.locationService
-            .query({filter: 'game-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.game.location || !this.game.location.id) {
-                    this.locations = res.json;
-                } else {
-                    this.locationService
-                        .find(this.game.location.id)
-                        .subscribe((subRes: Location) => {
-                            this.locations = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
-        this.userService.query()
-            .subscribe((res: ResponseWrapper) => {
-                this.users = res.json;
-            }, (res: ResponseWrapper) => this.onError(res.json));
-        this.gameTypeService
-            .query({filter: 'game-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.game.typeOfGame || !this.game.typeOfGame.id) {
-                    this.typeofgames = res.json;
-                } else {
-                    this.gameTypeService
-                        .find(this.game.typeOfGame.id)
-                        .subscribe((subRes: GameType) => {
-                            this.typeofgames = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.subscription = this.route.params.subscribe((params) => {
+            this.load(params['id']);
+        });
+        this.registerChangeInGames();
     }
 
-    private onError(error: any) {
-        this.jhiAlertService.error(error.message, null, null);
+    load(id) {
+        this.gameService.find(id).subscribe((game) => {
+            this.game = game;
+        });
     }
 
-    trackLocationById(index: number, item: Location) {
-        return item.id;
+    clear() {
+        this.activeModal.dismiss('cancel');
     }
 
-    trackUserById(index: number, item: User) {
-        return item.id;
+    // ngOnDestroy() {
+    //     this.subscription.unsubscribe();
+    //     this.eventManager.destroy(this.eventSubscriber);
+    // }
+
+    registerChangeInGames() {
+        this.eventSubscriber = this.eventManager.subscribe(
+            'gameListModification',
+            (response) => this.load(this.game.id)
+        );
     }
 
-    trackGameTypeById(index: number, item: GameType) {
-        return item.id;
-    }
-
-    getSelected(selectedVals: Array<any>, option: any) {
-        if (selectedVals) {
-            for (let i = 0; i < selectedVals.length; i++) {
-                if (option.id === selectedVals[i].id) {
-                    return selectedVals[i];
-                }
-            }
+    loggedUserIsOwner(owner) {
+        if (owner === null || this.loggedUser === null) {
+            return false;
         }
-        return option;
+        return owner.id === this.loggedUser.id;
     }
 }
 

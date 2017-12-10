@@ -42,7 +42,11 @@
                     <label class="form-control-label" jhiTranslate="playerFinderApp.game.location"
                            for="field_location">Location</label>
 
-                    <select class="form-control" id="field_location" name="location" [(ngModel)]="game.location"
+                    <select class="form-control"
+                            (click)="goGetLocations()"
+                            id="field_location"
+                            name="location"
+                            [(ngModel)]="game.location"
                             disabled="{{locations !== undefined && locations.length === 0}}">
                         <option [ngValue]="locationOption.id === game.location?.id ? game.location : locationOption"
                                 *ngFor="let locationOption of locations; trackBy: trackLocationById">
@@ -62,7 +66,11 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="playerFinderApp.game.typeOfGame"
                            for="field_typeOfGame">Type Of Game</label>
-                    <select class="form-control" id="field_typeOfGame" name="typeOfGame" [(ngModel)]="game.typeOfGame"
+                    <select class="form-control"
+                            id="field_typeOfGame"
+                            name="typeOfGame"
+                            (click)="goGetTypesOfGames()"
+                            [(ngModel)]="game.typeOfGame"
                             disabled="{{gameTypes !== undefined && gameTypes.length === 0}}">
                         <!--<option [ngValue]="null"></option>-->
                         <option [ngValue]="gameTypeOption.id === game.typeOfGame?.id ? game.typeOfGame : gameTypeOption"
