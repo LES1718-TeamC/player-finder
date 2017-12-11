@@ -21,7 +21,7 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     Page<Game> findByOwnerIsCurrentUser(Pageable pageable);
 
     @Query("select game from Game game where game.owner.login = ?#{principal.username} and game.title =:query")
-    Page<Game> findByOwnerIsCurrentUserQuery(Pageable pageable, @Param("game")String query);
+    Page<Game> findByOwnerIsCurrentUserQuery(Pageable pageable, @Param("query")String query);
 
     @Query("select distinct game from Game game left join fetch game.players")
     List<Game> findAllWithEagerRelationships();
