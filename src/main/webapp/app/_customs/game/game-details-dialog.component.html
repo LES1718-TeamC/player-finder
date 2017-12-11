@@ -1,241 +1,84 @@
 <div *ngIf="game">
-    <h2><span jhiTranslate="playerFinderApp.game.detail.title">Game</span> {{game.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details modal-body">
-        <dt><span jhiTranslate="playerFinderApp.game.title">Title</span></dt>
-        <dd>
-            <span>{{game.title}}</span>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.beginTime">Begin Time</span></dt>
-        <dd>
-            <span>{{game.beginTime | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.duration">End Time</span></dt>
-        <dd>
-            <span>{{game.duration | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.numberOfPlayers">Number Of Players</span></dt>
-        <dd>
-            <span>{{game.numberOfPlayers}}</span>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.numberOfSlots">Required Number Of Players</span></dt>
-        <dd>
-            <span>{{game.numberOfSlots}}</span>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.gameStatus">Game Status</span></dt>
-        <dd>
+
+    <div class="modal-header">
+        <h2><span jhiTranslate="playerFinderApp.game.detail.title">Game</span> {{game.id}}</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <!--<jhi-alert-error></jhi-alert-error>-->
+        <div class="row-md jh-entity-details">
+            <!--Title-->
+            <strong><span jhiTranslate="playerFinderApp.game.title">Title</span></strong>:
+            {{game.title}}
+            <br>
+
+            <!--Begin Time-->
+            <strong><span jhiTranslate="playerFinderApp.game.beginTime">Begin Time</span></strong>:
+            {{game.beginTime | date:'medium'}}
+            <br>
+
+            <!--Duration-->
+            <strong><span jhiTranslate="playerFinderApp.game.duration">Duration</span></strong>:
+            {{game.duration}} {{game.duration == 1 ? 'hour' : 'hours'}}
+            <br>
+
+            <!--Number of Players-->
+            <strong><span jhiTranslate="playerFinderApp.game.numberOfPlayers">Number Of Players</span></strong>:
+            {{game.numberOfPlayers}}
+            <br>
+
+            <!--Slots Available-->
+            <strong><span jhiTranslate="playerFinderApp.game.numberOfSlots">Number Of Slots</span></strong>:
+            {{game.numberOfSlots}}
+            <br>
+
+            <!--Game Status-->
+            <strong><span jhiTranslate="playerFinderApp.game.gameStatus">Game Status</span></strong>:
             <span jhiTranslate="{{'playerFinderApp.GameStatus.' + game.gameStatus}}">{{game.gameStatus}}</span>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.description">Description</span></dt>
-        <dd>
-            <span>{{game.description}}</span>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.location">Location</span></dt>
-        <dd>
-            <div *ngIf="game.location">
+            <br>
+
+            <!--Description-->
+            <strong><span jhiTranslate="playerFinderApp.game.description">Description</span></strong>:
+            {{game.description}}
+            <br>
+
+            <!--Location-->
+            <strong><span jhiTranslate="playerFinderApp.game.location">Location</span></strong>:
+            <span *ngIf="game.location">
                 <a [routerLink]="['/location', game.location?.id]">{{game.location?.streetAddress}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.owner">Owner</span></dt>
-        <dd>
+            </span>
+            <br>
+
+            <!--Owner of the game-->
+            <strong><span jhiTranslate="playerFinderApp.game.owner">Owner</span></strong>:
             {{game.owner?.login}}
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.typeOfGame">Type Of Game</span></dt>
-        <dd>
-            <div *ngIf="game.typeOfGame">
+            <br>
+
+            <!--Type of Game-->
+            <strong><span jhiTranslate="playerFinderApp.game.typeOfGame">Type Of Game</span></strong>:
+            <span *ngIf="game.typeOfGame">
                 <a [routerLink]="['/game-type', game.typeOfGame?.id]">{{game.typeOfGame?.title}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="playerFinderApp.game.players">Players</span></dt>
-        <dd>
+            </span>
+            <br>
+
+            <!--Players-->
+            <strong><span jhiTranslate="playerFinderApp.game.players">Players</span></strong>:
             <span *ngFor="let players of game.players; let last = last">
                 {{players.login}}{{last ? '' : ', '}}
             </span>
-        </dd>
-    </dl>
 
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
+        </div>
 
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'game/'+ game.id + '/edit'} }]"
-            replaceUrl="true"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-    </button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            </button>
+            <button [disabled]="!loggedUserIsOwner(game.owner)" class="btn btn-primary">
+                <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
 </div>
-
-
-
-
-
-<!--<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">-->
-
-    <!--<div class="modal-header">-->
-        <!--<h4 class="modal-title" id="myGameLabel" jhiTranslate="playerFinderApp.game.home.createOrEditLabel">Create or edit a Game</h4>-->
-        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"-->
-                <!--(click)="clear()">&times;</button>-->
-    <!--</div>-->
-    <!--<div class="modal-body">-->
-        <!--<jhi-alert-error></jhi-alert-error>-->
-        <!--<div class="form-group" [hidden]="!game.id">-->
-            <!--<label for="id" jhiTranslate="global.field.id">ID</label>-->
-            <!--<input type="text" class="form-control" id="id" name="id"-->
-                   <!--[(ngModel)]="game.id" readonly />-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.title" for="field_title">Title</label>-->
-            <!--<input type="text" class="form-control" name="title" id="field_title"-->
-                <!--[(ngModel)]="game.title" required maxlength="35" />-->
-            <!--<div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">-->
-                   <!--This field is required.-->
-                <!--</small>-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.title?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 35 }">-->
-                   <!--This field cannot be longer than 35 characters.-->
-                <!--</small>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.beginTime" for="field_beginTime">Begin Time</label>-->
-            <!--<div class="d-flex">-->
-                <!--<input id="field_beginTime" type="datetime-local" class="form-control" name="beginTime" [(ngModel)]="game.beginTime"-->
-                <!--required  />-->
-            <!--</div>-->
-            <!--<div [hidden]="!(editForm.controls.beginTime?.dirty && editForm.controls.beginTime?.invalid)">-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.beginTime?.errors?.required" jhiTranslate="entity.validation.required">-->
-                   <!--This field is required.-->
-                <!--</small>-->
-                <!--<small class="form-text text-danger"-->
-                    <!--[hidden]="!editForm.controls.beginTime?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">-->
-                    <!--This field should be a date and time.-->
-                <!--</small>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.duration" for="field_duration">End Time</label>-->
-            <!--<div class="d-flex">-->
-                <!--<input id="field_duration" type="datetime-local" class="form-control" name="duration" [(ngModel)]="game.duration"-->
-                <!--required  />-->
-            <!--</div>-->
-            <!--<div [hidden]="!(editForm.controls.duration?.dirty && editForm.controls.duration?.invalid)">-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.duration?.errors?.required" jhiTranslate="entity.validation.required">-->
-                   <!--This field is required.-->
-                <!--</small>-->
-                <!--<small class="form-text text-danger"-->
-                    <!--[hidden]="!editForm.controls.duration?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">-->
-                    <!--This field should be a date and time.-->
-                <!--</small>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.numberOfPlayers" for="field_numberOfPlayers">Number Of Players</label>-->
-            <!--<input type="number" class="form-control" name="numberOfPlayers" id="field_numberOfPlayers"-->
-                <!--[(ngModel)]="game.numberOfPlayers" required min="1" />-->
-            <!--<div [hidden]="!(editForm.controls.numberOfPlayers?.dirty && editForm.controls.numberOfPlayers?.invalid)">-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.numberOfPlayers?.errors?.required" jhiTranslate="entity.validation.required">-->
-                   <!--This field is required.-->
-                <!--</small>-->
-                <!--<small class="form-text text-danger"-->
-                    <!--[hidden]="!editForm.controls.numberOfPlayers?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">-->
-                    <!--This field should be at least 1.-->
-                <!--</small>-->
-                <!--<small class="form-text text-danger"-->
-                    <!--[hidden]="!editForm.controls.numberOfPlayers?.errors?.number" jhiTranslate="entity.validation.number">-->
-                    <!--This field should be a number.-->
-                <!--</small>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.numberOfSlots" for="field_numberOfSlots">Required Number Of Players</label>-->
-            <!--<input type="number" class="form-control" name="numberOfSlots" id="field_numberOfSlots"-->
-                <!--[(ngModel)]="game.numberOfSlots" required min="1" />-->
-            <!--<div [hidden]="!(editForm.controls.numberOfSlots?.dirty && editForm.controls.numberOfSlots?.invalid)">-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.numberOfSlots?.errors?.required" jhiTranslate="entity.validation.required">-->
-                   <!--This field is required.-->
-                <!--</small>-->
-                <!--<small class="form-text text-danger"-->
-                    <!--[hidden]="!editForm.controls.numberOfSlots?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">-->
-                    <!--This field should be at least 1.-->
-                <!--</small>-->
-                <!--<small class="form-text text-danger"-->
-                    <!--[hidden]="!editForm.controls.numberOfSlots?.errors?.number" jhiTranslate="entity.validation.number">-->
-                    <!--This field should be a number.-->
-                <!--</small>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.gameStatus" for="field_gameStatus">Game Status</label>-->
-            <!--<select class="form-control" name="gameStatus" [(ngModel)]="game.gameStatus" id="field_gameStatus"  required>-->
-                <!--<option value="PENDING">{{'playerFinderApp.GameStatus.PENDING' | translate}}</option>-->
-                <!--<option value="ACTIVE">{{'playerFinderApp.GameStatus.ACTIVE' | translate}}</option>-->
-                <!--<option value="CANCELED">{{'playerFinderApp.GameStatus.CANCELED' | translate}}</option>-->
-                <!--<option value="FINISHED">{{'playerFinderApp.GameStatus.FINISHED' | translate}}</option>-->
-                <!--<option value="ARCHIEVED">{{'playerFinderApp.GameStatus.ARCHIEVED' | translate}}</option>-->
-            <!--</select>-->
-            <!--<div [hidden]="!(editForm.controls.gameStatus?.dirty && editForm.controls.gameStatus?.invalid)">-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.gameStatus?.errors?.required" jhiTranslate="entity.validation.required">-->
-                   <!--This field is required.-->
-                <!--</small>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.description" for="field_description">Description</label>-->
-            <!--<input type="text" class="form-control" name="description" id="field_description"-->
-                <!--[(ngModel)]="game.description" maxlength="100" />-->
-            <!--<div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">-->
-                <!--<small class="form-text text-danger"-->
-                   <!--[hidden]="!editForm.controls.description?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">-->
-                   <!--This field cannot be longer than 100 characters.-->
-                <!--</small>-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.location" for="field_location">Location</label>-->
-            <!--<select class="form-control" id="field_location" name="location" [(ngModel)]="game.location">-->
-                <!--<option [ngValue]="null"></option>-->
-                <!--<option [ngValue]="locationOption.id === game.location?.id ? game.location : locationOption" *ngFor="let locationOption of locations; trackBy: trackLocationById">{{locationOption.streetAddress}}</option>-->
-            <!--</select>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.owner" for="field_owner">Owner</label>-->
-            <!--<select class="form-control" id="field_owner" name="owner" [(ngModel)]="game.owner" >-->
-                <!--<option [ngValue]="null"></option>-->
-                <!--<option [ngValue]="userOption.id === game.owner?.id ? game.owner : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>-->
-            <!--</select>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="form-control-label" jhiTranslate="playerFinderApp.game.typeOfGame" for="field_typeOfGame">Type Of Game</label>-->
-            <!--<select class="form-control" id="field_typeOfGame" name="typeOfGame" [(ngModel)]="game.typeOfGame">-->
-                <!--<option [ngValue]="null"></option>-->
-                <!--<option [ngValue]="gameTypeOption.id === game.typeOfGame?.id ? game.typeOfGame : gameTypeOption" *ngFor="let gameTypeOption of typeOfGames; trackBy: trackGameTypeById">{{gameTypeOption.title}}</option>-->
-            <!--</select>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label jhiTranslate="playerFinderApp.game.players" for="field_players">Players</label>-->
-            <!--<select class="form-control" id="field_players" multiple name="players" [(ngModel)]="game.players">-->
-                <!--<option [ngValue]="getSelected(game.players, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>-->
-            <!--</select>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="modal-footer">-->
-        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">-->
-            <!--<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>-->
-        <!--</button>-->
-        <!--<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">-->
-            <!--<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>-->
-        <!--</button>-->
-    <!--</div>-->
-<!--</form>-->

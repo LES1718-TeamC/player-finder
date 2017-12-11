@@ -14,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -113,6 +116,40 @@ public class GameResource {
 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, baseUrl);
         return new ResponseEntity<>(responseGames, headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /games : get all the games.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of games in body
+     */
+    @GetMapping("/mygames")
+    @Timed
+    public ResponseEntity<List<Game>> getUserGames(
+        @ApiParam Pageable pageable,
+        @RequestParam(value = "query", required = false) String query
+    ) {
+        Page<Game> page;
+
+        String baseUrl = "/api/mygames";
+
+        if (query == null) {
+            page = gameRepository.findByOwnerIsCurrentUser(pageable);
+        } else {
+            page = gameRepository.findByOwnerIsCurrentUserQuery(pageable, query);
+            baseUrl += "/search";
+        }
+
+        List<Game> responseGames = new ArrayList<>();
+
+        for (Game game : page.getContent()) {
+            responseGames.add(gameRepository.findOneWithEagerRelationships(game.getId()));
+        }
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, baseUrl);
+
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**

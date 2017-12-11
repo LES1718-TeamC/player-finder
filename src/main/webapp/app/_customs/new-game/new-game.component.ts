@@ -57,32 +57,8 @@ export class NewGameComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.locationService
-            .query({filter: 'game-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.game.location || !this.game.location.id) {
-                    this.locations = res.json;
-                } else {
-                    this.locationService
-                        .find(this.game.location.id)
-                        .subscribe((subRes: Location) => {
-                            this.locations = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
-        this.gameTypeService
-            .query({filter: 'game-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.game.typeOfGame || !this.game.typeOfGame.id) {
-                    this.gameTypes = res.json;
-                } else {
-                    this.gameTypeService
-                        .find(this.game.typeOfGame.id)
-                        .subscribe((subRes: GameType) => {
-                            this.gameTypes = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.goGetLocations();
+        this.goGetTypesOfGames();
     }
 
     clear() {
@@ -126,6 +102,38 @@ export class NewGameComponent implements OnInit {
     //     }
     //     return option;
     // }
+
+    goGetTypesOfGames() {
+        this.gameTypeService
+            .query({filter: 'game-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.game.typeOfGame || !this.game.typeOfGame.id) {
+                    this.gameTypes = res.json;
+                } else {
+                    this.gameTypeService
+                        .find(this.game.typeOfGame.id)
+                        .subscribe((subRes: GameType) => {
+                            this.gameTypes = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    goGetLocations() {
+        this.locationService
+            .query({filter: 'game-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.game.location || !this.game.location.id) {
+                    this.locations = res.json;
+                } else {
+                    this.locationService
+                        .find(this.game.location.id)
+                        .subscribe((subRes: Location) => {
+                            this.locations = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
+    }
 
     private subscribeToSaveResponse(result: Observable<Game>) {
         result.subscribe((res: Game) =>
