@@ -149,7 +149,7 @@ public class GameResource {
 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, baseUrl);
 
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(responseGames, headers, HttpStatus.OK);
     }
 
     /**
