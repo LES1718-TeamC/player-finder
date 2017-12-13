@@ -12,6 +12,7 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 export class GameService {
 
     private resourceUrl = SERVER_API_URL + 'api/games';
+    private myGamesResourceUrl = SERVER_API_URL + 'api/mygames';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -41,6 +42,12 @@ export class GameService {
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
+    query_my_games(req?: any): Observable<ResponseWrapper> {
+        const options = createRequestOption(req);
+        return this.http.get(this.myGamesResourceUrl, options)
             .map((res: Response) => this.convertResponse(res));
     }
 

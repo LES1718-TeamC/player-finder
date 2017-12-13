@@ -14,7 +14,8 @@
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "navbar": {
-                "games": "Games"
+                "games": "Games",
+                "mygames": "My Games"
             },
             "account": {
                 "main": "Account",
