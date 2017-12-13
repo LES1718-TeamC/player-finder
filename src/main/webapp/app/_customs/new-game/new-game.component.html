@@ -42,49 +42,61 @@
                     <label class="form-control-label" jhiTranslate="playerFinderApp.game.location"
                            for="field_location">Location</label>
 
-                    <select class="form-control"
-                            (click)="goGetLocations()"
-                            id="field_location"
-                            name="location"
-                            [(ngModel)]="game.location"
-                            disabled="{{locations !== undefined && locations.length === 0}}">
-                        <option [ngValue]="locationOption.id === game.location?.id ? game.location : locationOption"
-                                *ngFor="let locationOption of locations; trackBy: trackLocationById">
-                            {{locationOption.streetAddress}}
-                        </option>
-                    </select>
+                    <div class="row" style="margin-right: 0; margin-left: 0">
+                        <select class="form-control"
+                                style="width: calc(100% - 60px); margin-right: 20px"
+                                (click)="goGetLocations()"
+                                id="field_location"
+                                name="location"
+                                [(ngModel)]="game.location"
+                                disabled="{{locations !== undefined && locations.length === 0}}">
+                            <option [ngValue]="locationOption.id === game.location?.id ? game.location : locationOption"
+                                    *ngFor="let locationOption of locations; trackBy: trackLocationById">
+                                {{locationOption.streetAddress}}
+                            </option>
+                        </select>
 
-                    <button type="button"
-                            [routerLink]="['/', { outlets: { popup: 'location-new'} }]"
-                            replaceUrl="true"
-                            class="btn btn-primary btn-sm col-xs-2">
-                        <span class="fa fa-plus"></span>
-                    </button>
+                        <button type="button"
+                                style="width: 40px"
+                                [routerLink]="['/', { outlets: { popup: 'location-new'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm col-xs-2">
+                            <span class="fa fa-plus"></span>
+                        </button>
+                    </div>
+
                 </div>
 
                 <!--Type of Game-->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="playerFinderApp.game.typeOfGame"
                            for="field_typeOfGame">Type Of Game</label>
-                    <select class="form-control"
-                            id="field_typeOfGame"
-                            name="typeOfGame"
-                            (click)="goGetTypesOfGames()"
-                            [(ngModel)]="game.typeOfGame"
-                            disabled="{{gameTypes !== undefined && gameTypes.length === 0}}">
-                        <!--<option [ngValue]="null"></option>-->
-                        <option [ngValue]="gameTypeOption.id === game.typeOfGame?.id ? game.typeOfGame : gameTypeOption"
-                                *ngFor="let gameTypeOption of gameTypes; trackBy: trackGameTypeById">
-                            {{gameTypeOption.title}}
-                        </option>
-                    </select>
 
-                    <button type="button"
-                            [routerLink]="['/', { outlets: { popup: 'game-type-new'} }]"
-                            replaceUrl="true"
-                            class="btn btn-primary btn-sm col-xs-2">
-                        <span class="fa fa-plus"></span>
-                    </button>
+                    <div class="row" style="margin-right: 0; margin-left: 0">
+                        <select class="form-control"
+                                style="width: calc(100% - 60px); margin-right: 20px"
+                                id="field_typeOfGame"
+                                name="typeOfGame"
+                                (click)="goGetTypesOfGames()"
+                                [(ngModel)]="game.typeOfGame"
+                                disabled="{{gameTypes !== undefined && gameTypes.length === 0}}">
+                            <!--<option [ngValue]="null"></option>-->
+                            <option [ngValue]="gameTypeOption.id === game.typeOfGame?.id ? game.typeOfGame : gameTypeOption"
+                                    *ngFor="let gameTypeOption of gameTypes; trackBy: trackGameTypeById">
+                                {{gameTypeOption.title}}
+                            </option>
+                        </select>
+
+                        <button type="button"
+                                style="width: 40px"
+                                [routerLink]="['/', { outlets: { popup: 'game-type-new'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm col-xs-2">
+                            <span class="fa fa-plus"></span>
+                        </button>
+
+                    </div>
+
                 </div>
 
                 <!--Begin Time-->
