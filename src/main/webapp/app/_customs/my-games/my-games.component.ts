@@ -205,6 +205,10 @@ export class MyGamesComponent implements OnInit, OnDestroy {
         if (game === null || game === undefined) {
             return 0;
         }
+        if (game.players === null) {
+            game.players = [];
+            console.log('available slots is null');
+        }
         return game.numberOfSlots - game.players.length;
     }
 
