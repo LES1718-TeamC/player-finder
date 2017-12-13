@@ -74,7 +74,7 @@ export class MyGamesComponent implements OnInit, OnDestroy {
             );
             return;
         }
-        this.gameService.query({
+        this.gameService.query_my_games({
             page: this.page - 1,
             size: this.itemsPerPage,
             sort: this.sort(),
