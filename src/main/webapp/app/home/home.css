@@ -745,19 +745,43 @@ a.btn-big {
         min-height: inherit;
     }
 
-    .hero-section .figure-image {
+    .figure-image {
         width: 300px;
     }
 
-    .hero-carousel .heading {
+    .figure-holder {
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 700px) {
+        .figure-holder, .figure-image {
+            max-width: 150px!important;
+            margin-bottom: 0;
+            width: 100px!important;
+            height: auto;
+            min-height: 0px!important;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        .figure-holder, .figure-image {
+            max-width: 100px!important;
+            width: 100px!important;
+            height: auto;
+            min-height: 0px!important;
+        }
+    }
+
+
+    .heading {
         font-size: 2.4vh;
     }
 
-    .hero-carousel .item-content-inner {
+    .item-content-inner {
         padding-top: 100px;
     }
 
-    .hero-section .figure-holder .figure-image {
+    .figure-holder .figure-image {
         width: inherit;
         bottom: 0;
         top: inherit;
