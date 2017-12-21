@@ -1,6 +1,7 @@
-.row{
+.row {
     margin-right: 0;
 }
+
 /* ==========================================================================
 Navbar
 ========================================================================== */
@@ -23,7 +24,7 @@ Navbar
 }
 
 .jh-navbar .dropdown-item.active, .jh-navbar .dropdown-item.active:focus, .jh-navbar .dropdown-item.active:hover {
-        background-color: #353d47;
+    background-color: #353d47;
 }
 
 .jh-navbar .dropdown-toggle::after {
@@ -54,15 +55,15 @@ Navbar
 
 @media screen and (max-width: 992px) {
     .jh-logo-container {
-        width: 60%;
+        width: 40%;
     }
 }
+
 @media screen and (min-width: 768px) {
     .jh-navbar-toggler {
         display: none;
     }
 }
-
 
 .navbar-title {
     display: inline-block;
@@ -72,7 +73,6 @@ Navbar
 /* ==========================================================================
 Logo styles
 ========================================================================== */
-
 
 .jh-logo-container {
     height: 80px;
@@ -96,18 +96,23 @@ Logo styles
     margin-left: 10%;
 }
 
+
+
 @media screen and (max-width: 700px) {
     .navbar-brand.logo {
         padding: 2px 5px;
     }
 
-    .logo .logo-img {
-        height: 80px;
-        width: 250px;
+    .logo {
+        max-width: 200px!important;
     }
+}
 
-    .logo-img {
-        height: auto;
-        width: 60%;
+
+
+@media screen and (max-width: 400px) {
+
+    .logo {
+        max-width: 150px!important;
     }
 }

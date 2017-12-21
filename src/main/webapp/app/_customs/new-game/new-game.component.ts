@@ -143,7 +143,7 @@ export class NewGameComponent implements OnInit {
     private onSaveSuccess(result: Game) {
         this.eventManager.broadcast({name: 'gameListModification', content: 'OK'});
         this.isSaving = false;
-        this.router.navigate(['/games']).then();
+        this.router.navigate(['/games/my']).then();
     }
 
     private onSaveError() {

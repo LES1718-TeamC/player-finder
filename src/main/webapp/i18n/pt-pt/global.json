@@ -61,6 +61,10 @@
                 "register": {
                     "noaccount": "Ainda não tem uma conta?",
                     "link": "Crie uma nova conta"
+                },
+                "login": {
+                    "withaccount": "Já se registou?",
+                    "link": "Faça Login aqui!"
                 }
             },
             "error": {
