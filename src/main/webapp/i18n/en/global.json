@@ -61,6 +61,10 @@
                 "register": {
                     "noaccount": "You don't have an account yet?",
                     "link": "Register a new account"
+                },
+                "login": {
+                    "withaccount": "Already registered?",
+                    "link": "Sign in here!"
                 }
             },
             "error": {

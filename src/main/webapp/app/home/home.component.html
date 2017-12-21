@@ -7,6 +7,13 @@
             <a *ngIf="!isAuthenticated()" class="btn btn-big btn-primary" routerLink="register" jhiTranslate="global.messages.info.register.link">
                 Join now!
             </a>
+            <br>
+            <span *ngIf="!isAuthenticated()" jhiTranslate="global.messages.info.login.withaccount" style="color: #FFF">
+                Already registered?
+            </span>
+            <a *ngIf="!isAuthenticated()" routerLink="login" jhiTranslate="global.messages.info.login.link" style="color: #FFF">
+                Sign in here!
+            </a>
             <!--<a class="btn btn-lg " routerLink="register" jhiTranslate="global.messages.info.register.link">Join now for free!</a>-->
 
             <!--<div class="alert alert-warning" *ngSwitchCase="false">-->
