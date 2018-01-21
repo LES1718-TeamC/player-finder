@@ -41,16 +41,14 @@ spring:
             hibernate.generate_statistics: false
             hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactory
     mail:
-        host: smtp-mail.outlook.com
-        port: 587
-        username: player-finder-les1718@outlook.com  #Replace this field with your Outlook username.
-        password: playerfinderles1718               #Replace this field with your Outlook password.
-        protocol: smtp
+        host: smtp.mailgun.org
+        port: 465
+        username: postmaster@sandbox79686db538f04545adb85bdb24eb76ba.mailgun.org  #Replace this field with your Outlook username.
+        password: 3d874c525150eb350ac02df70c7e1464               #Replace this field with your Outlook password.
+        protocol: smtps
         tls: true
-        properties.mail.smtp:
-            auth: true
-            starttls.enable: true
-            ssl.trust: smtp-mail.outlook.com
+        auth: true
+        from: no-reply@playerfinder.com
     thymeleaf:
         cache: true
 
