@@ -5,7 +5,7 @@
     </h2>
 
 
-    <jhi-alert></jhi-alert>
+
 
 
     <div class="row justify-content-center">
@@ -215,15 +215,16 @@
                     </div>
                 </div>
 
-                <div class="footer">
-                    <button type="button" class="btn btn-secondary" (click)="clear()">
+                <div class="footer" style="padding-top: 16px;">
+                    <!--<button type="button" class="btn btn-secondary" (click)="clear()">
                         <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                    </button>
+                    </button>-->
                     <button type="submit" class="btn btn-primary">
                         <!--[disabled]="editForm.form.invalid || isSaving"-->
                         <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                     </button>
                 </div>
+                <jhi-alert></jhi-alert>
             </form>
         </div>
     </div>

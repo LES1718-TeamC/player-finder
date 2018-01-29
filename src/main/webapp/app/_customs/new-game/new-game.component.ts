@@ -67,6 +67,14 @@ export class NewGameComponent implements OnInit {
 
     save() {
         this.principal.identity().then((account) => {
+            if (this.game.numberOfSlots > this.game.numberOfPlayers) {
+                this.jhiAlertService.error('error.numberOfSlotsBiggerThanNumberOfPlayers', null, null);
+                return;
+            }
+            if (new Date(this.game.beginTime) < new Date(Date.now())) {
+                this.jhiAlertService.error('error.beginDateHasToBeAfterCurrentDate', null, null);
+                return;
+            }
             this.game.players = this.game.players === undefined ? [] : this.game.players;
             this.game.owner = account;
             this.game.gameStatus = GameStatus.ACTIVE;
